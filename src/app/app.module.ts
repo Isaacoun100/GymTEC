@@ -6,19 +6,36 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginAdminComponent } from './components/login-admin/login-admin.component';
+import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
+import { RegistrarCitaComponent } from './components/registrar-cita/registrar-cita.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
+import { ManejarSucursalComponent } from './components/manejar-sucursal/manejar-sucursal.component';
+import { EditarSucursalComponent } from './components/editar-sucursal/editar-sucursal.component';
+import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
+import { AgregarServicioComponent } from './components/agregar-servicio/agregar-servicio.component';
+import { ManejarEquipoComponent } from './components/manejar-equipo/manejar-equipo.component';
+import { EditarEquipoComponent } from './components/editar-equipo/editar-equipo.component';
+import { AgregarEquipoComponent } from './components/agregar-equipo/agregar-equipo.component';
+import { VerPlanillaComponent } from './components/ver-planilla/ver-planilla.component';
+import { ManejarEmpleadoComponent } from './components/manejar-empleado/manejar-empleado.component';
+import { EditarEmpleadoComponent } from './components/editar-empleado/editar-empleado.component';
+import { AgregarEmpleadoComponent } from './components/agregar-empleado/agregar-empleado.component';
+import { ManejarInventarioComponent } from './components/manejar-inventario/manejar-inventario.component';
+import { EditarInventarioComponent } from './components/editar-inventario/editar-inventario.component';
+import { ManejarProductoComponent } from './components/manejar-producto/manejar-producto.component';
+import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
+import { AsociarTratamientoComponent } from './components/asociar-tratamiento/asociar-tratamiento.component';
+import { AsociarInventarioComponent } from './components/asociar-inventario/asociar-inventario.component';
+import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
+import { AsociarProductoComponent } from './components/asociar-producto/asociar-producto.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    NavbarComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
