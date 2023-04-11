@@ -1,1 +1,54 @@
-<p>login-cliente works!</p>
+<body>
+
+    <!-- navbar -->
+    <app-navbar></app-navbar>
+
+
+    <div class="container my-3">
+
+        <div class="card" style="width:fit-content">
+            
+            <img src="assets\twitter_header_photo_2.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                
+                <div class="row">
+
+                    <div class="h2">
+                        Inicio de sesión Cliente
+                    </div>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="loginCliente()">
+                
+                        <div class="mb-4 mx-4">
+                            <label for="correoLabel" class="form-label">Correo</label>
+                            <input 
+                                type="email" 
+                                formControlName="correoInput"
+                                class="form-control" 
+                                placeholder="example@domain.com" 
+                                autofocus />
+        
+                        </div>
+            
+                        <div class="mb-4 mx-4">
+                            <label for="contrasenaLabel" class="form-label">Constraseña</label>
+                            <input 
+                                type="password" 
+                                formControlName="contrasenaInput"
+                                class="form-control" 
+                                placeholder="Constraseña" />
+                        </div>
+            
+                        <div class="mb-4 mx-4 centrado">
+                            <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
+                        </div>
+            
+                    </form>
+        
+                </div>
+
+            </div>
+          </div>
+
+    </div>
+</body>
