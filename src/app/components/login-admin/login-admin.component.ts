@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-admin',
@@ -8,6 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginAdminComponent {
 
+  constructor(private router: Router){}
+
   loginForm = new FormGroup({
     cedula: new FormControl('', [Validators.required]),
     contrasena: new FormControl('', [Validators.required]),
@@ -15,5 +18,6 @@ export class LoginAdminComponent {
 
   loginAdmin(){
     console.warn('Your order has been submitted', this.loginForm.value);
+    this.router.navigate(['panelAdmin']);
   }
 }

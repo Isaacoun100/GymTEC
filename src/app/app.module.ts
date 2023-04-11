@@ -37,24 +37,34 @@ import { CrearClaseComponent } from './components/crear-clase/crear-clase.compon
 import { AsociarProductoComponent } from './components/asociar-producto/asociar-producto.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 
-const routes: Routes = [
-
-  {path:'', component:HomeComponent},
-  {path:'loginAdmin', component:LoginAdminComponent},
-  {path:'loginCliente', component:LoginClienteComponent},
-
-]
-
 @NgModule({
   declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      
+      {path:'', component:HomeComponent},
+      {path:'loginAdmin', component:LoginAdminComponent},
+      {path:'loginCliente', component:LoginClienteComponent},
+      {path:'panelAdmin', component:PanelAdminComponent},
+      {path:'sucursales', component:ManejarSucursalComponent},
+      {path:'agregarServicio', component:AgregarServicioComponent},
+      {path:'equipos', component:ManejarEquipoComponent},
+      {path:'plantilla', component:VerPlanillaComponent},
+      {path:'empleados', component:ManejarEmpleadoComponent},
+      {path:'inventario', component:ManejarInventarioComponent},
+      {path:'productos', component:ManejarProductoComponent},
+      {path:'asociarTratamiento', component:AsociarTratamientoComponent},
+      {path:'asociarInventario', component:AsociarInventarioComponent},
+      {path:'crearClase', component:CrearClaseComponent},
+      {path:'asociarProducto', component:AsociarProductoComponent}
+
+    ])
+],
   exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent],
