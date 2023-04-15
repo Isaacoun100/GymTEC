@@ -10,8 +10,8 @@ export class LoginClienteComponent {
 
   
   loginForm = new FormGroup({
-    correoInput: new FormControl(null, [Validators.required, Validators.email]),
-    contrasenaInput: new FormControl(null, [Validators.required]),
+    correoInput: new FormControl('', {nonNullable: true}),
+    contrasenaInput: new FormControl('', {nonNullable: true}),
   });
 
   loginCliente(){}

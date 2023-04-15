@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './crear-clase.component.html',
   styleUrls: ['./crear-clase.component.scss']
 })
-export class CrearClaseComponent {
+export class CrearClaseComponent{
 
 }

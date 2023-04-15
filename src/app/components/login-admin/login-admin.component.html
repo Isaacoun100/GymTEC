@@ -7,116 +7,24 @@
 
     <div class="container my-3">
 
-        <!--
-        
-        <div class="row">
-
-            <div class="h2">
-                Inicio de sesión Administrador
-            </div>
-    
-            <form [formGroup]="loginForm" (ngSubmit)="loginAdmin()">
-                
-                <div class="mb-4 mx-4">
-                    <label for="cedulaLabel" class="form-label">Cédula</label>
-                    <input 
-                        type="text" 
-                        formControlName="cedula"
-                        class="form-control" 
-                        placeholder="1 234 567" 
-                        autofocus />
-
-                </div>
-    
-                <div class="mb-4 mx-4">
-                    <label for="contrasenaLabel" class="form-label">Constraseña</label>
-                    <input 
-                        type="password" 
-                        formControlName="contrasena"
-                        class="form-control" 
-                        placeholder="Constraseña" />
-                </div>
-    
-                <div class="mb-4 mx-4 centrado">
-                    <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
-                </div>
-    
-            </form>
-
-        </div>
-
-        -->
-
-        <!--
-        <div class="card mb-3" style="max-width:fit-content;">
-            <div class="row g-0">
-
-                <div class="col-md-8">
-                    <div class="card-body">
-    
-                        <div class="row">
-    
-                            <div class="h2">
-                                Inicio de sesión Administrador
-                            </div>
-                    
-                            <form [formGroup]="loginForm" (ngSubmit)="loginAdmin()">
-                                
-                                <div class="mb-4 mx-4">
-                                    <label for="cedulaLabel" class="form-label">Cédula</label>
-                                    <input 
-                                        type="text" 
-                                        formControlName="cedula"
-                                        class="form-control" 
-                                        placeholder="1 234 567" 
-                                        autofocus />
-                
-                                </div>
-                    
-                                <div class="mb-4 mx-4">
-                                    <label for="contrasenaLabel" class="form-label">Constraseña</label>
-                                    <input 
-                                        type="password" 
-                                        formControlName="contrasena"
-                                        class="form-control" 
-                                        placeholder="Constraseña" />
-                                </div>
-                    
-                                <div class="mb-4 mx-4 centrado">
-                                    <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
-                                </div>
-                    
-                            </form>
-                
-                        </div>
-    
-                    </div>
-                  </div>
-
-              <div class="col-md-4">
-                <img src="assets\facebook_profile_image_2_400x400.png" class="img-fluid rounded-start" alt="...">
-              </div>
-            </div>
-          </div>
-        -->
-
         <div class="card" style="width:fit-content">
             
             <img src="assets\twitter_header_photo_2.png" class="card-img-top" alt="...">
             <div class="card-body">
-                
+                 
                 <div class="row">
 
                     <div class="h2">
                         Inicio de sesión Administrador
                     </div>
             
-                    <form [formGroup]="loginForm" (ngSubmit)="loginAdmin()">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginAdmin(loginForm.getRawValue())">
                         
                         <div class="mb-4 mx-4">
                             <label for="cedulaLabel" class="form-label">Cédula</label>
                             <input 
                                 type="text" 
+                                id="cedula"
                                 formControlName="cedula"
                                 class="form-control" 
                                 placeholder="1 234 567" 
@@ -125,10 +33,11 @@
                         </div>
             
                         <div class="mb-4 mx-4">
-                            <label for="contrasenaLabel" class="form-label">Constraseña</label>
+                            <label for="passwordLabel" class="form-label">Constraseña</label>
                             <input 
                                 type="password" 
-                                formControlName="contrasena"
+                                id="password"
+                                formControlName="password"
                                 class="form-control" 
                                 placeholder="Constraseña" />
                         </div>
@@ -142,7 +51,9 @@
                 </div>
 
             </div>
-          </div>
+
+        </div>
 
     </div>
+
 </body>

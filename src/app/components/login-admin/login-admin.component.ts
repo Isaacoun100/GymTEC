@@ -1,5 +1,8 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from 'src/app/service/login/login.service';
+import { ResponseTemplateI } from 'src/app/models/responseTemplate.interface';
+import { LoginAdminI } from 'src/app/models/login/login-admin';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,17 +10,40 @@ import { Router } from '@angular/router';
   templateUrl: './login-admin.component.html',
   styleUrls: ['./login-admin.component.scss']
 })
-export class LoginAdminComponent {
+export class LoginAdminComponent implements OnInit {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private api:LoginService){}
+
+  ngOnInit(): void {}
 
   loginForm = new FormGroup({
-    cedula: new FormControl('', [Validators.required]),
-    contrasena: new FormControl('', [Validators.required]),
+    cedula: new FormControl('', {nonNullable: true}),
+    password: new FormControl('', {nonNullable: true}),
   });
 
-  loginAdmin(){
-    console.warn('Your order has been submitted', this.loginForm.value);
-    this.router.navigate(['panelAdmin']);
+  
+
+  loginAdmin(form:LoginAdminI){
+
+    this.api.loginAdmin(form).subscribe(data => {
+
+      let dataResponse : ResponseTemplateI = data;
+
+      if(dataResponse.status == 'ok'){
+        
+        console.log(dataResponse.status);
+        localStorage.setItem("user", data.result);
+        this.router.navigate(['panelAdmin']);
+        console.log(data);
+
+      }
+      else{
+        console.log(dataResponse.status);
+        alert('Usuario o contraseña incorrecto');
+        console.log(data);
+      } 
+
+    })
+
   }
 }
