@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs'
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import {ResponseTemplateI} from '../../models/responseTemplate.interface'
+import { ResponseTemplateI } from '../../models/responseTemplate.interface';
 import { LoginAdminI } from 'src/app/models/login/login-admin';
-import { LoginClienteI} from '../../models/login/login-cliente'
+import { LoginClienteI } from '../../models/login/login-cliente';
 
-import * as myGlobals from '../../../../src/app/globals'
+import * as myGlobals from '../../../../src/app/globals';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  
-  url = myGlobals.URL
+  url = myGlobals.URL;
 
-  constructor( private http:HttpClient ) { }
+  constructor(private http: HttpClient) {}
 
-  loginAdmin(form:LoginAdminI): Observable<ResponseTemplateI> {
-    let address = this.url + "auth_worker";
-    return this.http.post<ResponseTemplateI>(address, form)
+  loginAdmin(cedula: any, password: any): Observable<ResponseTemplateI> {
+    let address = this.url + 'auth_worker';
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('cedula', cedula);
+    queryParams = queryParams.append('password', password);
+    return this.http.get<ResponseTemplateI>(address, { params: queryParams });
   }
 
-  loginCliente(form:LoginClienteI): Observable<ResponseTemplateI>{
-    let address = this.url + "auth_client"
-    return this.http.post<ResponseTemplateI>(address,form)
+  loginCliente(cedula: any, password: any): Observable<ResponseTemplateI> {
+    let address = this.url + 'auth_client';
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('cedula', cedula);
+    queryParams = queryParams.append('password', password);
+    return this.http.get<ResponseTemplateI>(address, { params: queryParams });
   }
-
 }
