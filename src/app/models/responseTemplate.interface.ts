@@ -1,4 +1,4 @@
 export interface ResponseTemplateI {
-    status:string,
-    result:any
+  status: string;
+  result: any;
 }
