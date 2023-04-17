@@ -1,7 +1,129 @@
 <app-sidebar></app-sidebar>
 
 <body>
-  <h3>
-    {{ local }}
-  </h3>
+
+  <div class="container">
+
+    <div class="row py-4">
+
+      <h2>
+        Información general
+      </h2>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Nombre</h5>
+            <p class="card-text"> 
+              {{getUser()['nombre'] + ' ' +
+              getUser()['apellido_1'] + ' ' +
+              getUser()['apellido_2']}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Cédula</h5>
+            <p class="card-text"> {{getUser()['cedula']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Correo</h5>
+            <p class="card-text"> {{getUser()['correo']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row py-4">
+
+      <h2>
+        Domicilio
+      </h2>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Provincia</h5>
+            <p class="card-text"> 
+              {{getUser()['provincia']}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Cantón</h5>
+            <p class="card-text"> {{getUser()['canton']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Distrito</h5>
+            <p class="card-text"> {{getUser()['distrito']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row py-4">
+
+      <h2>
+        Personal
+      </h2>
+
+      <div class="col-4">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Contraseña</h5>
+            <p class="card-text"> {{getContrasena()}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-4">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Salario</h5>
+            <p class="card-text"> {{getSalario()}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary" (click)="hidePassword()" >Button</button>
+
+  </div>
+
 </body>

@@ -61,7 +61,8 @@ import { SidebarComponent } from './template/sidebar/sidebar.component';
       {path:'asociarTratamiento', component:AsociarTratamientoComponent},
       {path:'asociarInventario', component:AsociarInventarioComponent},
       {path:'crearClase', component:CrearClaseComponent},
-      {path:'asociarProducto', component:AsociarProductoComponent}
+      {path:'asociarProducto', component:AsociarProductoComponent},
+      {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent}
 
     ])
 ],
