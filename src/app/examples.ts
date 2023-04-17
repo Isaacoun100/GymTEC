@@ -1,10 +1,10 @@
 //Models I will use as an example to test the functionality
 
 export const branches = [
-    "sucursal_A",
-    "sucursal_B",
-    "sucursal_C",
-    "sucursal_D"
+    {sucursal:"sucursal_A"},
+    {sucursal:"sucursal_B"},
+    {sucursal:"sucursal_C"},
+    {sucursal:"sucursal_D"}
   ]
 
   export const loginWorker = {
