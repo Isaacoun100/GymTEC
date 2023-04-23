@@ -11,7 +11,7 @@ export class PanelAdminComponent implements OnInit {
   showProperty = false;
 
   ngOnInit(): void {
-    this.local = String(localStorage.getItem('user'));
+    this.local = String(sessionStorage.getItem('user'));
   }
 
   getUser(){

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { get_branch } from 'src/app/examples'
+import { get_branch } from 'src/app/examples';
 
 @Component({
   selector: 'app-editar-sucursal',

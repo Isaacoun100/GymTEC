@@ -28,7 +28,7 @@ export class LoginAdminComponent implements OnInit {
 
       if (dataResponse.status == 'ok') {
         console.log(dataResponse.status);
-        localStorage.setItem('user', JSON.stringify(data.result));
+        sessionStorage.setItem('user', JSON.stringify(data.result));
         this.router.navigate(['panelAdmin']);
         console.log(data);
       } else {
