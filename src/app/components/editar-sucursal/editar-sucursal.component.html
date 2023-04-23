@@ -1,1 +1,188 @@
-<p>editar-sucursal works!</p>
+
+<body>
+
+    <!--Navigation Bar-->
+    <app-navbar></app-navbar>
+    
+    <div class="container">
+        
+        <form>
+
+            <div class="row py-2">
+    
+                <div class="col-4">
+
+                    <label for="nombre_sucursal">Nombre Sucursal</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nombre_sucursal" 
+                    formControlName="nombre_sucursal"
+                    value={{get_branch.result.nombre_sucursal}}
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="fecha_apertura">Fecha Apertura</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="fecha_apertura" 
+                    formControlName="fecha_apertura"
+                    value={{get_branch.result.fecha_apertura}}
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="horario">Horario</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="horario" 
+                    formControlName="horario"
+                    value={{get_branch.result.horario}}
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+    
+                <div class="col-4">
+
+                    <label for="cap_max">Capacidad Máxima</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    id="cap_max" 
+                    formControlName="cap_max"
+                    value={{get_branch.result.cap_max}}
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="manager">Gerente</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="manager" 
+                    formControlName="manager"
+                    value={{get_branch.result.manager}}
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+    
+                <div class="col-4">
+
+                    <label for="provincia">Provincia</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="provincia" 
+                    formControlName="provincia"
+                    value={{get_branch.result.provincia}}
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="canton">Cantón</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="canton" 
+                    formControlName="canton"
+                    value={{get_branch.result.canton}}
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="distrito">Distrito</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="distrito" 
+                    formControlName="distrito"
+                    value={{get_branch.result.distrito}}
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2 ">
+    
+                <div class="col-4">
+
+                    <label for="active_spa">Spa</label>
+
+                    <select class="form-select" aria-label="Spa">
+                        <option selected>{{get_branch.result.active_spa}}</option>
+                        <option value="True">Activado</option>
+                        <option value="False">Desactivado</option>
+                      </select>
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="active_store">Tienda</label>
+
+                    <select class="form-select" aria-label="Tienda">
+                        <option selected>{{get_branch.result.active_store}}</option>
+                        <option value="True">Activado</option>
+                        <option value="False">Desactivado</option>
+                      </select>
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="telefono">Teléfonos</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="telefonos" 
+                    formControlName="telefonos"
+                    value={{get_branch.result.telefonos[0]}}
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-4">
+
+                <div class="col-4">
+                    
+                    <button class="btn btn-success" type="submit">Actualizar Sucursal</button>
+        
+                </div>
+    
+                <div class="col-4">
+                    
+                    <button class="btn btn-success" type="submit">Eliminar Sucursal</button>
+        
+                </div>
+
+            </div>
+
+        </form>
+    
+    </div>
+
+</body>

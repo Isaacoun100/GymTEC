@@ -1,11 +1,20 @@
 //Models I will use as an example to test the functionality
 
 export const branches = [
-    {sucursal:"sucursal_A"},
-    {sucursal:"sucursal_B"},
-    {sucursal:"sucursal_C"},
-    {sucursal:"sucursal_D"}
-  ]
+    { "sucursal": "Main Street" },
+    { "sucursal": "Downtown" },
+    { "sucursal": "Mall" },
+    { "sucursal": "North Side" },
+    { "sucursal": "South Side" },
+    { "sucursal": "West Side" },
+    { "sucursal": "East Side" },
+    { "sucursal": "Airport" },
+    { "sucursal": "Train Station" },
+    { "sucursal": "Bus Terminal" },
+    { "sucursal": "Beachfront" },
+    { "sucursal": "Mountain View" },
+    { "sucursal": "Suburbs" }
+    ]
 
   export const loginWorker = {
     "status":"ok",
@@ -39,9 +48,9 @@ export const branches = [
         "2222-3333",
         "8888-9999"
         ],
-        "active_spa": true,
-        "active_store": true
-        }
+    "active_spa": true,
+    "active_store": true
+    }
     }
 
     export const  get_all_equipment = {

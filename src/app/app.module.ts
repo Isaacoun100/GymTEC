@@ -36,9 +36,10 @@ import { AsociarInventarioComponent } from './components/asociar-inventario/asoc
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { AsociarProductoComponent } from './components/asociar-producto/asociar-producto.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
+import { FormSucursalComponent } from './template/form-sucursal/form-sucursal.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent, FormSucursalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -62,7 +63,8 @@ import { SidebarComponent } from './template/sidebar/sidebar.component';
       {path:'asociarInventario', component:AsociarInventarioComponent},
       {path:'crearClase', component:CrearClaseComponent},
       {path:'asociarProducto', component:AsociarProductoComponent},
-      {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent}
+      {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent},
+      {path:'agregarSucursal', component:AgregarSucursalComponent}
 
     ])
 ],

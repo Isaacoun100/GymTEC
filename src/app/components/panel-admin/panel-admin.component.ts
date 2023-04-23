@@ -40,7 +40,14 @@ export class PanelAdminComponent implements OnInit {
     this.showProperty=!this.showProperty
   }
 
-
+  buttonContent(){
+    if(!this.showProperty){
+      return 'Show';
+    }
+    else{
+      return 'Hide';
+    }
+  }
 
   constructor() {}
 }
