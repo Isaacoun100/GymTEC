@@ -1,4 +1,4 @@
 export interface LoginAdminI {
-    cedula:string | undefined,
-    password:string | undefined
-  }
+  cedula: string | null;
+  password: string | null;
+}

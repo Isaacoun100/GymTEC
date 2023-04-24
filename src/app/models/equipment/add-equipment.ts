@@ -1,6 +1,6 @@
 export interface AddEquipment {
-  num_serie: number | undefined;
-  tipo_equipo: string | undefined;
-  descripcion_equipo: string | undefined;
-  sucursal: string | undefined;
+  num_serie: number | null;
+  tipo_equipo: string | null;
+  descripcion_equipo: string | null;
+  sucursal: string | null;
 }

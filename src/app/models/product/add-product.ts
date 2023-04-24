@@ -1,6 +1,6 @@
 export interface AddProduct {
-  codigo_barras: string | undefined;
-  nombre_producto: string | undefined;
-  costo: number | undefined;
-  descipcion: string | undefined;
+  codigo_barras: string | null;
+  nombre_producto: string | null;
+  costo: number | null;
+  descipcion: string | null;
 }
