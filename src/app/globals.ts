@@ -1,4 +1,4 @@
 'use strict';
 
 export const URL =
-  'https://9ec3cda8-9aa5-43e5-b485-8ea8d2397664.mock.pstmn.io/';
+  'https://1ecef99b-b1bc-43a9-9d00-ea62249a3989.mock.pstmn.io/';

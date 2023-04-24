@@ -1,9 +1,9 @@
 export interface CreateClass {
-  tipo: string | undefined;
-  modo: string | undefined;
-  capacidad: number | undefined;
-  fecha: string | undefined;
-  hora_ingreso: string | undefined;
-  hora_salida: string | undefined;
-  encargado: string | undefined;
+  tipo: string | null;
+  modo: string | null;
+  capacidad: number | null;
+  fecha: string | null;
+  hora_ingreso: string | null;
+  hora_salida: string | null;
+  encargado: string | null;
 }

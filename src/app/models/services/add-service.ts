@@ -1,5 +1,5 @@
 export interface AddService {
-  nombre_sucursal: string | undefined;
-  servicio: string | undefined;
-  descripcion: string | undefined;
+  nombre_sucursal: string | null;
+  servicio: string | null;
+  descripcion: string | null;
 }

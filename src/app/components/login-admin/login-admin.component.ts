@@ -23,8 +23,9 @@ export class LoginAdminComponent implements OnInit {
   loginAdmin(form: LoginAdminI) {
     console.log(form.cedula);
     console.log(form.password);
-    this.api.loginAdmin(form.cedula, form.password).subscribe((data) => {
+    this.api.loginAdmin(form).subscribe((data) => {
       let dataResponse: ResponseTemplateI = data;
+      console.log('cum');
 
       if (dataResponse.status == 'ok') {
         console.log(dataResponse.status);

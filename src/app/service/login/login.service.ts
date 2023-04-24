@@ -16,19 +16,13 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  loginAdmin(cedula: any, password: any): Observable<ResponseTemplateI> {
+  loginAdmin(form: LoginAdminI): Observable<ResponseTemplateI> {
     let address = this.url + 'auth_worker';
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append('cedula', cedula);
-    queryParams = queryParams.append('password', password);
-    return this.http.get<ResponseTemplateI>(address, { params: queryParams });
+    return this.http.post<ResponseTemplateI>(address, form);
   }
 
-  loginCliente(cedula: any, password: any): Observable<ResponseTemplateI> {
+  loginCliente(form: LoginClienteI): Observable<ResponseTemplateI> {
     let address = this.url + 'auth_client';
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append('cedula', cedula);
-    queryParams = queryParams.append('password', password);
-    return this.http.get<ResponseTemplateI>(address, { params: queryParams });
+    return this.http.post<ResponseTemplateI>(address, form);
   }
 }

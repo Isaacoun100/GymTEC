@@ -1,3 +1,3 @@
 export interface GetPayroll {
-  planilla_id: number | undefined;
+  planilla_id: number | null;
 }

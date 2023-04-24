@@ -1,4 +1,4 @@
-export interface CreateClass {
-  cedula_cliente: string | undefined;
-  clase_id: number | undefined;
+export interface EnrollClass {
+  cedula_cliente: string | null;
+  clase_id: number | null;
 }
