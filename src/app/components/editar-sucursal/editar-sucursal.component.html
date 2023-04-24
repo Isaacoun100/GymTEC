@@ -2,12 +2,12 @@
 <body>
 
     <!--Navigation Bar-->
-    <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
     
     <div class="container">
         
         <!--Aquí editar el form tag para que contenga el [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)"-->
-        <form>
+        <form [formGroup]="sucursalForm" (ngSubmit)="editarSucursal(sucursalForm.getRawValue())">
 
             <div class="row py-2">
     
@@ -19,7 +19,6 @@
                     class="form-control" 
                     id="nombre_sucursal" 
                     formControlName="nombre_sucursal"
-                    value={{get_branch.result.nombre_sucursal}}
                     >
         
                 </div>
@@ -32,7 +31,6 @@
                     class="form-control" 
                     id="fecha_apertura" 
                     formControlName="fecha_apertura"
-                    value={{get_branch.result.fecha_apertura}}
                     >
         
                 </div>
@@ -45,7 +43,6 @@
                     class="form-control" 
                     id="horario" 
                     formControlName="horario"
-                    value={{get_branch.result.horario}}
                     >
         
                 </div>
@@ -62,7 +59,6 @@
                     class="form-control" 
                     id="cap_max" 
                     formControlName="cap_max"
-                    value={{get_branch.result.cap_max}}
                     >
         
                 </div>
@@ -75,10 +71,14 @@
                     class="form-control" 
                     id="manager" 
                     formControlName="manager"
-                    value={{get_branch.result.manager}}
                     >
         
                 </div>
+
+                <div class="col-4">
+
+                </div>
+
 
             </div>
 
@@ -92,7 +92,6 @@
                     class="form-control" 
                     id="provincia" 
                     formControlName="provincia"
-                    value={{get_branch.result.provincia}}
                     >
         
                 </div>
@@ -105,7 +104,6 @@
                     class="form-control" 
                     id="canton" 
                     formControlName="canton"
-                    value={{get_branch.result.canton}}
                     >
         
                 </div>
@@ -118,66 +116,111 @@
                     class="form-control" 
                     id="distrito" 
                     formControlName="distrito"
-                    value={{get_branch.result.distrito}}
                     >
         
                 </div>
 
             </div>
 
-            <div class="row py-2 ">
+            <div class="row">
+
+                <div class="col-6">
+
+                    <div class="row">
     
-                <div class="col-4">
-
-                    <label for="active_spa">Spa</label>
-
-                    <select class="form-select" aria-label="Spa">
-                        <option selected>{{get_branch.result.active_spa}}</option>
-                        <option value="True">Activado</option>
-                        <option value="False">Desactivado</option>
-                      </select>
+                        <div class="col">
+    
+                            <label for="active_spa">Spa</label>
         
-                </div>
+                            <select class="form-select" aria-label="Spa">
+                                <option selected>Valor</option>
+                                <option value="True">Activado</option>
+                                <option value="False">Desactivado</option>
+                              </select>
+                
+                        </div>
+                
+                        <div class="col">
         
-                <div class="col-4">
+                            <label for="active_store">Tienda</label>
+        
+                            <select class="form-select" aria-label="Tienda">
+                                <option value="True">Activado</option>
+                                <option value="False">Desactivado</option>
+                              </select>
+                
+                        </div>
+    
+                    </div>
 
-                    <label for="active_store">Tienda</label>
-
-                    <select class="form-select" aria-label="Tienda">
-                        <option selected>{{get_branch.result.active_store}}</option>
-                        <option value="True">Activado</option>
-                        <option value="False">Desactivado</option>
-                      </select>
-        
-                </div>
-        
-                <div class="col-4">
-
-                    <!-- <label for="telefono">Teléfonos</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="telefonos" 
-                    formControlName="telefonos"
-                    value={{get_branch.result.telefonos[0]}}
-                    > -->
-        
                 </div>
 
+                <div class="col-6">
+                    <div class="row">
+
+                        <div class="col-9">
+        
+                            <ul class="list-group overflow-auto shadow" style="max-height: 78px; max-width:fit-content;">
+        
+                                <div formArrayName="telefonos">
+                                    
+                                    <ng-container *ngFor="let telefono of sucursalForm.get('telefonos')?.getRawValue(); index as i; trackBy:trackByFn">
+        
+                                        <div class="container-fluid">
+        
+                                            <div class="row">
+            
+                                                <div class="col-5">
+                
+                                                    <input 
+                                                    type="text" 
+                                                    class="form-control"
+                                                    placeholder="Nuevo teléfono"
+                                                    formControlName="{{i}}"
+                                                    >
+                
+                                                </div>
+                
+                                                <div class="col-2">
+                
+                                                    <a class="btn btn-danger" (click)="eliminarTelefono(i)">Eliminar</a>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+        
+                                        </div>
+        
+                                            
+                                    </ng-container>
+                                </div>
+        
+                            </ul>
+                            
+        
+                        </div>
+        
+                        <div class="col-3 centrado py-2">
+        
+        
+                            <a class="btn btn-secondary" (click)="nuevoTelefono()">Agregar Teléfono</a>
+        
+                        </div>
+        
+        
+                    </div>
+                </div>
+                
             </div>
 
             <div class="row py-4">
 
-                <div class="col-4">
-                    
+                <div class="col-6 centrado">
                     <button class="btn btn-success" type="submit">Actualizar Sucursal</button>
-        
                 </div>
-    
-                <div class="col-4">
-                    
-                    <button class="btn btn-success" type="submit">Eliminar Sucursal</button>
-        
+                
+                <div class="col-6 centrado">
+                    <a class="btn btn-success" (click)="eliminarSucursal()">Eliminar Sucursal</a>
                 </div>
 
             </div>
