@@ -53,39 +53,6 @@
     
                 <div class="col-4">
 
-                    <label for="cap_max">Capacidad Máxima</label>
-                    <input 
-                    type="number" 
-                    class="form-control" 
-                    id="cap_max" 
-                    formControlName="cap_max"
-                    >
-        
-                </div>
-        
-                <div class="col-4">
-
-                    <label for="manager">Gerente</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    id="manager" 
-                    formControlName="manager"
-                    >
-        
-                </div>
-
-                <div class="col-4">
-
-                </div>
-
-
-            </div>
-
-            <div class="row py-2">
-    
-                <div class="col-4">
-
                     <label for="provincia">Provincia</label>
                     <input 
                     type="text" 
@@ -122,10 +89,35 @@
 
             </div>
 
-            <div class="row">
 
-                <div class="col-6">
+            <div class="row py-2">
+    
+                <div class="col-4">
 
+                    <label for="cap_max">Capacidad Máxima</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    id="cap_max" 
+                    formControlName="cap_max"
+                    >
+        
+                </div>
+        
+                <div class="col-4">
+
+                    <label for="manager">Gerente</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="manager" 
+                    formControlName="manager"
+                    >
+        
+                </div>
+
+                <div class="col-4">
+                    
                     <div class="row">
     
                         <div class="col">
@@ -155,12 +147,16 @@
 
                 </div>
 
-                <div class="col-6">
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-6 mx-2 py-2">
+
                     <div class="row">
 
-                        <div class="col-9">
-        
-                            <ul class="list-group overflow-auto shadow" style="max-height: 78px; max-width:fit-content;">
+                        <ul class="list-group overflow-auto shadow" style="max-height: 140px; max-width:max-content;">
         
                                 <div formArrayName="telefonos">
                                     
@@ -168,9 +164,9 @@
         
                                         <div class="container-fluid">
         
-                                            <div class="row">
+                                            <div class="row py-1">
             
-                                                <div class="col-5">
+                                                <div class="col-9">
                 
                                                     <input 
                                                     type="text" 
@@ -181,7 +177,7 @@
                 
                                                 </div>
                 
-                                                <div class="col-2">
+                                                <div class="col-3">
                 
                                                     <a class="btn btn-danger" (click)="eliminarTelefono(i)">Eliminar</a>
                                                     
@@ -190,36 +186,30 @@
                                             </div>
         
                                         </div>
-        
                                             
                                     </ng-container>
+
                                 </div>
         
                             </ul>
-                            
-        
-                        </div>
-        
-                        <div class="col-3 centrado py-2">
-        
-        
-                            <a class="btn btn-secondary" (click)="nuevoTelefono()">Agregar Teléfono</a>
-        
-                        </div>
-        
         
                     </div>
+
                 </div>
                 
             </div>
 
             <div class="row py-4">
 
-                <div class="col-6 centrado">
+                <div class="col-4 centrado">
+                    <a class="btn btn-secondary" (click)="nuevoTelefono()">Agregar Teléfono</a>
+                </div>
+
+                <div class="col-4 centrado">
                     <button class="btn btn-success" type="submit">Actualizar Sucursal</button>
                 </div>
                 
-                <div class="col-6 centrado">
+                <div class="col-4 centrado">
                     <a class="btn btn-success" (click)="eliminarSucursal()">Eliminar Sucursal</a>
                 </div>
 

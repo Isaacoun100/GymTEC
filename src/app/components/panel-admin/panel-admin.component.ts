@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelAdminComponent implements OnInit {
 
+
+  value = ''
   local = "{}";
   showProperty = false;
 
@@ -19,20 +21,37 @@ export class PanelAdminComponent implements OnInit {
   }
 
   getContrasena(){
+
+    this.value='';
+
     if(this.showProperty){
       return String(this.getUser()['password']);
     }
     else{
-      return "***********";
+
+      for (let index = 0; index < String(this.getUser()['password']).length; index++) {
+
+        this.value=this.value+'*'
+        
+      }
+      return this.value;
     }
   }
 
   getSalario(){
+
+    this.value='';
+
     if(this.showProperty){
       return String(this.getUser()['salario']);
     }
     else{
-      return "***********";
+
+      for (let index = 0; index < String(this.getUser()['salario']).length; index++) {
+
+        this.value=this.value+'*'
+      }
+      return this.value;
     }
   }
 
