@@ -15,9 +15,10 @@ export class EditarSucursalComponent implements OnInit {
   productIdFromRoute: string | null | undefined ;
 
   get_branch = get_branch;
+
   sucursalForm = new FormGroup({
       
-    nombre_sucursal: new FormControl(get_branch.result.nombre_sucursal, Validators.required) ,
+    nombre_sucursal: new FormControl(get_branch.result.nombre_sucursal, Validators.required),
     fecha_apertura: new FormControl(get_branch.result.fecha_apertura, Validators.required),
     horario: new FormControl(get_branch.result.horario, Validators.required),
     cap_max: new FormControl(get_branch.result.cap_max, Validators.required),
@@ -26,14 +27,23 @@ export class EditarSucursalComponent implements OnInit {
     distrito: new FormControl(get_branch.result.distrito, Validators.required),
     manager: new FormControl(get_branch.result.distrito, Validators.required),
     telefonos: new FormArray([
-      new FormControl(get_branch.result.telefonos[0], Validators.required),
-      new FormControl(get_branch.result.telefonos[1], Validators.required)
+      new FormControl('', Validators.required)
     ]),
     active_spa: new FormControl(get_branch.result.active_spa, Validators.required),
     active_store: new FormControl(get_branch.result.active_store, Validators.required),
   });
 
-  constructor( private route:ActivatedRoute ){}
+  constructor( private route:ActivatedRoute ){
+
+    const control = <FormArray> this.sucursalForm.controls['telefonos'];
+    
+    for (let index = 0; index < get_branch.result.telefonos.length; index++)
+      control.push(new FormControl(get_branch.result.telefonos[index], Validators.required))
+
+    if(control.length>0)
+      this.eliminarTelefono(0);
+      
+  }
   
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
@@ -52,7 +62,7 @@ export class EditarSucursalComponent implements OnInit {
   
   eliminarTelefono(i: number){
     const control = <FormArray> this.sucursalForm.controls['telefonos'];
-    control.removeAt(i)
+    control.removeAt(i);
   }
   
   trackByFn(index: any, item: any) {

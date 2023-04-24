@@ -36,21 +36,18 @@ export const branches = [
   export const get_branch = {
     "status": "ok",
     "result": {
-    "nombre_sucursal": "Example Spa",
-    "fecha_apertura": "2022-01-01",
-    "horario": "Lunes a Viernes de 8:00 am a 5:00 pm",
-    "cap_max": 50,
-    "provincia": "San José",
-    "canton": "Escazú",
-    "distrito": "San Rafael",
-    "manager": "123456789",
-    "telefonos": [
-        "2222-3333",
-        "8888-9999"
-        ],
-    "active_spa": true,
-    "active_store": true
-    }
+        "nombre_sucursal": "Example Spa",
+        "fecha_apertura": "2022-01-01",
+        "horario": "Lunes a Viernes de 8:00 am a 5:00 pm",
+        "cap_max": 50,
+        "provincia": "San José",
+        "canton": "Escazú",
+        "distrito": "San Rafael",
+        "manager": "123456789",
+        "telefonos": [],
+        "active_spa": true,
+        "active_store": true
+        }
     }
 
     export const  get_all_equipment = {
