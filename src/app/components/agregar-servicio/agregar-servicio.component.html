@@ -1,1 +1,67 @@
-<app-sidebar></app-sidebar>
+<body>
+    <!--Sidebar-->
+    <app-sidebar></app-sidebar>
+
+    <div class="container my-4">
+
+        <div class="card mb-3" style="max-width:fit-content;">
+
+            <div class="row g-0">
+    
+                <div class="col-md-4">
+                    <img src="assets\facebook_profile_image_2_400x400.png" class="img-fluid rounded-start" alt="facebook_profile_image">
+                  </div>
+
+                  <div class="col-md-8">
+    
+                    <form [formGroup]="agregarServicioForm" (ngSubmit)="agregarServicio(agregarServicioForm.getRawValue())">
+        
+                        <div class="row my-4 mx-4">
+        
+                            <label for="nombre_sucursal">Sucursal</label>
+            
+                            <select class="form-select" aria-label="nombre_sucursal">
+                                
+                                <option>Seleccionar Sucursal</option>
+                                <ng-container *ngFor="let branch of branches; index as i">
+                                    <option value={{branches.at(i)?.sucursal}}>{{branches.at(i)?.sucursal}}</option>
+                                </ng-container>
+    
+                            </select>
+    
+                            <label for="servicio">Servicio</label>
+    
+                            <select class="form-select" aria-label="servicio">
+    
+                                <option>Seleccionar Servicio</option>
+                                <ng-container *ngFor="let service of services; index as i">
+                                    <option value={{services.at(i)?.servicio}}>{{services.at(i)?.servicio}}</option>
+                                </ng-container>
+    
+                            </select>
+                            
+                            <label for="fecha_apertura">Descripción</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            id="descripcion" 
+                            formControlName="descripcion"
+                            >
+    
+                            <div class="col-4 my-4">
+                                <button class="btn btn-success" type="submit">AgregarServicio</button>
+                            </div>
+                        </div>
+                        
+        
+                </form>
+        
+                </div>
+    
+            </div>
+        
+        </div>
+
+    </div>
+    
+</body>

@@ -44,7 +44,12 @@ export const branches = [
         "canton": "Escazú",
         "distrito": "San Rafael",
         "manager": "123456789",
-        "telefonos": [],
+        "telefonos": [
+            "2222-2222",
+            "3333-3333",
+            "4444-4444",
+            "5555-5555"
+        ],
         "active_spa": true,
         "active_store": true
         }
@@ -212,4 +217,11 @@ export const branches = [
           "password":"p@ssw0rd123"
         }
       }
+
+    export const services = [
+        {'servicio':'Masaje relajante'},
+        {'servicio': 'masaje descarga muscular'},
+        {'servicio': 'sauna'},
+        {'servicio': 'baños a vapor'}
+    ]
       

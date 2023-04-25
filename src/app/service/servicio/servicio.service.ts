@@ -27,3 +27,5 @@ export class ServicioService {
     return this.http.post<ResponseTemplateI>(address, form);
   }
 }
+export { AddService };
+

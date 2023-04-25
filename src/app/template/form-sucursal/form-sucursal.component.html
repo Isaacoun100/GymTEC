@@ -1,0 +1,209 @@
+<div class="container">
+        
+    <!--Aquí editar el form tag para que contenga el [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)"-->
+    <form [formGroup]="sucursalForm" (ngSubmit)="editarSucursal(sucursalForm.getRawValue())">
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="nombre_sucursal">Nombre Sucursal</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="nombre_sucursal" 
+                formControlName="nombre_sucursal"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="fecha_apertura">Fecha Apertura</label>
+                <input 
+                type="date" 
+                class="form-control" 
+                id="fecha_apertura" 
+                formControlName="fecha_apertura"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="horario">Horario</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="horario" 
+                formControlName="horario"
+                >
+    
+            </div>
+
+        </div>
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="provincia">Provincia</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="provincia" 
+                formControlName="provincia"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="canton">Cantón</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="canton" 
+                formControlName="canton"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="distrito">Distrito</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="distrito" 
+                formControlName="distrito"
+                >
+    
+            </div>
+
+        </div>
+
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="cap_max">Capacidad Máxima</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="cap_max" 
+                formControlName="cap_max"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="manager">Gerente</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="manager" 
+                formControlName="manager"
+                >
+    
+            </div>
+
+            <div class="col-4">
+                
+                <div class="row">
+
+                    <div class="col">
+
+                        <label for="active_spa">Spa</label>
+    
+                        <select class="form-select" aria-label="Spa">
+                            <option value="True">Activado</option>
+                            <option value="False">Desactivado</option>
+                          </select>
+            
+                    </div>
+            
+                    <div class="col">
+    
+                        <label for="active_store">Tienda</label>
+    
+                        <select class="form-select" aria-label="Tienda">
+                            <option value="True">Activado</option>
+                            <option value="False">Desactivado</option>
+                          </select>
+            
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-6 mx-2 py-2">
+
+                <div class="row">
+
+                    <ul class="list-group overflow-auto shadow" style="max-height: 140px; max-width:max-content;">
+    
+                            <div formArrayName="telefonos">
+                                
+                                <ng-container *ngFor="let telefono of sucursalForm.get('telefonos')?.getRawValue(); index as i; trackBy:trackByFn">
+    
+                                    <div class="container-fluid">
+    
+                                        <div class="row py-1">
+        
+                                            <div class="col-9">
+            
+                                                <input 
+                                                type="text" 
+                                                class="form-control"
+                                                placeholder="Nuevo teléfono"
+                                                formControlName="{{i}}"
+                                                >
+            
+                                            </div>
+            
+                                            <div class="col-3">
+            
+                                                <a class="btn btn-danger" (click)="eliminarTelefono(i)">Eliminar</a>
+                                                
+                                            </div>
+                                            
+                                        </div>
+    
+                                    </div>
+                                        
+                                </ng-container>
+
+                            </div>
+    
+                        </ul>
+    
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="row py-4">
+
+            <div class="col-4 centrado">
+                <a class="btn btn-secondary" (click)="nuevoTelefono()">Agregar Teléfono</a>
+            </div>
+
+            <div class="col-4 centrado">
+                <button class="btn btn-success" type="submit">Actualizar Sucursal</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
