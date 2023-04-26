@@ -1,14 +1,14 @@
+import { ProxyEquipoService } from 'src/app/service/equipo/proxy-equipo.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { ProxyEquipoService } from 'src/app/service/equipo/proxy-equipo.service';
 
 @Component({
-  selector: 'app-editar-equipo',
-  templateUrl: './editar-equipo.component.html',
-  styleUrls: ['./editar-equipo.component.scss'],
+  selector: 'app-form-equipo',
+  templateUrl: './form-equipo.component.html',
+  styleUrls: ['./form-equipo.component.scss'],
 })
-export class EditarEquipoComponent {
+export class FormEquipoComponent {
   equipoForm = new FormGroup({
     num_serie: new FormControl(0, Validators.required),
     tipo_equipo: new FormControl('', Validators.required),
