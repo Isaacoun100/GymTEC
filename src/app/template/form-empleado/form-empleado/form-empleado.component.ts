@@ -31,7 +31,7 @@ export class FormEmpleadoComponent implements OnInit {
   constructor(private proxyEmpleadoService: ProxyEmpleadoService) { }
 
   ngOnInit(): void {
-    this.proxyEmpleadoService.currentMessage.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
+    this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
   }
 
 

@@ -27,7 +27,7 @@ export class ProxyEmpleadoService {
       })
     );
 
-    currentMessage = this.messageSource.asObservable();
+    currentEmployee = this.messageSource.asObservable();
 
   constructor() { }
 }

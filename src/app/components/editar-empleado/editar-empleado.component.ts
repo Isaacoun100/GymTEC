@@ -17,7 +17,10 @@ export class EditarEmpleadoComponent implements OnInit {
       get_employee.result.cedula_empleado,
       Validators.required
     ),
-    nombre: new FormControl(get_employee.result.nombre, Validators.required),
+    nombre: new FormControl(
+      get_employee.result.nombre, 
+      Validators.required
+      ),
     apellido_1: new FormControl(
       get_employee.result.apellido_1,
       Validators.required
@@ -58,7 +61,7 @@ export class EditarEmpleadoComponent implements OnInit {
   constructor(private proxyEmpleadoService: ProxyEmpleadoService) {}
 
   ngOnInit(): void {
-    this.proxyEmpleadoService.currentMessage.subscribe(
+    this.proxyEmpleadoService.currentEmployee.subscribe(
       (empleadoForm) => (this.empleadoForm = empleadoForm)
     );
   }
