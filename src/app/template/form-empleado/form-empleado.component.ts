@@ -1,4 +1,4 @@
-import { ProxyEmpleadoService } from './../../../service/empleado/proxy-empleado.service';
+import { ProxyEmpleadoService } from './../../service/empleado/proxy-empleado.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
