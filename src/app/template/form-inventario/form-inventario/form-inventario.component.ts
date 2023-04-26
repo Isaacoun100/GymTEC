@@ -1,16 +1,16 @@
+import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventario.service';
 
 @Component({
-  selector: 'app-editar-inventario',
-  templateUrl: './editar-inventario.component.html',
-  styleUrls: ['./editar-inventario.component.scss'],
+  selector: 'app-form-inventario',
+  templateUrl: './form-inventario.component.html',
+  styleUrls: ['./form-inventario.component.scss'],
 })
-export class EditarInventarioComponent {
+export class FormInventarioComponent {
   inventarioForm = new FormGroup({
-    num_serie: new FormControl('WHO WAS IN PARIS?', Validators.required),
+    num_serie: new FormControl('', Validators.required),
     marca: new FormControl('', Validators.required),
     costo: new FormControl('', Validators.required),
     is_used: new FormControl(false, Validators.required),
