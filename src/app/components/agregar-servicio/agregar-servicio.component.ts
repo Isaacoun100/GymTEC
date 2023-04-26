@@ -27,7 +27,20 @@ export class AgregarServicioComponent implements OnInit {
   ngOnInit(): void {}
 
   agregarServicio(form:AddService){
+    // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);
+  }
+
+  cambiarNombreSucursal(e: any) {
+    this.agregarServicioForm.controls['nombre_sucursal']?.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+
+  cambiarServicio(e: any) {
+    this.agregarServicioForm.controls['servicio']?.setValue(e.target.value, {
+      onlySelf: true,
+    });
   }
 
 }

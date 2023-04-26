@@ -118,10 +118,11 @@
 
                         <label for="active_spa">Spa</label>
     
-                        <select class="form-select" aria-label="Spa">
-                            <option value="True">Activado</option>
-                            <option value="False">Desactivado</option>
-                          </select>
+                        <select class="form-select" formControlName="active_spa">
+                            <option *ngFor="let option of options" [ngValue]="option.value">
+                                {{option.name}}
+                            </option>
+                        </select>
             
                     </div>
             
@@ -129,10 +130,11 @@
     
                         <label for="active_store">Tienda</label>
     
-                        <select class="form-select" aria-label="Tienda">
-                            <option value="True">Activado</option>
-                            <option value="False">Desactivado</option>
-                          </select>
+                        <select class="form-select" formControlName="active_store">
+                            <option *ngFor="let option of options" [ngValue]="option.value">
+                                {{option.name}}
+                            </option>
+                        </select>
             
                     </div>
 

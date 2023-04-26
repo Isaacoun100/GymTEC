@@ -11,6 +11,11 @@ import { AddBranch } from './../../models/branch/add-branch';
 })
 export class FormSucursalComponent implements OnInit {
 
+  options = [
+    {value: true, name: 'Activado'},
+    {value: false, name: 'Desactivado'}
+  ];
+
   sucursalForm = new FormGroup({
       
     nombre_sucursal: new FormControl('', Validators.required),
@@ -24,11 +29,13 @@ export class FormSucursalComponent implements OnInit {
     telefonos: new FormArray([
       new FormControl('', Validators.required)
     ]),
-    active_spa: new FormControl(false, Validators.required),
-    active_store: new FormControl(false, Validators.required),
+    active_spa: new FormControl(this.options[0].value, Validators.required),
+    active_store: new FormControl(this.options[0].value, Validators.required),
   })
 
-  constructor( private data: ProxySucursalService, ){}
+  constructor( private data: ProxySucursalService, ){
+
+  }
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)

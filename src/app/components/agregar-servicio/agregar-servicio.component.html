@@ -20,23 +20,23 @@
         
                             <label for="nombre_sucursal">Sucursal</label>
             
-                            <select class="form-select" aria-label="nombre_sucursal">
+                            <select class="form-select" aria-label="nombre_sucursal" (change)="cambiarNombreSucursal($event)">
                                 
                                 <option>Seleccionar Sucursal</option>
-                                <ng-container *ngFor="let branch of branches; index as i">
-                                    <option value={{branches.at(i)?.sucursal}}>{{branches.at(i)?.sucursal}}</option>
-                                </ng-container>
+                                <option *ngFor="let branch of branches" [ngValue]="branch">
+                                    {{branch.sucursal}}
+                                </option>
     
                             </select>
     
                             <label for="servicio">Servicio</label>
     
-                            <select class="form-select" aria-label="servicio">
-    
+                            <select class="form-select" aria-label="servicio" (change)="cambiarServicio($event)">
+
                                 <option>Seleccionar Servicio</option>
-                                <ng-container *ngFor="let service of services; index as i">
-                                    <option value={{services.at(i)?.servicio}}>{{services.at(i)?.servicio}}</option>
-                                </ng-container>
+                                <option *ngFor="let service of services" [ngValue]="service">
+                                    {{service.servicio}}
+                                </option>
     
                             </select>
                             
