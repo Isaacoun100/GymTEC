@@ -18,7 +18,7 @@ export class AgregarProductoComponent {
   constructor(private proxyProductoService: ProxyProductoService) {}
 
   ngOnInit(): void {
-    this.proxyProductoService.currentMessage.subscribe(
+    this.proxyProductoService.currentProduct.subscribe(
       (productoForm) => (this.productoForm = productoForm)
     );
   }

@@ -15,5 +15,7 @@ export class ProxyProductoService {
     })
   );
 
+  currentProduct = this.messageSource.asObservable();
+
   constructor() {}
 }
