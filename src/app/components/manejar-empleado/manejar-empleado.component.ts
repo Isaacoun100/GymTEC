@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { get_all_employees } from 'src/app/examples';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manejar-empleado',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./manejar-empleado.component.scss']
 })
 export class ManejarEmpleadoComponent {
+
+  constructor(private router:Router){}
+  
+  employees = get_all_employees.result;
+  
+  agregarEmpleado(){
+    this.router.navigate(['agregarEmpleado']);
+   }
 
 }

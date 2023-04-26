@@ -37,9 +37,10 @@ import { CrearClaseComponent } from './components/crear-clase/crear-clase.compon
 import { AsociarProductoComponent } from './components/asociar-producto/asociar-producto.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { FormSucursalComponent } from './template/form-sucursal/form-sucursal.component';
+import { FormEmpleadoComponent } from './template/form-empleado/form-empleado/form-empleado.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent, FormSucursalComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent, FormSucursalComponent, FormEmpleadoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -64,7 +65,9 @@ import { FormSucursalComponent } from './template/form-sucursal/form-sucursal.co
       {path:'crearClase', component:CrearClaseComponent},
       {path:'asociarProducto', component:AsociarProductoComponent},
       {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent},
-      {path:'agregarSucursal', component:AgregarSucursalComponent}
+      {path:'agregarSucursal', component:AgregarSucursalComponent},
+      {path:'empleados/:empleadoCedula', component:EditarEmpleadoComponent},
+      {path:'agregarEmpleado', component:AgregarEmpleadoComponent}
 
     ])
 ],

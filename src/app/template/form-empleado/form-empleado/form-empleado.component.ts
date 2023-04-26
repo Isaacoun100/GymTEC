@@ -1,13 +1,14 @@
-import { ProxyEmpleadoService } from 'src/app/service/empleado/proxy-empleado.service';
+import { ProxyEmpleadoService } from './../../../service/empleado/proxy-empleado.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
+
 @Component({
-  selector: 'app-agregar-empleado',
-  templateUrl: './agregar-empleado.component.html',
-  styleUrls: ['./agregar-empleado.component.scss']
+  selector: 'app-form-empleado',
+  templateUrl: './form-empleado.component.html',
+  styleUrls: ['./form-empleado.component.scss']
 })
-export class AgregarEmpleadoComponent implements OnInit {
+export class FormEmpleadoComponent implements OnInit {
 
   empleadoForm = new FormGroup({
 
@@ -32,5 +33,7 @@ export class AgregarEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.proxyEmpleadoService.currentMessage.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
   }
+
+
 
 }

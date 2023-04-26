@@ -13,7 +13,7 @@ export const branches = [
     { "sucursal": "Bus Terminal" },
     { "sucursal": "Beachfront" },
     { "sucursal": "Mountain View" },
-    { "sucursal": "Suburbs" }
+    { "sucursal": "Suburbs" },
     ]
 
   export const loginWorker = {
@@ -198,6 +198,24 @@ export const branches = [
                 "nombre": "Pedro",
                 "apellido_1": "García",
                 "apellido_2": "Martínez"
+            },
+            {
+                "cedula": "654987321",
+                "nombre": "Laura",
+                "apellido_1": "Díaz",
+                "apellido_2": "Pérez"
+            },
+            {
+                "cedula": "111111111",
+                "nombre": "José",
+                "apellido_1": "González",
+                "apellido_2": "Hernández"
+            },
+            {
+                "cedula": "222222222",
+                "nombre": "María",
+                "apellido_1": "García",
+                "apellido_2": "Martínez"
             }
         ]
     }
@@ -224,4 +242,23 @@ export const branches = [
         {'servicio': 'sauna'},
         {'servicio': 'baños a vapor'}
     ]
+
+    export const get_employee = {
+    "status": "ok",
+    "result": {
+        "cedula_empleado": "123456789",
+        "nombre": "Juan",
+        "apellido_1": "Pérez",
+        "apellido_2": "González",
+        "provincia": "San José",
+        "canton": "Escazú",
+        "distrito": "San Rafael",
+        "salario": 1500.0,
+        "correo": "juan.perez@example.com",
+        "password": "secretpassword",
+        "nombre_sucursal": "Sucursal Central",
+        "puesto_descripcion": "Vendedor",
+        "planilla_descripcion": "Mensual"
+    }
+}
       
