@@ -1,3 +1,4 @@
+import { branches } from 'src/app/examples';
 import { AssociateTreatment } from 'src/app/models/treatment/associate-treatment';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,5 +18,18 @@ export class AsociarTratamientoComponent {
 
   constructor(private route: ActivatedRoute) {}
 
+  branches = branches;
+
   ngonInit(): void {}
+
+  asignarTratamiento(form: any) {
+    console.log(form);
+  }
+
+  cambiarNombreSucursal(e: any) {
+    this.asociarTratamientoForm.controls['sucursal']?.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+
 }
