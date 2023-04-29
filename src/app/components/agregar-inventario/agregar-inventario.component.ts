@@ -17,9 +17,15 @@ export class AgregarInventarioComponent {
     nombre_sucursal: new FormControl('', Validators.required),
   });
   constructor(private proxyInventarioService: ProxyInventarioService) {}
+
   ngOnInit(): void {
     this.proxyInventarioService.currentInventory.subscribe(
-      (inventarioForm) => (this.inventarioForm = inventarioForm)
-    );
+      (inventarioForm) => (this.inventarioForm = inventarioForm));
+      this.inventarioForm.reset();
   }
+
+  ngOnDestroy(){
+    this.inventarioForm.reset();
+  }
+
 }
