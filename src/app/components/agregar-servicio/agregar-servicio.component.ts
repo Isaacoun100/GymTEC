@@ -12,12 +12,7 @@ import { AddService } from 'src/app/models/services/add-service';
 })
 export class AgregarServicioComponent implements OnInit {
 
-  branches = branches;
-  services = services;
-
   agregarServicioForm = new FormGroup({
-    nombre_sucursal: new FormControl(null, Validators.required),
-    servicio: new FormControl(null, Validators.required),
     descripcion: new FormControl('', Validators.required)
     });
 
@@ -26,21 +21,9 @@ export class AgregarServicioComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  agregarServicio(form:AddService){
+  agregarServicio(form:any){
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);
-  }
-
-  cambiarNombreSucursal(e: any) {
-    this.agregarServicioForm.controls['nombre_sucursal']?.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  }
-
-  cambiarServicio(e: any) {
-    this.agregarServicioForm.controls['servicio']?.setValue(e.target.value, {
-      onlySelf: true,
-    });
   }
 
 }
