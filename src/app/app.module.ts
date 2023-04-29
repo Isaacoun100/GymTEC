@@ -39,11 +39,25 @@ import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { FormSucursalComponent } from './template/form-sucursal/form-sucursal.component';
 import { FormEmpleadoComponent } from './template/form-empleado/form-empleado.component';
 import { FormProductoComponent } from './template/form-producto/form-producto.component';
-import { AgregarInventarioComponent } from './components/agregar-inventario/agregar-inventario/agregar-inventario.component';
+import { AgregarInventarioComponent } from './components/agregar-inventario/agregar-inventario.component';
 import { FormEquipoComponent } from './template/form-equipo/form-equipo.component';
+import { AsignarServicioComponent } from './components/asignar-servicio/asignar-servicio.component';
+import { FormInventarioComponent } from './template/form-inventario/form-inventario.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, NavbarComponent, HomeComponent, LoginAdminComponent, LoginClienteComponent, RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent, ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent, AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, AsociarProductoComponent, SidebarComponent, FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent, AgregarInventarioComponent, FormEquipoComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent,
+    HomeComponent, LoginAdminComponent, LoginClienteComponent,
+    RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent,
+    ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent,
+    AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent,
+    AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent,
+    EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent,
+    EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent,
+    AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent,
+    CrearClaseComponent, AsociarProductoComponent, SidebarComponent,
+    FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent,
+    AgregarInventarioComponent, FormEquipoComponent, AsignarServicioComponent,
+    FormInventarioComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,7 +84,16 @@ import { FormEquipoComponent } from './template/form-equipo/form-equipo.componen
       {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent},
       {path:'agregarSucursal', component:AgregarSucursalComponent},
       {path:'empleados/:empleadoCedula', component:EditarEmpleadoComponent},
-      {path:'agregarEmpleado', component:AgregarEmpleadoComponent}
+      {path:'agregarEmpleado', component:AgregarEmpleadoComponent},
+      {path:'equipos/:equipoNombre', component:EditarEquipoComponent},
+      {path:'agregarEquipo', component:AgregarEquipoComponent},
+      {path:'asignarServicio', component: AsignarServicioComponent},
+      {path:'inventario/:inventarioNombre', component:EditarInventarioComponent},
+      {path:'agregarInventario', component:AgregarInventarioComponent},
+      {path:'productos/:productoNombre', component:EditarProductoComponent},
+      {path:'agregarProducto', component:AgregarProductoComponent},
+      {path:'registrarCita', component:RegistrarCitaComponent},
+      {path:'crearUsuario', component:CrearUsuarioComponent}
 
     ])
 ],
