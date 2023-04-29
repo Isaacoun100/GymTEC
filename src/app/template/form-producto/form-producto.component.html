@@ -1,1 +1,66 @@
-<p>form-producto works!</p>
+<div class="container">
+
+    <form [formGroup]="productoForm" (ngSubmit)="editarProducto(productoForm.getRawValue())">
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="codigo_barras">Código de barras</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="codigo_barras" 
+                formControlName="codigo_barras"
+                >
+
+            </div>
+
+            <div class="col-4">
+
+                <label for="nombre_producto">Nombre del producto</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="nombre_producto" 
+                formControlName="nombre_producto"
+                >
+
+            </div>
+
+            <div class="col-4">
+
+                <label for="costo">Costo</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="costo" 
+                formControlName="costo"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="row py-2">
+
+            <div class="column">
+                
+                <label for="descripcion">Descripción</label>
+                <textarea type="text" class="form-control" id="descripcion" formControlName="descripcion" rows="3"></textarea>
+
+            </div>
+
+        </div>
+
+        <div class="row py-4">
+            
+            <div class="column">
+                <button class="btn btn-success" type="submit">Actualizar Inventario</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

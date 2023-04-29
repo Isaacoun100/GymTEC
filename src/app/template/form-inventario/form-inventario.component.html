@@ -1,1 +1,72 @@
-<p>form-inventario works!</p>
+<div class="container">
+
+    <form [formGroup]="inventarioForm" (ngSubmit)="editarInventario(inventarioForm.getRawValue())">
+
+        <div class="row py-2">
+
+            <div class="col-6">
+
+                <label for="num_serie">Número de serie</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="num_serie" 
+                formControlName="num_serie"
+                >
+
+            </div>
+
+            <div class="col-6">
+
+                <label for="marca">Marca</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="marca" 
+                formControlName="marca"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="row py-2">
+
+            <div class="col-6">
+
+                <label for="costo">Costo</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="costo" 
+                formControlName="costo"
+                >
+
+            </div>
+
+            <div class="col-6">
+
+                <label for="tipo_equipo">Tipo de equipo</label>
+    
+                <select class="form-select" formControlName="tipo_equipo">
+                    <option [disabled]="true">Seleccionar equipo</option>
+                    <option *ngFor="let option of options" [ngValue]="option.value">
+                        {{option.value}}
+                    </option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="row py-4">
+            
+            <div class="column">
+                <button class="btn btn-success" type="submit">Actualizar Inventario</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

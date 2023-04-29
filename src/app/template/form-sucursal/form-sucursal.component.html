@@ -119,6 +119,7 @@
                         <label for="active_spa">Spa</label>
     
                         <select class="form-select" formControlName="active_spa">
+                            <option [disabled]="true" [selected]="true">Seleccionar Spa</option>
                             <option *ngFor="let option of options" [ngValue]="option.value">
                                 {{option.name}}
                             </option>

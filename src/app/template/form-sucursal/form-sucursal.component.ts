@@ -53,9 +53,11 @@ export class FormSucursalComponent implements OnInit {
   editarSucursal(form:AddBranch){
     // Add the form to the API using the proper service
     console.log(form);
+    console.log(this.sucursalForm);
   }
 
   eliminarTelefono(index:number){
+    console.log(index);
     const control = <FormArray> this.sucursalForm.controls['telefonos'];
     control.removeAt(index);
   }
