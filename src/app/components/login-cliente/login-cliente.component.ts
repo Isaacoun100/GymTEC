@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-cliente',
@@ -15,4 +16,6 @@ export class LoginClienteComponent {
   });
 
   loginCliente(){}
+
+  constructor( route : Router ) { }
 }
