@@ -1,10 +1,114 @@
 <body>
+
+    <!-- Sidebar -->
     <app-sidebar></app-sidebar>
 
-    <div class="containet my-3">
+    <div class="container">
 
+        <form [formGroup]="createClaseForm" (ngSubmit)="createForm(createClaseForm.getRawValue())">
+
+            <div class="row py-2">
+
+                <div class="col-6">
+
+                    <label for="tipo">Tipo</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="tipo" 
+                    formControlName="tipo"
+                    >
         
+                </div>
+
+                <div class="col-6">
+
+                    <label for="modo">Tipo</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="modo" 
+                    formControlName="modo"
+                    >
         
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+
+                <div class="col-6">
+
+                    <label for="capacidad">Nombre Sucursal</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    id="capacidad" 
+                    formControlName="capacidad"
+                    >
+        
+                </div>
+
+                <div class="col-6">
+
+                    <label for="fecha">Nombre Sucursal</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="fecha" 
+                    formControlName="fecha"
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+
+                <div class="col-4">
+
+                    <label for="hora_ingreso">Nombre Sucursal</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hora_ingreso" 
+                    formControlName="hora_ingreso"
+                    >
+        
+                </div>
+
+                <div class="col-4">
+
+                    <label for="hora_salida">Nombre Sucursal</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hora_salida" 
+                    formControlName="hora_salida"
+                    >
+        
+                </div>
+
+                <div class="col-4">
+
+                    <label for="encargado">Nombre Sucursal</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="encargado" 
+                    formControlName="encargado"
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="col-4 my-4">
+                <button class="btn btn-success" type="submit">Crear clase</button>
+            </div>
+
+        </form>
+
     </div>
 
 </body>
