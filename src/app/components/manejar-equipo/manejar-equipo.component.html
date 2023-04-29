@@ -1,1 +1,39 @@
-<app-sidebar></app-sidebar>
+<body>
+
+    <app-sidebar></app-sidebar>
+
+    <div class="container py-4">
+        
+        <h1>Planilla</h1>
+
+        <div class="row py-4">
+
+            <ul class="list-group overflow-auto shadow" style="max-height:calc(100vh - 400px);">
+        
+                <div *ngFor="let equipo of equipos">
+        
+                    <li class="list-group-item">
+
+                        <a [routerLink]="['/equipos', equipo.num_serie]">
+                            <p> Numero de serie: {{equipo.num_serie}}</p>
+                            <p>Tipo de pago: {{equipo.tipo_equipo}}</p>
+                            <p>Descipción: {{equipo.descripcion}}</p>
+
+                        </a>
+
+
+                    </li>
+        
+                </div>
+
+                
+            </ul>
+            
+            
+        </div>
+        
+        <button type="button" class="btn btn-primary" (click)="agregarEquipo()">Agregar Equipo</button>
+
+    </div>
+        
+</body>
