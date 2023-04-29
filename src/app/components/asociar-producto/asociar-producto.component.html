@@ -1,1 +1,59 @@
-<p>asociar-producto works!</p>
+<body>
+    <!--Sidebar-->
+    <app-sidebar></app-sidebar>
+
+    <div class="container my-4">
+
+        <div class="card mb-3" style="max-width:fit-content;">
+
+            <div class="row g-0">
+    
+                <div class="col-md-4 centrado">
+                    <img src="assets\facebook_profile_image_2_400x400.png" class="img-fluid rounded-start" alt="facebook_profile_image">
+                  </div>
+
+                  <div class="col-md-8">
+    
+                    <form [formGroup]="asociarProductoForm" (ngSubmit)="asociarProducto(asociarProductoForm.getRawValue())">
+        
+                        <div class="row my-4 mx-4">
+        
+                            <label for="nombre_sucursal">Sucursal</label>
+            
+                            <select class="form-select" aria-label="sucursal" (change)="cambiarSucursal($event)">
+                                
+                                <option [disabled]="true">Seleccionar Sucursal</option>
+                                <option *ngFor="let branch of branches" [ngValue]="branch">
+                                    {{branch.sucursal}}
+                                </option>
+    
+                            </select>
+    
+                            <label for="tratamiento">Servicio</label>
+
+                            <select class="form-select" aria-label="producto" (change)="cambiarProducto($event)">
+                                
+                                <option [disabled]="true">Seleccionar Producto</option>
+                                <option *ngFor="let product of products" [ngValue]="product.nombre_producto">
+                                    {{product.nombre_producto}}
+                                </option>
+
+                            </select>
+    
+                            <div class="col-4 my-4">
+                                <button class="btn btn-success" type="submit">Agregar Tratamiento</button>
+                            </div>
+                            
+                        </div>
+                        
+                </form>
+        
+                </div>
+    
+            </div>
+        
+        </div>
+
+    </div>
+    
+</body>
