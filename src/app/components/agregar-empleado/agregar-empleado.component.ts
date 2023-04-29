@@ -31,6 +31,11 @@ export class AgregarEmpleadoComponent implements OnInit {
 
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
+    this.empleadoForm.reset();
+  }
+
+  ngOnDestroy(){
+    this.empleadoForm.reset();
   }
 
 }
