@@ -13,7 +13,10 @@ import { AddService } from 'src/app/models/services/add-service';
 })
 export class AsociarProductoComponent {
 
+  // Agregar los productos de la base de datos
   products = get_all_products;
+  
+  // Agregar las sucursales de la base de datos
   branches = branches;
 
   asociarProductoForm = new FormGroup({
@@ -25,6 +28,7 @@ export class AsociarProductoComponent {
 
   ngonInit(): void {}
 
+  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
   asociarProducto(form: any) {
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);

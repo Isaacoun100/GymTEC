@@ -13,6 +13,7 @@ export class EditarProductoComponent implements OnInit {
 
   productIdFromRoute: string | null | undefined ;
 
+  // Agregar los productos de la base de datos
   get_producto = get_producto;
 
   productoForm = new FormGroup({
@@ -48,8 +49,8 @@ export class EditarProductoComponent implements OnInit {
     
   }
   
+  // Eliminar producto de la base de datos
   eliminarProducto() {
-    // Add the form to the API using the proper service
     this.productIdFromRoute = this.route.snapshot.paramMap.get('productoNombre');
     console.log(this.productIdFromRoute);
   }

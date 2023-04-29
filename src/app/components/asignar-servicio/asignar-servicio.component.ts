@@ -9,8 +9,13 @@ import { branches, services } from 'src/app/examples';
 })
 export class AsignarServicioComponent implements OnInit {
 
+
+  // TODO : Get the branches from the API
   branches = branches;
+
+  // TODO : Get the services from the API
   services = services;
+
 
   asignarServicioForm = new FormGroup({
     nombre_sucursal: new FormControl(null, Validators.required),
@@ -21,8 +26,9 @@ export class AsignarServicioComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // TODO : Enviar el formulario a la base de datos
   asignarServicio(form:any){
-    // Recordar crear un mensaje de error si el form no pudo ser ingresados
+
     console.log(form);
   }
 

@@ -10,6 +10,8 @@ import { get_employee } from 'src/app/examples';
   styleUrls: ['./editar-empleado.component.scss'],
 })
 export class EditarEmpleadoComponent implements OnInit {
+
+  // TODO : El empleado de la base de datos (Se pide el id a la ruta)
   get_employee = get_employee;
 
   empleadoForm = new FormGroup({
@@ -60,6 +62,7 @@ export class EditarEmpleadoComponent implements OnInit {
     this.empleadoForm.reset();
   }
 
+  // TODO : Eliminar el empleado usando la ruta
   eliminarEmpleado(){
     console.log('Empleado eliminado');
   }

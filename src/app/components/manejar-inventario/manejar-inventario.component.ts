@@ -9,9 +9,10 @@ import { Component } from '@angular/core';
 })
 export class ManejarInventarioComponent {
 
+  // TODO : Solicitar los inventarios de la base de datos
+  inventories = get_all_inventories;  
+  
   constructor(private router:Router){}
-
-  inventories = get_all_inventories;
 
   agregarInventario(){
     this.router.navigate(['agregarInventario']);

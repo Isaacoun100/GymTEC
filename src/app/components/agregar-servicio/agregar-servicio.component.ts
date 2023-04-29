@@ -16,14 +16,15 @@ export class AgregarServicioComponent implements OnInit {
     descripcion: new FormControl('', Validators.required)
     });
 
-
   constructor( private route: ActivatedRoute) { }
 
   ngOnInit(): void {}
 
+  // TODO : Enviar el formulario a la API
   agregarServicio(form:any){
-    // Recordar crear un mensaje de error si el form no pudo ser ingresados
+    
     console.log(form);
+    
   }
 
 }

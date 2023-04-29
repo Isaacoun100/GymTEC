@@ -11,7 +11,9 @@ export class ManejarSucursalComponent {
 
   constructor(private router:Router){}
   
+  // TODO: Cambiar el arreglo de ejemplo por el arreglo de sucursales que se obtiene de la base de datos
   branches = branches;
+
   
   agregarSucursal(){
     this.router.navigate(['agregarSucursal']);

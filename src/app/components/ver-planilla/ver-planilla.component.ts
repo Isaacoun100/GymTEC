@@ -8,5 +8,6 @@ import { get_all_payrolls } from 'src/app/examples';
 })
 export class VerPlanillaComponent {
 
+  // TODO : Solicitar los payrolls de la base de datos
   planillas = get_all_payrolls;
 }

@@ -18,6 +18,8 @@ export class CrearClaseComponent{
     encargado: new FormControl('', Validators.required),
   });
 
+
+  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
   createForm(form:any){
     console.log(form);
   }

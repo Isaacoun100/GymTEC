@@ -13,7 +13,10 @@ import { branches } from 'src/app/examples';
 })
 export class AsociarInventarioComponent implements OnInit {
 
+  // Agregar las sucursales de la base de datos
   branches = branches;
+
+  // Agregar los inventarios de la base de datos
   inventories = get_all_inventories;
 
   asociarIntenvetarioForm = new FormGroup({
@@ -25,6 +28,7 @@ export class AsociarInventarioComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
   asociarInventario(form: any) {
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);

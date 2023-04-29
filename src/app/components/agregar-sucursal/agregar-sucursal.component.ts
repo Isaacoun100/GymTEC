@@ -9,10 +9,13 @@ import { ProxySucursalService } from 'src/app/service/sucursal/proxy-sucursal.se
 })
 export class AgregarSucursalComponent implements OnInit {
 
+  isEmpty= false;
+
   constructor(private data: ProxySucursalService,) { }
 
   ngOnInit(): void {
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
+    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
     this.sucursalForm.reset();
   }
 

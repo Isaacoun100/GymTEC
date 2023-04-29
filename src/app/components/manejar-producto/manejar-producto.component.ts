@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./manejar-producto.component.scss']
 })
 export class ManejarProductoComponent {
+  
+    // Agregar los productos de la base de datos
+    products = get_all_products;
 
   constructor( private router: Router ) {}
-
-  products = get_all_products;
 
   agregarProducto() {
     this.router.navigate(['agregarProducto']);

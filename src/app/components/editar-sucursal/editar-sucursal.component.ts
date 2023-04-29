@@ -11,8 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditarSucursalComponent implements OnInit {
 
+  isEmpty= false;
+
   productIdFromRoute: string | null | undefined ;
 
+  // TODO: Cambiar el arreglo de ejemplo por el arreglo de sucursales que se obtiene de la base de datos
   get_branch = get_branch;
 
   sucursalForm = new FormGroup({
@@ -39,6 +42,7 @@ export class EditarSucursalComponent implements OnInit {
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
+    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
     this.sucursalForm.reset();
     this.updateSucursal();
   }
@@ -70,11 +74,13 @@ export class EditarSucursalComponent implements OnInit {
     
     this.sucursalForm.controls['active_spa'].setValue(get_branch.result.active_spa);
     this.sucursalForm.controls['active_store'].setValue(get_branch.result.active_store);
+
+    this.isEmpty = false;
     
   }
 
+  // TODO: Enviar la ruta de la sucursal a eliminar
   eliminarSucursal(){
-    // Get route parameter
     this.productIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');
     console.log(this.productIdFromRoute);
   }

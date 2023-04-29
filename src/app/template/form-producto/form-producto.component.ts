@@ -25,10 +25,15 @@ export class FormProductoComponent {
     );
   }
 
+  // Enviar form a la base de datos
   editarProducto(form: AddProduct) {
-    // Add the form to the API using the proper service
-    console.log(form);
-    console.log(this.productoForm);
+    
+    //Este es el de crear
+    if(true){}
+
+    //Este es el de editar
+    else{}
+
   }
 
 }

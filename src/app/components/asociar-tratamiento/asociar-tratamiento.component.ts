@@ -18,10 +18,12 @@ export class AsociarTratamientoComponent {
 
   constructor(private route: ActivatedRoute) {}
 
+  // Agregar las sucursales de la base de datos
   branches = branches;
 
   ngonInit(): void {}
 
+  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
   asignarTratamiento(form: any) {
     console.log(form);
   }

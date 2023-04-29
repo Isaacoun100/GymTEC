@@ -11,6 +11,8 @@ import { AddBranch } from './../../models/branch/add-branch';
 })
 export class FormSucursalComponent implements OnInit {
 
+  isEmpty : boolean | undefined;
+
   options = [
     {value: true, name: 'Activado'},
     {value: false, name: 'Desactivado'}
@@ -33,12 +35,11 @@ export class FormSucursalComponent implements OnInit {
     active_store: new FormControl(this.options[0].value, Validators.required),
   })
 
-  constructor( private data: ProxySucursalService, ){
-
-  }
+  constructor( private data: ProxySucursalService, ){}
   
   ngOnInit(){
-    this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
+    this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm);
+    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
   }
   
   trackByFn(index: any, item: any) {
@@ -50,10 +51,17 @@ export class FormSucursalComponent implements OnInit {
     control.push(new FormControl('', Validators.required))
   }
 
+  // TODO :  Enviar el formulario a la API
   editarSucursal(form:AddBranch){
-    // Add the form to the API using the proper service
+
+    //Este es el de crear
+    if(true){}
+
+    //Este es el de editar
+    else{}
+
     console.log(form);
-    console.log(this.sucursalForm);
+
   }
 
   eliminarTelefono(index:number){

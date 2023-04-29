@@ -15,8 +15,10 @@ import { branches } from 'src/app/examples';
 
 export class FormEmpleadoComponent implements OnInit {
 
+  // TODO : Solicitar las sucursales de la base de datos
   branches = branches;
-
+  
+  // TODO : Solicitar los puestos de la base de datos
   get_all_positions = get_all_positions;
 
   empleadoForm = new FormGroup({
@@ -41,7 +43,15 @@ export class FormEmpleadoComponent implements OnInit {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
   }
 
+  // TODO : Enviar el formulario a la base de datos
   editarEmpleado(form:AddEmployee ){
+
+    //Este es el de crear
+    if(true){}
+
+    //Este es el de editar
+    else{}
+
     console.log(form);
   }
 

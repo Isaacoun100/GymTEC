@@ -14,6 +14,7 @@ export class EditarInventarioComponent {
 
   productIdFromRoute: string | null | undefined ;
 
+  // TODO : Solicitar el inventario de la base de datos
   get_inventory = get_inventory;
 
   inventarioForm = new FormGroup({
@@ -36,6 +37,7 @@ export class EditarInventarioComponent {
       this.updateInventario();
   }
 
+  // TODO : Eliminar el inventario de la base de datos
   eliminarInventario(){
     // Get route parameter
     this.productIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');

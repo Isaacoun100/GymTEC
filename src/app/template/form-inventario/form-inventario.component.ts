@@ -11,6 +11,7 @@ import { AddInventory } from 'src/app/models/inventory/add-inventory';
 })
 export class FormInventarioComponent {
 
+  // Las opciones son fixed
   options = [
     {value :'Cinta de correr'},
     {value :'Bicicleta estacionaria'},
@@ -37,10 +38,18 @@ export class FormInventarioComponent {
     );
   }
 
+  // TODO : Enviar el form a la base de datos
   editarInventario(form: AddInventory) {
-    // Add the form to the API using the proper service
-    console.log(form);
-    console.log(this.inventarioForm);
+    
+    //Este es el de crear
+    if(true){
+
+    }
+
+    //Este es el de editar
+    else{
+
+    }
   }
 
 }

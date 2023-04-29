@@ -28,7 +28,11 @@ export class ProxySucursalService {
     })
 
   );
+
+  private isEmpty = new BehaviorSubject<boolean>(true);
+
   currentMessage = this.messageSource.asObservable();
+  activeWindow = this.isEmpty.asObservable();
 
   constructor() { }
 

@@ -11,6 +11,7 @@ export class ManejarEmpleadoComponent {
 
   constructor(private router:Router){}
   
+  // TODO : Solicitar los empleados de la base de datos
   employees = get_all_employees.result;
   
   agregarEmpleado(){
