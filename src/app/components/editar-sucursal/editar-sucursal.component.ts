@@ -39,7 +39,13 @@ export class EditarSucursalComponent implements OnInit {
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
+    this.sucursalForm.reset();
     this.updateSucursal();
+  }
+
+  ngOnDestroy(){
+    this.sucursalForm.controls['telefonos'].clear();
+    this.sucursalForm.reset();
   }
 
   updateSucursal(){
@@ -55,8 +61,9 @@ export class EditarSucursalComponent implements OnInit {
     this.sucursalForm.controls['distrito'].setValue(get_branch.result.distrito);
     this.sucursalForm.controls['manager'].setValue(get_branch.result.manager);
 
-    for (let index = 0; index < get_branch.result.telefonos.length; index++)
+    for (let index = 0; index < get_branch.result.telefonos.length; index++){
       control.push(new FormControl(get_branch.result.telefonos[index], Validators.required));
+    }
 
     if(control.length>0)
       control.removeAt(0);
