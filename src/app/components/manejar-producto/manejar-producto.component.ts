@@ -1,4 +1,6 @@
+import { get_all_products } from './../../examples';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manejar-producto',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./manejar-producto.component.scss']
 })
 export class ManejarProductoComponent {
+
+  constructor( private router: Router ) {}
+
+  products = get_all_products;
+
+  agregarProducto() {
+    this.router.navigate(['agregarProducto']);
+  }
 
 }

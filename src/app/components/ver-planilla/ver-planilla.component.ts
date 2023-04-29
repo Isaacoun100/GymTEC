@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { get_all_payrolls } from 'src/app/examples';
 
 @Component({
   selector: 'app-ver-planilla',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class VerPlanillaComponent {
 
+  planillas = get_all_payrolls;
 }

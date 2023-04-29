@@ -1,5 +1,15 @@
 //Models I will use as an example to test the functionality
 
+export const get_all_positions = [
+      { "nombre_puesto": "Gerente de Ventas"},
+      { "nombre_puesto": "Asistente de Ventas" },
+      { "nombre_puesto": "Gerente de Marketing" },
+      { "nombre_puesto": "Asistente de Marketing" },
+      { "nombre_puesto": "Gerente de Finanzas" },
+      { "nombre_puesto": "Asistente de Finanzas"},
+      { "nombre_puesto": "Analista de Datos" }
+    ]
+
 export const branches = [
     { "sucursal": "Main Street" },
     { "sucursal": "Downtown" },
@@ -26,7 +36,7 @@ export const branches = [
       "provincia":"San José",
       "canton":"Montes de Oca",
       "distrito":"San Pedro",
-      "salario":"193455.12",
+      "salario":193455.12,
       "correo":"achaso@gymtec.com",
       "password":"password123"
     }
@@ -55,9 +65,7 @@ export const branches = [
         }
     }
 
-    export const  get_all_equipment = {
-        "status": "ok",
-        "result": [
+    export const  get_all_equipment = [
             {
                 "num_serie": 12345,
                 "tipo_equipo": "Computadora",
@@ -79,38 +87,8 @@ export const branches = [
                 "descripcion": "Tableta con pantalla de 10 pulgadas, procesador quad-core y 64GB de almacenamiento"
             }
         ]
-    }
 
-    export const get_all_payrolls = {
-        "status": "ok",
-        "result": 
-        [
-            {
-                "empleado_cedula": "123456789",
-                "planilla_id": 1,
-                "descripcion": "Mensual"
-            },
-            {
-                "empleado_cedula": "987654321",
-                "planilla_id": 2,
-                "descripcion": "Pago por horas"
-            },
-            {
-                "empleado_cedula": "555555555",
-                "planilla_id": 3,
-                "descripcion": "Pago por clase"
-            },
-            {
-                "empleado_cedula": "111111111",
-                "planilla_id": 4,
-                "descripcion": "Mensual"
-            }
-        ]
-    }
-
-    export const get_all_products = {
-        "status": "ok",
-        "result": [
+    export const get_all_products =[
             {
                 "nombre_producto": "Camisa Polo",
                 "costo": 29.99
@@ -133,11 +111,8 @@ export const branches = [
             }
             
         ]
-    }
 
-    export const get_all_inventories = {
-        "status": "ok",
-        "result": [
+    export const get_all_inventories = [
             {
                 "num_serie": 12345,
                 "marca": "Sony",
@@ -164,7 +139,6 @@ export const branches = [
                 "costo": 699.99
             }
         ]
-    }
 
     export const get_all_employees = {
         "status": "ok",
@@ -237,10 +211,10 @@ export const branches = [
       }
 
     export const services = [
-        {'servicio':'Masaje relajante'},
-        {'servicio': 'masaje descarga muscular'},
-        {'servicio': 'sauna'},
-        {'servicio': 'baños a vapor'}
+        {'servicio': 'Masaje relajante'},
+        {'servicio': 'Masaje descarga muscular'},
+        {'servicio': 'Sauna'},
+        {'servicio': 'Baños a vapor'}
     ]
 
     export const get_employee = {
@@ -259,6 +233,75 @@ export const branches = [
         "nombre_sucursal": "Sucursal Central",
         "puesto_descripcion": "Vendedor",
         "planilla_descripcion": "Mensual"
-    }
-}
-      
+    }}
+
+    export const get_all_payrolls = [
+        {
+            "empleado_cedula": "123456789",
+            "planilla_tipo": "Mensual",
+            "salario": 1500.00
+        },
+        {
+            "empleado_cedula": "987654321",
+            "planilla_tipo": "Quincenal",
+            "salario": 2000.00
+        },
+        {
+            "empleado_cedula": "456789123",
+            "planilla_tipo": "Mensual",
+            "salario": 2500.00
+        },
+        {
+            "empleado_cedula": "654321987",
+            "planilla_tipo": "Semanal",
+            "salario": 1200.00
+        },
+        {
+            "empleado_cedula": "147258369",
+            "planilla_tipo": "Mensual",
+            "salario": 1800.00
+        },
+        {
+            "empleado_cedula": "369258147",
+            "planilla_tipo": "Quincenal",
+            "salario": 2200.00
+        },
+        {
+            "empleado_cedula": "258369147",
+            "planilla_tipo": "Semanal",
+            "salario": 1100.00
+        },
+        {
+            "empleado_cedula": "741852963",
+            "planilla_tipo": "Mensual",
+            "salario": 2000.00
+        },
+        {
+            "empleado_cedula": "963852741",
+            "planilla_tipo": "Quincenal",
+            "salario": 2400.00
+        },
+        {
+            "empleado_cedula": "852963741",
+            "planilla_tipo": "Semanal",
+            "salario": 1300.00
+        }
+    ]
+
+    export const get_inventory = {
+        "num_serie": 12345,
+        "marca": "Samsung",
+        "costo": 899.99,
+        "is_used": false,
+        "tipo_equipo": "Multigimnasio"
+        }
+
+    export const get_producto = {
+        "status": "ok",
+        "result": {
+            "codigo_barras": "123456789",
+            "nombre_producto": "Smartphone Samsung Galaxy S21",
+            "costo": 799.99,
+            "descripcion": "El Samsung Galaxy S21 es un smartphone de alta gama con pantalla Dynamic AMOLED de 6.2 pulgadas, procesador Exynos 2100, cámara trasera de 64 MP y batería de 4000 mAh."
+            }
+        }

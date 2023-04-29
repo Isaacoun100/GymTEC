@@ -1,1 +1,38 @@
-<app-sidebar></app-sidebar>
+<body>
+    <app-sidebar></app-sidebar>
+
+    <div class="container py-4">
+        
+        <h1>Sucursales</h1>
+
+        <div class="row py-4">
+
+            <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
+        
+                <div *ngFor="let inventory of inventories">
+        
+                    <li class="list-group-item">
+        
+                        <h4>
+        
+                            <a [routerLink]="['/inventario', inventory.num_serie]">
+                                <div>Numero de serie: {{ inventory.num_serie }}</div>
+                                <div>Marca: {{ inventory.marca }}</div>
+                                <div>Costo: {{ inventory.costo }}</div>
+                            </a>
+        
+                        </h4>
+                        
+                    </li>
+        
+                </div>
+        
+              </ul>
+
+        </div>
+        
+        <button type="button" class="btn btn-primary" (click)="agregarInventario()">Agregar Sucursal</button>
+        
+    </div>
+
+</body>

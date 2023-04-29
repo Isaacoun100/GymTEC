@@ -6,7 +6,7 @@ export interface AddEmployee {
   provincia: string | null;
   canton: string | null;
   distrito: string | null;
-  salario: string | null;
+  salario: number | null;
   correo: string | null;
   password: string | null;
   nombre_sucursal: string | null;
