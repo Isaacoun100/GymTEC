@@ -19,7 +19,7 @@ export class PlanillaService {
   getPayroll(form: GetPayroll): Observable<ResponseTemplateI> {
     let address = this.url + 'get_payroll';
 
-    return this.http.put<ResponseTemplateI>(address, form);
+    return this.http.post<ResponseTemplateI>(address, form);
   }
 
   getAllPayrolls(): Observable<ResponseTemplateI> {
