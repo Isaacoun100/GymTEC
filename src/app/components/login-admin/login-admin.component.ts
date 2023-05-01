@@ -26,7 +26,7 @@ export class LoginAdminComponent implements OnInit {
     this.api.loginAdmin(form).subscribe((data) => {
       let dataResponse: ResponseTemplateI = data;
 
-      if (dataResponse.status == 'ok') {
+      if (JSON.parse(JSON.stringify(dataResponse.result))['cedula'] != '') {
         console.log(dataResponse.status);
         sessionStorage.setItem('user', JSON.stringify(data.result));
         this.router.navigate(['panelAdmin']);
