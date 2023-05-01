@@ -24,6 +24,7 @@ export const branches = [
     { "sucursal": "Beachfront" },
     { "sucursal": "Mountain View" },
     { "sucursal": "Suburbs" },
+    { "sucursal": "Sucursal Central" },
     ]
 
   export const loginWorker = {

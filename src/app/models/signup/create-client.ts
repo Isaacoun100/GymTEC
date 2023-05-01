@@ -6,7 +6,7 @@ export interface CreateClient {
   direccion: string | null;
   email: string | null;
   password: string | null;
-  altura: number | null;
-  peso: number | null;
-  fecha_nacimiento: string | null;
+  Altura: number | null;
+  Peso: number | null;
+  Fecha_nacimiento: string | null;
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-cliente',
@@ -9,13 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginClienteComponent {
 
+  constructor( private router : Router) { }
   
   loginForm = new FormGroup({
     correoInput: new FormControl('', {nonNullable: true}),
     contrasenaInput: new FormControl('', {nonNullable: true}),
   });
 
-  loginCliente(){}
+  loginCliente(){
+    this.router.navigate(['panelCliente']);
+  }
 
-  constructor( route : Router ) { }
 }
