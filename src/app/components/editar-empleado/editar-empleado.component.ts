@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ProxyEmpleadoService } from 'src/app/service/empleado/proxy-empleado.service';
 import { get_employee } from 'src/app/examples';
+import { GetBranch } from 'src/app/models/branch/get-branch';
 
 @Component({
   selector: 'app-editar-empleado',
@@ -13,7 +14,6 @@ export class EditarEmpleadoComponent implements OnInit {
 
   // TODO : El empleado de la base de datos (Se pide el id a la ruta)
   get_employee = get_employee;
-
   empleadoForm = new FormGroup({
 
     cedula_empleado : new FormControl('', Validators.required),

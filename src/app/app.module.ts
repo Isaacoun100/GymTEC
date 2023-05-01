@@ -19,9 +19,6 @@ import { ManejarSucursalComponent } from './components/manejar-sucursal/manejar-
 import { EditarSucursalComponent } from './components/editar-sucursal/editar-sucursal.component';
 import { AgregarSucursalComponent } from './components/agregar-sucursal/agregar-sucursal.component';
 import { AgregarServicioComponent } from './components/agregar-servicio/agregar-servicio.component';
-import { ManejarEquipoComponent } from './components/manejar-equipo/manejar-equipo.component';
-import { EditarEquipoComponent } from './components/editar-equipo/editar-equipo.component';
-import { AgregarEquipoComponent } from './components/agregar-equipo/agregar-equipo.component';
 import { VerPlanillaComponent } from './components/ver-planilla/ver-planilla.component';
 import { ManejarEmpleadoComponent } from './components/manejar-empleado/manejar-empleado.component';
 import { EditarEmpleadoComponent } from './components/editar-empleado/editar-empleado.component';
@@ -40,7 +37,6 @@ import { FormSucursalComponent } from './template/form-sucursal/form-sucursal.co
 import { FormEmpleadoComponent } from './template/form-empleado/form-empleado.component';
 import { FormProductoComponent } from './template/form-producto/form-producto.component';
 import { AgregarInventarioComponent } from './components/agregar-inventario/agregar-inventario.component';
-import { FormEquipoComponent } from './template/form-equipo/form-equipo.component';
 import { AsignarServicioComponent } from './components/asignar-servicio/asignar-servicio.component';
 import { FormInventarioComponent } from './template/form-inventario/form-inventario.component';
 import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.component';
@@ -51,15 +47,13 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
     HomeComponent, LoginAdminComponent, LoginClienteComponent,
     RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent,
     ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent,
-    AgregarServicioComponent, ManejarEquipoComponent, EditarEquipoComponent,
-    AgregarEquipoComponent, VerPlanillaComponent, ManejarEmpleadoComponent,
+    AgregarServicioComponent, VerPlanillaComponent, ManejarEmpleadoComponent,
     EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent,
     EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent,
     AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent,
     CrearClaseComponent, AsociarProductoComponent, SidebarComponent,
     FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent,
-    AgregarInventarioComponent, FormEquipoComponent, AsignarServicioComponent,
-    FormInventarioComponent,
+    AgregarInventarioComponent, AsignarServicioComponent, FormInventarioComponent,
     PanelClienteComponent],
   imports: [
     BrowserModule,
@@ -75,7 +69,6 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
       {path:'panelAdmin', component:PanelAdminComponent},
       {path:'sucursales', component:ManejarSucursalComponent},
       {path:'agregarServicio', component:AgregarServicioComponent},
-      {path:'equipos', component:ManejarEquipoComponent},
       {path:'plantilla', component:VerPlanillaComponent},
       {path:'empleados', component:ManejarEmpleadoComponent},
       {path:'inventario', component:ManejarInventarioComponent},
@@ -88,8 +81,6 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
       {path:'agregarSucursal', component:AgregarSucursalComponent},
       {path:'empleados/:empleadoCedula', component:EditarEmpleadoComponent},
       {path:'agregarEmpleado', component:AgregarEmpleadoComponent},
-      {path:'equipos/:equipoNombre', component:EditarEquipoComponent},
-      {path:'agregarEquipo', component:AgregarEquipoComponent},
       {path:'asignarServicio', component: AsignarServicioComponent},
       {path:'inventario/:inventarioNombre', component:EditarInventarioComponent},
       {path:'agregarInventario', component:AgregarInventarioComponent},

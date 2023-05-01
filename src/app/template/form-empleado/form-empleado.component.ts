@@ -50,8 +50,6 @@ export class FormEmpleadoComponent implements OnInit {
   // TODO : Enviar el formulario a la base de datos
   editarEmpleado(form:AddEmployee ){
 
-    console.log(this.router.url);
-
     //Este es el de crear
     if(this.router.url === '/agregarEmpleado'){
       console.log('Estoy en agregar empleado');
@@ -66,13 +64,13 @@ export class FormEmpleadoComponent implements OnInit {
   }
 
   togglePassword(){
-
     var x = (<HTMLInputElement>document.getElementById("passwordField"));
     if (x.type === "password") {
       x.type = "text";
-    } else {
+    } 
+    else {
       x.type = "password";
-  }
+    }
   }
 
 }

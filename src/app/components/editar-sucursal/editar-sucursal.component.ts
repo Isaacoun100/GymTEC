@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { get_branch } from 'src/app/examples';
 import { ProxySucursalService } from 'src/app/service/sucursal/proxy-sucursal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
+import { GetBranch } from 'src/app/models/branch/get-branch';
+import { BranchResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-editar-sucursal',
@@ -13,10 +15,9 @@ export class EditarSucursalComponent implements OnInit {
 
   isEmpty= false;
 
-  productIdFromRoute: string | null | undefined ;
+  sucursalIdFromRoute: string | null ;
 
-  // TODO: Cambiar el arreglo de ejemplo por el arreglo de sucursales que se obtiene de la base de datos
-  get_branch = get_branch;
+  sucursalRequest : GetBranch | undefined;
 
   sucursalForm = new FormGroup({
       
@@ -37,8 +38,11 @@ export class EditarSucursalComponent implements OnInit {
 
   constructor(
     private data: ProxySucursalService,
-    private route:ActivatedRoute
-    ){}
+    private route:ActivatedRoute,
+    private router: Router,
+    private api: SucursalService ){
+      this.sucursalIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');
+    }
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
@@ -53,36 +57,46 @@ export class EditarSucursalComponent implements OnInit {
   }
 
   updateSucursal(){
-
-    const control = <FormArray> this.sucursalForm.controls['telefonos'];
-
-    this.sucursalForm.controls['nombre_sucursal'].setValue(get_branch.result.nombre_sucursal);
-    this.sucursalForm.controls['fecha_apertura'].setValue(get_branch.result.fecha_apertura);
-    this.sucursalForm.controls['horario'].setValue(get_branch.result.horario);
-    this.sucursalForm.controls['cap_max'].setValue(get_branch.result.cap_max);
-    this.sucursalForm.controls['provincia'].setValue(get_branch.result.provincia);
-    this.sucursalForm.controls['canton'].setValue(get_branch.result.canton);
-    this.sucursalForm.controls['distrito'].setValue(get_branch.result.distrito);
-    this.sucursalForm.controls['manager'].setValue(get_branch.result.manager);
-
-    for (let index = 0; index < get_branch.result.telefonos.length; index++){
-      control.push(new FormControl(get_branch.result.telefonos[index], Validators.required));
-    }
-
-    if(control.length>0)
-      control.removeAt(0);
+    let nombre_sucursal = this.sucursalIdFromRoute;
     
-    this.sucursalForm.controls['active_spa'].setValue(get_branch.result.active_spa);
-    this.sucursalForm.controls['active_store'].setValue(get_branch.result.active_store);
+    this.sucursalRequest = {'nombre_sucursal': nombre_sucursal} 
+    this.api.getSingleBranch(this.sucursalRequest).subscribe(data => {
+      let dataResponse: BranchResponseTemplateI = data;
 
-    this.isEmpty = false;
+      const control = <FormArray> this.sucursalForm.controls['telefonos'];
+
+      this.sucursalForm.controls['nombre_sucursal'].setValue( dataResponse.result['nombre_sucursal'] );
+      this.sucursalForm.controls['fecha_apertura'].setValue( dataResponse.result['fecha_apertura']);
+      this.sucursalForm.controls['horario'].setValue(dataResponse.result['horario'] );
+      this.sucursalForm.controls['cap_max'].setValue(dataResponse.result['cap_max']);
+      this.sucursalForm.controls['provincia'].setValue(dataResponse.result['provincia']);
+      this.sucursalForm.controls['canton'].setValue(dataResponse.result['canton']);
+      this.sucursalForm.controls['distrito'].setValue(dataResponse.result['distrito']);
+      this.sucursalForm.controls['manager'].setValue(dataResponse.result['manager']);
+
+      for (let index = 0; index < dataResponse.result['telefonos'].length; index++){
+        control.push(new FormControl(dataResponse.result['telefonos'][index], Validators.required));
+      }
+
+      if(control.length>0)
+        control.removeAt(0);
+      
+      this.sucursalForm.controls['active_spa'].setValue(dataResponse.result['active_spa']);
+      this.sucursalForm.controls['active_store'].setValue(dataResponse.result['active_store']);
+
+      console.log(dataResponse.result);
+
+    }); 
     
   }
 
   // TODO: Enviar la ruta de la sucursal a eliminar
   eliminarSucursal(){
-    this.productIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');
-    console.log(this.productIdFromRoute);
+        
+    //Aqui se elimina la sucursal
+
+    this.router.navigate(['/sucursales']);
+
   }
 
 }
