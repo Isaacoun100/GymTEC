@@ -43,6 +43,8 @@ import { AgregarInventarioComponent } from './components/agregar-inventario/agre
 import { FormEquipoComponent } from './template/form-equipo/form-equipo.component';
 import { AsignarServicioComponent } from './components/asignar-servicio/asignar-servicio.component';
 import { FormInventarioComponent } from './template/form-inventario/form-inventario.component';
+import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.component';
+
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, NavbarComponent,
@@ -57,7 +59,8 @@ import { FormInventarioComponent } from './template/form-inventario/form-inventa
     CrearClaseComponent, AsociarProductoComponent, SidebarComponent,
     FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent,
     AgregarInventarioComponent, FormEquipoComponent, AsignarServicioComponent,
-    FormInventarioComponent],
+    FormInventarioComponent,
+    PanelClienteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -93,7 +96,8 @@ import { FormInventarioComponent } from './template/form-inventario/form-inventa
       {path:'productos/:productoNombre', component:EditarProductoComponent},
       {path:'agregarProducto', component:AgregarProductoComponent},
       {path:'registrarCita', component:RegistrarCitaComponent},
-      {path:'crearUsuario', component:CrearUsuarioComponent}
+      {path:'crearUsuario', component:CrearUsuarioComponent},
+      {path:'panelCliente', component:PanelClienteComponent}
 
     ])
 ],

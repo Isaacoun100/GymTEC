@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LoginClienteI } from 'src/app/models/login/login-cliente';
 import { ResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 import { LoginService } from 'src/app/service/login/login.service';
+import { Router} from '@angular/router';
+
 @Component({
   selector: 'app-login-cliente',
   templateUrl: './login-cliente.component.html',
@@ -11,7 +12,7 @@ import { LoginService } from 'src/app/service/login/login.service';
 })
 export class LoginClienteComponent {
 
-  
+
   loginForm = new FormGroup({
     correo: new FormControl('', {nonNullable: true}),
     password: new FormControl('', {nonNullable: true}),

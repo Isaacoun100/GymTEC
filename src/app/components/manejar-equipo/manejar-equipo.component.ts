@@ -15,7 +15,6 @@ export class ManejarEquipoComponent {
 
   agregarEquipo(){
     this.router.navigate(['agregarEquipo']);
-
   }
 
 }

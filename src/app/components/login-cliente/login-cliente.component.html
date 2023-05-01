@@ -21,6 +21,7 @@
                 
                         <div class="mb-4 mx-4">
                             <label for="correoLabel" class="form-label">Correo</label>
+
                             <input 
                                 type="email" 
                                 formControlName="correo"
@@ -38,9 +39,13 @@
                                 class="form-control" 
                                 placeholder="Constraseña" />
                         </div>
-            
+
                         <div class="mb-4 mx-4 centrado">
                             <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
+                        </div>
+                        
+                        <div class="mb-4 mx-4 centrado">
+                            <a class="btn btn-success" type="submit" href="crearUsuario">Registrar usuario</a>
                         </div>
             
                     </form>
