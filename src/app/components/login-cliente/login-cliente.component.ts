@@ -14,17 +14,17 @@ export class LoginClienteComponent {
 
 
   loginForm = new FormGroup({
-    correo: new FormControl('', {nonNullable: true}),
+    email: new FormControl('', {nonNullable: true}),
     password: new FormControl('', {nonNullable: true}),
   });
   constructor( private router : Router , private api: LoginService) { }
   
   loginCliente(form: LoginClienteI){
-    console.log(form.correo);
+    console.log(form.email);
     console.log(form.password);
     this.api.loginCliente(form).subscribe(data => {
       let dataResponse: ResponseTemplateI = data;
-      if(JSON.parse(JSON.stringify(dataResponse.result))['correo'] != ''){
+      if(JSON.parse(JSON.stringify(dataResponse.result))['email'] != ''){
         console.log(dataResponse.status);
         sessionStorage.setItem('client', JSON.stringify(data.result));
         this.router.navigate(['panelCliente']);
