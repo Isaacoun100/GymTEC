@@ -6,10 +6,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ProxyEmpleadoService {
-
-  private state = new BehaviorSubject<boolean>(true);
   
   private messageSource = new BehaviorSubject<FormGroup>(
+
     new FormGroup({
 
         cedula_empleado : new FormControl('', Validators.required),
@@ -29,7 +28,6 @@ export class ProxyEmpleadoService {
       })
     );
 
-    currentState = this.state.asObservable();
     currentEmployee = this.messageSource.asObservable();
     
 

@@ -14,8 +14,6 @@ export class EditarEmpleadoComponent implements OnInit {
   // TODO : El empleado de la base de datos (Se pide el id a la ruta)
   get_employee = get_employee;
 
-  isEmpty = false;
-
   empleadoForm = new FormGroup({
 
     cedula_empleado : new FormControl('', Validators.required),
@@ -49,9 +47,6 @@ export class EditarEmpleadoComponent implements OnInit {
     this.empleadoForm.controls['nombre_sucursal'].setValue(get_employee.result.nombre_sucursal);
     this.empleadoForm.controls['puesto_descripcion'].setValue(get_employee.result.puesto_descripcion);
     this.empleadoForm.controls['planilla_descripcion'].setValue(get_employee.result.planilla_descripcion);
-
-    this.proxyEmpleadoService.currentState.subscribe( isEmpty => this.isEmpty = isEmpty );
-    this.isEmpty = false;
     
   }
 

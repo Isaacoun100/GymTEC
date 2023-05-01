@@ -5,6 +5,7 @@ import { get_all_positions } from 'src/app/examples';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { branches } from 'src/app/examples';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-empleado',
@@ -20,8 +21,6 @@ export class FormEmpleadoComponent implements OnInit {
   
   // TODO : Solicitar los puestos de la base de datos
   get_all_positions = get_all_positions;
-
-  isEmpty = true;
 
   empleadoForm = new FormGroup({
     cedula_empleado: new FormControl('', Validators.required),
@@ -39,24 +38,28 @@ export class FormEmpleadoComponent implements OnInit {
     planilla_descripcion: new FormControl('', Validators.required),
   });
 
-  constructor(private proxyEmpleadoService: ProxyEmpleadoService) {}
+  constructor(
+    private proxyEmpleadoService: ProxyEmpleadoService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
-    this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm)
-    this.proxyEmpleadoService.currentState.subscribe(isEmpty => this.isEmpty = isEmpty) 
+    this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm);
   }
 
   // TODO : Enviar el formulario a la base de datos
   editarEmpleado(form:AddEmployee ){
 
+    console.log(this.router.url);
+
     //Este es el de crear
-    if(this.isEmpty){
-      console.log('The form is empty');
+    if(this.router.url === '/agregarEmpleado'){
+      console.log('Estoy en agregar empleado');
     }
 
     //Este es el de editar
     else{
-      console.log('The form is open');
+      console.log('Estoy en editar empleado');
     }
 
     console.log(form);
