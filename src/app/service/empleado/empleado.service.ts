@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListEmployeesI } from '../../models/responseTemplate.interface';
 import { AddEmployee } from 'src/app/models/employee/add-employee';
 import { GetEmployee } from '../../models/employee/get-employee';
 
@@ -16,9 +16,9 @@ export class EmpleadoService {
 
   constructor(private http: HttpClient) {}
 
-  getAllEmployees(): Observable<ResponseTemplateI> {
+  getAllEmployees(): Observable<ResponseTemplateListEmployeesI> {
     let address = this.url + 'get_all_employees';
-    return this.http.get<ResponseTemplateI>(address);
+    return this.http.get<ResponseTemplateListEmployeesI>(address);
   }
 
   getEmployee(cedula_empleado: GetEmployee): Observable<ResponseTemplateI> {

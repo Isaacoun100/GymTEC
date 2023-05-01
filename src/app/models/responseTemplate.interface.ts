@@ -1,4 +1,35 @@
+import { Payroll } from "./payroll/get-payroll";
+import { Branch } from "./branch/get-branch";
+import { Employees } from "./employee/get-employee";
+import { Inventory } from "./inventory/get-inventory";
+import { Product } from "./product/get-product";
 export interface ResponseTemplateI {
   status: string;
-  result: any;
+  result: JSON;
 }
+
+export interface ResponseTemplateListI{
+  status: string;
+  result: Array<Payroll>;
+}
+
+export interface ResponseTemplateListBranchesI{
+  status: string;
+  result: Array<Branch>;
+}
+
+export interface ResponseTemplateListEmployeesI{
+  status: string;
+  result: Array<Employees>;
+}
+
+export interface ResponseTemplateListInventoryI{
+  status: string;
+  result: Array<Inventory>;
+}
+
+export interface ResponseTemplateListProductI{
+  status: string;
+  result: Array<Product>;
+}
+

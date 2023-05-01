@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListProductI } from '../../models/responseTemplate.interface';
 import { AddProduct } from 'src/app/models/product/add-product';
 import { AssociateProduct } from 'src/app/models/product/associate-product';
 import { GetProduct } from 'src/app/models/product/get-product';
@@ -17,9 +17,9 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {}
 
-  getAllProducts(): Observable<ResponseTemplateI> {
+  getAllProducts(): Observable<ResponseTemplateListProductI> {
     let address = this.url + 'get_all_products';
-    return this.http.get<ResponseTemplateI>(address);
+    return this.http.get<ResponseTemplateListProductI>(address);
   }
 
   getProduct(codigo_barras: GetProduct): Observable<ResponseTemplateI> {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListInventoryI } from '../../models/responseTemplate.interface';
 import { AddInventory } from 'src/app/models/inventory/add-inventory';
 import { GetInventory } from 'src/app/models/inventory/get-inventory';
 import { AssociateInventory } from 'src/app/models/inventory/associate-inventory';
@@ -17,9 +17,9 @@ export class InventarioService {
 
   constructor(private http: HttpClient) {}
 
-  getAllInventories(): Observable<ResponseTemplateI> {
+  getAllInventories(): Observable<ResponseTemplateListInventoryI> {
     let address = this.url + 'get_all_inventories';
-    return this.http.get<ResponseTemplateI>(address);
+    return this.http.get<ResponseTemplateListInventoryI>(address);
   }
 
   getInventory(num_serie: GetInventory): Observable<ResponseTemplateI> {

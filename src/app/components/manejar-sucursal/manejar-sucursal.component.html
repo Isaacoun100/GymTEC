@@ -10,14 +10,14 @@
 
             <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
         
-                <div *ngFor="let product of branches; let i=index">
+                <div *ngFor="let branch of branches; let i=index">
         
                     <li class="list-group-item">
         
                         <h4>
         
-                            <a [routerLink]="['/sucursales', branches[i].sucursal]">
-                                <div>{{ branches[i].sucursal }}</div>
+                            <a [routerLink]="['/sucursales', branch.nombre_sucursal]">
+                                <div>{{ branch.nombre_sucursal }}</div>
                             </a>
         
                         </h4>

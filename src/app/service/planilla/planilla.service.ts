@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListI } from '../../models/responseTemplate.interface';
 import { GetPayroll } from 'src/app/models/payroll/get-payroll';
 import { get_all_payrolls } from 'src/app/examples';
 
@@ -22,9 +22,9 @@ export class PlanillaService {
     return this.http.post<ResponseTemplateI>(address, form);
   }
 
-  getAllPayrolls(): Observable<ResponseTemplateI> {
+  getAllPayrolls(): Observable<ResponseTemplateListI> {
     let address = this.url + 'get_all_payrolls';
 
-    return this.http.get<ResponseTemplateI>(address);
+    return this.http.get<ResponseTemplateListI>(address);
   }
 }

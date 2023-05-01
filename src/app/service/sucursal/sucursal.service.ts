@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListBranchesI } from '../../models/responseTemplate.interface';
 import { GetBranch } from 'src/app/models/branch/get-branch';
 import { AddBranch } from 'src/app/models/branch/add-branch';
 
@@ -16,9 +16,9 @@ export class SucursalService {
 
   constructor(private http: HttpClient) {}
 
-  getAllBranches(): Observable<ResponseTemplateI> {
-    let address = this.url + 'get_branch';
-    return this.http.get<ResponseTemplateI>(address);
+  getAllBranches(): Observable<ResponseTemplateListBranchesI> {
+    let address = this.url + 'get_all_branches';
+    return this.http.get<ResponseTemplateListBranchesI>(address);
   }
 
   getSingleBranch(nombre_sucursal: GetBranch): Observable<ResponseTemplateI> {
