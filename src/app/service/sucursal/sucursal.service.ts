@@ -22,7 +22,7 @@ export class SucursalService {
   }
 
   getSingleBranch(nombre_sucursal: GetBranch): Observable<BranchResponseTemplateI> {
-    let address = this.url + 'getBranch';
+    let address = this.url + 'get_branch';
     return this.http.post<BranchResponseTemplateI>(address, nombre_sucursal);
   }
 
