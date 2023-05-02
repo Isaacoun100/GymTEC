@@ -1,4 +1,5 @@
 <div class="container">
+
         
     <!--Aquí editar el form tag para que contenga el [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)"-->
     <form [formGroup]="sucursalForm" (ngSubmit)="editarSucursal(sucursalForm.getRawValue())">
@@ -158,7 +159,7 @@
                                 
                                 <ng-container *ngFor="let telefono of sucursalForm.get('telefonos')?.getRawValue(); index as i; trackBy:trackByFn">
     
-                                    <div class="container-fluid">
+                                    <div class="container">
     
                                         <div class="row py-1">
         

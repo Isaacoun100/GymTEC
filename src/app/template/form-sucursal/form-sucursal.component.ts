@@ -11,15 +11,14 @@ import { AddBranch } from './../../models/branch/add-branch';
 })
 export class FormSucursalComponent implements OnInit {
 
-  isEmpty : boolean | undefined;
-
+  
   options = [
     {value: true, name: 'Activado'},
     {value: false, name: 'Desactivado'}
   ];
-
+  
   sucursalForm = new FormGroup({
-      
+    
     nombre_sucursal: new FormControl('', Validators.required),
     fecha_apertura: new FormControl('', Validators.required),
     horario: new FormControl('', Validators.required),
@@ -39,10 +38,9 @@ export class FormSucursalComponent implements OnInit {
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm);
-    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
   }
   
-  trackByFn(index: any, item: any) {
+  trackByFn(index: number, item: any) {
     return index;
   }
 
