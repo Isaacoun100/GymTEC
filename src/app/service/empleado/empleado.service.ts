@@ -38,7 +38,7 @@ export class EmpleadoService {
     return this.http.post<ResponseTemplateI>(address, form);
   }
 
-  deleteBranch(cedula_empleado: GetEmployee): Observable<ResponseTemplateI> {
+  deleteEmpleado(cedula_empleado: GetEmployee): Observable<ResponseTemplateI> {
     let address = this.url + 'delete_employee';
     let Options = {
       headers: new HttpHeaders({

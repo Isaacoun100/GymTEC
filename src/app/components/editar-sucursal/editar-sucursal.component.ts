@@ -56,13 +56,13 @@ export class EditarSucursalComponent implements OnInit {
   updateSucursal(){
 
     console.log(this.sucursalIdFromRoute);
-
     
     const e: GetBranch = {nombre_sucursal: this.sucursalIdFromRoute};
 
     console.log(e);
 
     this.api.getSingleBranch(e).subscribe(data => {
+      
       let dataResponse: BranchResponseTemplateI = data;
 
       const control = <FormArray> this.sucursalForm.controls['telefonos'];
@@ -92,13 +92,13 @@ export class EditarSucursalComponent implements OnInit {
     
   }
 
-  // TODO: Enviar la ruta de la sucursal a eliminar
   eliminarSucursal(){
+    const d: GetBranch = {nombre_sucursal: this.sucursalIdFromRoute};
+    this.api.deleteBranch(d).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/sucursales']);
+    });
         
-    //Aqui se elimina la sucursal
-
-    this.router.navigate(['/sucursales']);
-
   }
 
 }

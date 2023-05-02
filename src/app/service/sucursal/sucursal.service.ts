@@ -33,13 +33,13 @@ export class SucursalService {
   }
 
   updateBranch(form: AddBranch): Observable<ResponseTemplateI> {
-    let address = this.url + 'add_branch';
+    let address = this.url + 'update_branch';
 
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
   deleteBranch(nombre_sucursal: GetBranch): Observable<ResponseTemplateI> {
-    let address = this.url + 'add_branch';
+    let address = this.url + 'delete_branch';
     let Options = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',

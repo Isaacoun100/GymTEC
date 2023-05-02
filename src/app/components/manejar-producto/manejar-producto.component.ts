@@ -29,6 +29,7 @@ export class ManejarProductoComponent {
         let product = new Product(
           dataResponse.result[index].nombre_producto,
           dataResponse.result[index].costo,
+          dataResponse.result[index].codigo_barras,
         );
         this.products.push(product);
       }

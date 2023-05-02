@@ -5,10 +5,19 @@ import { Branch } from "./branch/get-branch";
 import { Employees } from "./employee/get-employee";
 import { Inventory } from "./inventory/get-inventory";
 import { Product } from "./product/get-product";
+import { AddProduct } from './product/add-product';
+import { AddInventory } from './inventory/add-inventory';
+
+// Singel
 
 export interface ResponseTemplateI {
   status: string;
   result: JSON;
+}
+
+export interface EmployeeResponseTemplateI {
+  status: string;
+  result: AddEmployee;
 }
 
 export interface BranchResponseTemplateI {
@@ -16,10 +25,17 @@ export interface BranchResponseTemplateI {
   result: AddBranch;
 }
 
-export interface EmployeeResponseTemplateI {
+export interface ProductResponseTemplateI{
   status: string;
-  result: AddEmployee;
+  result: AddProduct;
 }
+
+export interface InventoryResponseTemplateI{
+  status: string;
+  result: AddInventory;
+}
+
+// Multiple
 
 export interface ResponseTemplateListI{
   status: string;
@@ -45,4 +61,5 @@ export interface ResponseTemplateListProductI{
   status: string;
   result: Array<Product>;
 }
+
 

@@ -2,6 +2,7 @@ import { ProxyProductoService } from 'src/app/service/producto/proxy-producto.se
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddProduct } from 'src/app/models/product/add-product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-producto',
@@ -17,7 +18,9 @@ export class FormProductoComponent {
     descripcion: new FormControl('', Validators.required),
   });
 
-  constructor(private proxyProductoService: ProxyProductoService) {}
+  constructor(
+    private proxyProductoService: ProxyProductoService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.proxyProductoService.currentProduct.subscribe(
@@ -29,7 +32,7 @@ export class FormProductoComponent {
   editarProducto(form: AddProduct) {
     
     //Este es el de crear
-    if(true){}
+    if(this.router.url === '/agregarProducto'){}
 
     //Este es el de editar
     else{}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI, ResponseTemplateListInventoryI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListInventoryI, InventoryResponseTemplateI } from '../../models/responseTemplate.interface';
 import { AddInventory } from 'src/app/models/inventory/add-inventory';
 import { GetInventory } from 'src/app/models/inventory/get-inventory';
 import { AssociateInventory } from 'src/app/models/inventory/associate-inventory';
@@ -22,9 +22,9 @@ export class InventarioService {
     return this.http.get<ResponseTemplateListInventoryI>(address);
   }
 
-  getInventory(num_serie: GetInventory): Observable<ResponseTemplateI> {
+  getInventory(num_serie: GetInventory): Observable<InventoryResponseTemplateI> {
     let address = this.url + 'get_inventory';
-    return this.http.post<ResponseTemplateI>(address, num_serie);
+    return this.http.post<InventoryResponseTemplateI>(address, num_serie);
   }
 
   addInventory(form: AddInventory) {
@@ -44,7 +44,7 @@ export class InventarioService {
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
-  deleteBranch(num_serie: GetInventory): Observable<ResponseTemplateI> {
+  deleteInventory(num_serie: GetInventory): Observable<ResponseTemplateI> {
     let address = this.url + 'delete_inventory';
     let Options = {
       headers: new HttpHeaders({

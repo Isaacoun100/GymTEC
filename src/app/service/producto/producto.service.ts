@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI, ResponseTemplateListProductI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListProductI, ProductResponseTemplateI } from '../../models/responseTemplate.interface';
 import { AddProduct } from 'src/app/models/product/add-product';
 import { AssociateProduct } from 'src/app/models/product/associate-product';
 import { GetProduct } from 'src/app/models/product/get-product';
@@ -19,35 +19,36 @@ export class ProductoService {
 
   getAllProducts(): Observable<ResponseTemplateListProductI> {
     let address = this.url + 'get_all_products';
+
     return this.http.get<ResponseTemplateListProductI>(address);
   }
 
-  getProduct(codigo_barras: GetProduct): Observable<ResponseTemplateI> {
-    let address = this.url + 'get_product ';
+  getProduct(codigo_barras: GetProduct): Observable<ProductResponseTemplateI> {
+    let address = this.url + 'get_product';
 
-    return this.http.post<ResponseTemplateI>(address, codigo_barras);
+    return this.http.post<ProductResponseTemplateI>(address, codigo_barras);
   }
 
   addProduct(form: AddProduct): Observable<ResponseTemplateI> {
-    let address = this.url + 'add_product ';
+    let address = this.url + 'add_product';
 
     return this.http.post<ResponseTemplateI>(address, form);
   }
 
   updateProduct(form: AddProduct): Observable<ResponseTemplateI> {
-    let address = this.url + 'update_product ';
+    let address = this.url + 'update_product';
 
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
   associateProduct(form: AssociateProduct): Observable<ResponseTemplateI> {
-    let address = this.url + 'associate_product  ';
+    let address = this.url + 'associate_product';
 
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
   deleteBranch(codigo_barras: GetProduct): Observable<ResponseTemplateI> {
-    let address = this.url + 'delete_product ';
+    let address = this.url + 'delete_product';
     let Options = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',

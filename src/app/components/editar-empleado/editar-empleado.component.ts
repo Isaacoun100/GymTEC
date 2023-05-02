@@ -71,7 +71,11 @@ export class EditarEmpleadoComponent implements OnInit {
 
   // TODO : Eliminar el empleado usando la ruta
   eliminarEmpleado(){
-    console.log('Empleado eliminado');
+    const d: GetEmployee = {cedula_empleado: this.empleadoIdFromRoute};
+    this.api.deleteEmpleado(d).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/empleados']);
+    });
   }
 
 }

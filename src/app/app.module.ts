@@ -82,7 +82,7 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
       {path:'empleados/:empleadoCedula', component:EditarEmpleadoComponent},
       {path:'agregarEmpleado', component:AgregarEmpleadoComponent},
       {path:'asignarServicio', component: AsignarServicioComponent},
-      {path:'inventario/:inventarioNombre', component:EditarInventarioComponent},
+      {path:'inventario/:inventarioCodigo', component:EditarInventarioComponent},
       {path:'agregarInventario', component:AgregarInventarioComponent},
       {path:'productos/:productoNombre', component:EditarProductoComponent},
       {path:'agregarProducto', component:AgregarProductoComponent},

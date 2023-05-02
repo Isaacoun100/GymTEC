@@ -1,8 +1,13 @@
-import { get_producto } from './../../examples';
 import { ProxyProductoService } from 'src/app/service/producto/proxy-producto.service';
-import { Component, OnInit } from '@angular/core';
+import { AddProduct } from 'src/app/models/product/add-product';
+import { ProductoService } from 'src/app/service/producto/producto.service';
+import { ProductResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { GetProduct } from 'src/app/models/product/get-product';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { get_producto } from './../../examples';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-producto',
@@ -11,10 +16,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditarProductoComponent implements OnInit {
 
-  productIdFromRoute: string | null | undefined ;
+  productIdFromRoute: string | null;
 
   // Agregar los productos de la base de datos
-  get_producto = get_producto;
+  productoRequest : GetProduct | undefined;
 
   productoForm = new FormGroup({
     codigo_barras: new FormControl('', Validators.required),
@@ -25,14 +30,16 @@ export class EditarProductoComponent implements OnInit {
 
   constructor(
     private proxyProductoService: ProxyProductoService,
-    private route:ActivatedRoute
-    ) {}
+    private route:ActivatedRoute,
+    private router: Router,
+    private api: ProductoService) {
+      this.productIdFromRoute = this.route.snapshot.paramMap.get('productoNombre');
+    }
 
   ngOnInit(): void {
-    this.proxyProductoService.currentProduct.subscribe(
-      (productoForm) => (this.productoForm = productoForm));
-      this.productoForm.reset();
-      this.updateProducto();
+    this.proxyProductoService.currentProduct.subscribe( (productoForm) => (this.productoForm = productoForm));
+    this.productoForm.reset();
+    this.updateProducto();
   }
 
   ngOnDestroy(){
@@ -41,18 +48,32 @@ export class EditarProductoComponent implements OnInit {
 
   
   updateProducto(){
-    
-    this.productoForm.controls['codigo_barras'].setValue(get_producto.result.codigo_barras);
-    this.productoForm.controls['nombre_producto'].setValue(get_producto.result.nombre_producto);
-    this.productoForm.controls['costo'].setValue(get_producto.result.costo);
-    this.productoForm.controls['descripcion'].setValue(get_producto.result.descripcion);
+
+    console.log(this.productIdFromRoute);
+
+    const e: GetProduct = {codigo_barras: this.productIdFromRoute};
+
+    this.api.getProduct(e).subscribe(data => {
+
+      let dataResponse : ProductResponseTemplateI = data;
+
+      console.log(dataResponse);
+
+      this.productoForm.setValue(dataResponse.result);
+
+    });
     
   }
   
+
   // Eliminar producto de la base de datos
   eliminarProducto() {
-    this.productIdFromRoute = this.route.snapshot.paramMap.get('productoNombre');
-    console.log(this.productIdFromRoute);
+    const d: GetProduct = {codigo_barras: this.productIdFromRoute};
+    this.api.deleteBranch(d).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/productos']);
+    });
+        
   }
   
 }

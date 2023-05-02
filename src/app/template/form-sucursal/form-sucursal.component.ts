@@ -3,6 +3,8 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ProxySucursalService } from 'src/app/service/sucursal/proxy-sucursal.service';
 import { AddBranch } from './../../models/branch/add-branch';
+import { Router } from '@angular/router';
+import { InventarioService } from 'src/app/service/inventario/inventario.service';
 
 @Component({
   selector: 'app-form-sucursal',
@@ -34,7 +36,11 @@ export class FormSucursalComponent implements OnInit {
     active_store: new FormControl(this.options[0].value, Validators.required),
   })
 
-  constructor( private data: ProxySucursalService, ){}
+  constructor( 
+    private data: ProxySucursalService,
+    private router: Router,
+    private api: InventarioService
+     ){}
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm);
@@ -53,10 +59,14 @@ export class FormSucursalComponent implements OnInit {
   editarSucursal(form:AddBranch){
 
     //Este es el de crear
-    if(true){}
+    if(this.router.url === '/agregarSucursal'){
+     // this.
+    }
 
     //Este es el de editar
-    else{}
+    else{
+      
+    }
 
     console.log(form);
 

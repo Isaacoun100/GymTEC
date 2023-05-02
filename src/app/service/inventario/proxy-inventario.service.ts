@@ -12,8 +12,7 @@ export class ProxyInventarioService {
       marca: new FormControl('', Validators.required),
       costo: new FormControl('', Validators.required),
       is_used: new FormControl(false, Validators.required),
-      tipo_equipo: new FormControl('', Validators.required),
-      nombre_sucursal: new FormControl('', Validators.required),
+      tipo_equipo: new FormControl('', Validators.required)
     })
   );
 

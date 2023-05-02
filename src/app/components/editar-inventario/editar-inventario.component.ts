@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { get_inventory } from 'src/app/examples';
 import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventario.service';
+import { GetInventory, Inventory } from 'src/app/models/inventory/get-inventory';
+import { InventarioService } from 'src/app/service/inventario/inventario.service';
+import { InventoryResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-editar-inventario',
@@ -12,7 +15,7 @@ import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventa
 })
 export class EditarInventarioComponent {
 
-  productIdFromRoute: string | null | undefined ;
+  inventarioIdFromRoute: string | null | undefined ;
 
   // TODO : Solicitar el inventario de la base de datos
   get_inventory = get_inventory;
@@ -27,8 +30,11 @@ export class EditarInventarioComponent {
 
   constructor(
     private proxyInventarioService: ProxyInventarioService,
-    private route:ActivatedRoute
-    ) {}
+    private route:ActivatedRoute,
+    private router: Router,
+    private api: InventarioService ){
+      this.inventarioIdFromRoute = this.route.snapshot.paramMap.get('inventarioCodigo');
+    }
 
   ngOnInit(): void {
     this.proxyInventarioService.currentInventory.subscribe(
@@ -39,9 +45,12 @@ export class EditarInventarioComponent {
 
   // TODO : Eliminar el inventario de la base de datos
   eliminarInventario(){
-    // Get route parameter
-    this.productIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');
-    console.log(this.inventarioForm);
+    let numberValue = Number(this.inventarioIdFromRoute);
+    const d: GetInventory = {num_serie: numberValue};
+    this.api.deleteInventory(d).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/inventario']);
+    });
   }
 
   ngOnDestroy(){
@@ -49,12 +58,15 @@ export class EditarInventarioComponent {
   }
 
   updateInventario(){
-    
-    this.inventarioForm.controls['num_serie'].setValue(get_inventory.num_serie);
-    this.inventarioForm.controls['marca'].setValue(get_inventory.marca);
-    this.inventarioForm.controls['costo'].setValue(get_inventory.costo);
-    this.inventarioForm.controls['is_used'].setValue(get_inventory.is_used);
-    this.inventarioForm.controls['tipo_equipo'].setValue(get_inventory.tipo_equipo);
+
+    console.log(this.inventarioIdFromRoute);
+
+    const e: GetInventory = {num_serie: Number(this.inventarioIdFromRoute)};
+
+    this.api.getInventory(e).subscribe(data => {
+      let dataResponse : InventoryResponseTemplateI = data;
+      this.inventarioForm.setValue(dataResponse.result);
+    });
   }
 
 }
