@@ -1,10 +1,11 @@
+import { AddEmployee } from './../../models/employee/add-employee';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ResponseTemplateI, ResponseTemplateListEmployeesI } from '../../models/responseTemplate.interface';
-import { AddEmployee } from 'src/app/models/employee/add-employee';
 import { GetEmployee } from '../../models/employee/get-employee';
+import { EmployeeResponseTemplateI } from '../../models/responseTemplate.interface';
 
 import * as myGlobals from '../../../../src/app/globals';
 
@@ -21,15 +22,13 @@ export class EmpleadoService {
     return this.http.get<ResponseTemplateListEmployeesI>(address);
   }
 
-  getEmployee(cedula_empleado: GetEmployee): Observable<ResponseTemplateI> {
+  getEmployee(cedula_empleado: GetEmployee): Observable<EmployeeResponseTemplateI> {
     let address = this.url + 'get_employee';
-
-    return this.http.post<ResponseTemplateI>(address, cedula_empleado);
+    return this.http.post<EmployeeResponseTemplateI>(address, cedula_empleado);
   }
 
   addEmployee(form: AddEmployee): Observable<ResponseTemplateI> {
     let address = this.url + 'add_employee';
-
     return this.http.post<ResponseTemplateI>(address, form);
   }
 

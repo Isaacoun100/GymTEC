@@ -3,7 +3,10 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ProxyEmpleadoService } from 'src/app/service/empleado/proxy-empleado.service';
 import { get_employee } from 'src/app/examples';
-import { GetBranch } from 'src/app/models/branch/get-branch';
+import { EmpleadoService } from 'src/app/service/empleado/empleado.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GetEmployee } from 'src/app/models/employee/get-employee';
+import { EmployeeResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-editar-empleado',
@@ -11,9 +14,9 @@ import { GetBranch } from 'src/app/models/branch/get-branch';
   styleUrls: ['./editar-empleado.component.scss'],
 })
 export class EditarEmpleadoComponent implements OnInit {
+  
+  empleadoIdFromRoute: string | null ;
 
-  // TODO : El empleado de la base de datos (Se pide el id a la ruta)
-  get_employee = get_employee;
   empleadoForm = new FormGroup({
 
     cedula_empleado : new FormControl('', Validators.required),
@@ -33,24 +36,28 @@ export class EditarEmpleadoComponent implements OnInit {
   });
 
   updateEmployee(){
+
+    console.log(this.empleadoIdFromRoute);
+
+    const e: GetEmployee = {cedula_empleado : this.empleadoIdFromRoute};
+
+    this.api.getEmployee(e).subscribe((data) => {
+      let dataResponse: EmployeeResponseTemplateI = data;
+      this.empleadoForm.setValue(dataResponse.result);
+      console.log(dataResponse);
+
+    });
     
-    this.empleadoForm.controls['cedula_empleado'].setValue(get_employee.result.cedula_empleado);
-    this.empleadoForm.controls['nombre'].setValue(get_employee.result.nombre);
-    this.empleadoForm.controls['apellido_1'].setValue(get_employee.result.apellido_1);
-    this.empleadoForm.controls['apellido_2'].setValue(get_employee.result.apellido_2);
-    this.empleadoForm.controls['provincia'].setValue(get_employee.result.provincia);
-    this.empleadoForm.controls['canton'].setValue(get_employee.result.canton);
-    this.empleadoForm.controls['distrito'].setValue(get_employee.result.distrito);
-    this.empleadoForm.controls['salario'].setValue(get_employee.result.salario);
-    this.empleadoForm.controls['correo'].setValue(get_employee.result.correo);
-    this.empleadoForm.controls['password'].setValue(get_employee.result.password);
-    this.empleadoForm.controls['nombre_sucursal'].setValue(get_employee.result.nombre_sucursal);
-    this.empleadoForm.controls['puesto_descripcion'].setValue(get_employee.result.puesto_descripcion);
-    this.empleadoForm.controls['planilla_descripcion'].setValue(get_employee.result.planilla_descripcion);
     
   }
 
-  constructor(private proxyEmpleadoService: ProxyEmpleadoService) {}
+  constructor(
+    private proxyEmpleadoService: ProxyEmpleadoService,
+    private api: EmpleadoService,
+    private route:ActivatedRoute,
+    private router: Router) {
+      this.empleadoIdFromRoute = this.route.snapshot.paramMap.get('empleadoCedula');
+    }
 
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe( empleadoForm => this.empleadoForm = empleadoForm);

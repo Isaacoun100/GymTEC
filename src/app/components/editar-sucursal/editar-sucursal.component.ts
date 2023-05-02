@@ -13,8 +13,6 @@ import { BranchResponseTemplateI } from 'src/app/models/responseTemplate.interfa
 })
 export class EditarSucursalComponent implements OnInit {
 
-  isEmpty= false;
-
   sucursalIdFromRoute: string | null ;
 
   sucursalRequest : GetBranch | undefined;
@@ -46,7 +44,6 @@ export class EditarSucursalComponent implements OnInit {
   
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
-    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
     this.sucursalForm.reset();
     this.updateSucursal();
   }
@@ -57,10 +54,15 @@ export class EditarSucursalComponent implements OnInit {
   }
 
   updateSucursal(){
-    let nombre_sucursal = this.sucursalIdFromRoute;
+
+    console.log(this.sucursalIdFromRoute);
+
     
-    this.sucursalRequest = {'nombre_sucursal': nombre_sucursal} 
-    this.api.getSingleBranch(this.sucursalRequest).subscribe(data => {
+    const e: GetBranch = {nombre_sucursal: this.sucursalIdFromRoute};
+
+    console.log(e);
+
+    this.api.getSingleBranch(e).subscribe(data => {
       let dataResponse: BranchResponseTemplateI = data;
 
       const control = <FormArray> this.sucursalForm.controls['telefonos'];
@@ -84,7 +86,7 @@ export class EditarSucursalComponent implements OnInit {
       this.sucursalForm.controls['active_spa'].setValue(dataResponse.result['active_spa']);
       this.sucursalForm.controls['active_store'].setValue(dataResponse.result['active_store']);
 
-      console.log(dataResponse.result);
+      console.log(dataResponse);
 
     }); 
     
