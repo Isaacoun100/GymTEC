@@ -42,19 +42,24 @@
 
         <div class="row py-4">
 
-            <ul class="list-group overflow-auto shadow" style="max-height:calc(100vh - 200px);">
+            <ul class="list-group overflow-auto shadow" style="max-height:calc(100vh - 250px);">
             
                 <div *ngFor="let class of classes; let i=index">
-            
+
                     <li class="list-group-item">
-        
-                        <h4>
-                            <div> Clase {{ class.clase_id }} </div>
-                            <div> Servicio {{ class.servicio }} </div>
-                        </h4>
-                        
+
+                        <a (click)="matricularCita(class.clase_id)">
+
+                            <div> Clase {{ class.clase_id }} {{ class.servicio }} </div>
+                            <div> Modo {{ class.modo }}</div>
+                            <div> Cupos {{ class.capacidad }}</div>
+                            <div> Fecha {{ class.fecha }}</div>
+                            <div> Hora {{ class.hora_ingreso }}</div>
+
+                        </a>
+
                     </li>
-        
+
                 </div>
 
             </ul>

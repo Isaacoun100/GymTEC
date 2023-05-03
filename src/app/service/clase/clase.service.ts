@@ -32,7 +32,7 @@ export class ClaseService {
   enrollClass(form: EnrollClass): Observable<ResponseTemplateI> {
     let address = this.url + 'enroll_class';
 
-    return this.http.put<ResponseTemplateI>(address, form);
+    return this.http.post<ResponseTemplateI>(address, form);
   }
 
   solicitarCitas(form: RequestClassI) : Observable<ResponseTemplateListClassI> {

@@ -1,5 +1,5 @@
 export class Clase {
-    clase_id : number | null;
+    clase_id : number;
     servicio : string | null;
     modo : string | null;
     capacidad : number | null;
