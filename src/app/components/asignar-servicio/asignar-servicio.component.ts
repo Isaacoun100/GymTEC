@@ -1,6 +1,10 @@
+import { AssignResponseTemplateI, ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
+import { ServicioService } from 'src/app/service/servicio/servicio.service';
+import { SucursalService } from './../../service/sucursal/sucursal.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { branches, services } from 'src/app/examples';
+import { services } from 'src/app/examples';
+import { Branch } from 'src/app/models/branch/get-branch';
 
 @Component({
   selector: 'app-asignar-servicio',
@@ -11,25 +15,51 @@ export class AsignarServicioComponent implements OnInit {
 
 
   // TODO : Get the branches from the API
-  branches = branches;
+  branches = new Array<Branch>();
 
   // TODO : Get the services from the API
   services = services;
 
-
   asignarServicioForm = new FormGroup({
-    nombre_sucursal: new FormControl(null, Validators.required),
+    sucursal: new FormControl(null, Validators.required),
     servicio: new FormControl(null, Validators.required)
     });
 
-  constructor() { }
+  constructor( 
+    private sucursalService: SucursalService,
+    private servicioService: ServicioService ){
+    this.updateBranches();
+  }
+
+  updateBranches(){
+    this.sucursalService.getAllBranches().subscribe((data) => {
+      let dataResponse: ResponseTemplateListBranchesI = data;
+      console.log('Lista sucurales: ', dataResponse);
+      this.branches = dataResponse.result;
+    });
+  }
 
   ngOnInit(): void {}
 
   // TODO : Enviar el formulario a la base de datos
   asignarServicio(form:any){
 
-    console.log(form);
+    console.log('Formulario: ', form);
+
+    this.servicioService.assignService(form).subscribe((data) => {
+      let dataResponse: AssignResponseTemplateI = data;
+
+      if (dataResponse.status == 'ok'){
+        console.log('Servicio asignado correctamente');
+        alert('Servicio asignado correctamente');
+      }
+      else{
+        console.log('Error al asignar el servicio');
+        alert('Error al asignar el servicio');
+      }
+
+    });
+
   }
 
   /**
@@ -37,7 +67,7 @@ export class AsignarServicioComponent implements OnInit {
    * @param e 
    */
   cambiarNombreSucursal(e: any) {
-    this.asignarServicioForm.controls['nombre_sucursal']?.setValue(e.target.value, {
+    this.asignarServicioForm.controls['sucursal']?.setValue(e.target.value, {
       onlySelf: true,
     });
   }

@@ -1,5 +1,8 @@
 export interface AddService {
-  nombre_sucursal: string | null;
+  sucursal: string | null;
   servicio: string | null;
-  descripcion: string | null;
+}
+
+export interface Service {
+  servicio: string | null;
 }

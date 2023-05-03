@@ -1,11 +1,12 @@
 import { ProxyEmpleadoService } from './../../service/empleado/proxy-empleado.service';
 import { AddEmployee } from 'src/app/models/employee/add-employee';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
-import { get_all_positions } from 'src/app/examples';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { branches } from 'src/app/examples';
 import { Router } from '@angular/router';
+import { Branch} from 'src/app/models/branch/get-branch';
+import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
+import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-form-empleado',
@@ -17,10 +18,7 @@ import { Router } from '@angular/router';
 export class FormEmpleadoComponent implements OnInit {
 
   // TODO : Solicitar las sucursales de la base de datos
-  branches = branches;
-  
-  // TODO : Solicitar los puestos de la base de datos
-  get_all_positions = get_all_positions;
+  branches = new Array<Branch>();
 
   empleadoForm = new FormGroup({
     cedula_empleado: new FormControl('', Validators.required),
@@ -39,13 +37,25 @@ export class FormEmpleadoComponent implements OnInit {
   });
 
   constructor(
-    private proxyEmpleadoService: ProxyEmpleadoService,
-    private router: Router
-    ) {}
+  private proxyEmpleadoService: ProxyEmpleadoService,
+  private router: Router,
+  private api: SucursalService) {
+    this.updateBranches();
+  }
+  
+  updateBranches(){
+    this.api.getAllBranches().subscribe((data) => {
+      let dataResponse: ResponseTemplateListBranchesI = data;
+      console.log('Lista sucurales: ', dataResponse);
+      this.branches = dataResponse.result;
+    });
+  }
 
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm);
   }
+
+    
 
   // TODO : Enviar el formulario a la base de datos
   editarEmpleado(form:AddEmployee ){

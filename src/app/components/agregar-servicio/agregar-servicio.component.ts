@@ -1,9 +1,10 @@
-import { AddService as sendService } from 'src/app/service/servicio/servicio.service';
+ import { AddService as sendService } from 'src/app/service/servicio/servicio.service';
 import { branches, services } from 'src/app/examples';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AddService } from 'src/app/models/services/add-service';
+import { Service} from 'src/app/models/services/add-service';
+import { ServicioService } from 'src/app/service/servicio/servicio.service';
 
 @Component({
   selector: 'app-agregar-servicio',
@@ -16,14 +17,27 @@ export class AgregarServicioComponent implements OnInit {
     descripcion: new FormControl('', Validators.required)
     });
 
-  constructor( private route: ActivatedRoute) { }
+  constructor( 
+    private route: ActivatedRoute,
+    private api: ServicioService
+    ) { }
 
   ngOnInit(): void {}
 
   // TODO : Enviar el formulario a la API
   agregarServicio(form:any){
-    
-    console.log(form);
+
+    const response : Service = { 'servicio' : form.descripcion };
+
+    this.api.addService(response).subscribe(data => {
+      console.log(data);
+      if(data.status == 'ok'){
+        alert("Servicio agregado con éxito");
+      }
+      else{
+        alert("No se pudo agregar el servicio");
+      }
+    });
     
   }
 

@@ -143,8 +143,8 @@
     
                 <select class="form-select" formControlName="nombre_sucursal">
                     <option [disabled]="true">Seleccionar sucursal</option>
-                    <option *ngFor="let branch of branches" [ngValue]="branch.sucursal">
-                        {{branch.sucursal}}
+                    <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                        {{branch.nombre_sucursal}}
                     </option>
                 </select>
     

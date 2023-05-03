@@ -212,11 +212,13 @@ export const branches = [
       }
 
     export const services = [
-        {'servicio': 'Masaje relajante'},
-        {'servicio': 'Masaje descarga muscular'},
-        {'servicio': 'Sauna'},
-        {'servicio': 'Baños a vapor'}
+        {'servicio': 'Indoor Cycling'},
+        {'servicio': 'Pilates'},
+        {'servicio': 'Yoga'},
+        {'servicio': 'Zumba'},
+        {'servicio': 'Natacion'}
     ]
+
 
     export const get_employee = {
     "status": "ok",

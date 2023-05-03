@@ -7,6 +7,7 @@ import { Inventory } from "./inventory/get-inventory";
 import { Product } from "./product/get-product";
 import { AddProduct } from './product/add-product';
 import { AddInventory } from './inventory/add-inventory';
+import { AddService, Service } from 'src/app/models/services/add-service';
 
 // Singel
 
@@ -33,6 +34,16 @@ export interface ProductResponseTemplateI{
 export interface InventoryResponseTemplateI{
   status: string;
   result: AddInventory;
+}
+
+export interface ServiceResponseTemplateI{
+  status: string;
+  result: Service;
+}
+
+export interface AssignResponseTemplateI{
+  status: string;
+  result: AddService;
 }
 
 // Multiple
