@@ -32,7 +32,7 @@ export class InventarioService {
     return this.http.post<ResponseTemplateI>(address, form);
   }
 
-  updateBranch(form: GetInventory): Observable<ResponseTemplateI> {
+  updateInventory(form: GetInventory): Observable<ResponseTemplateI> {
     let address = this.url + 'update_inventory';
 
     return this.http.put<ResponseTemplateI>(address, form);

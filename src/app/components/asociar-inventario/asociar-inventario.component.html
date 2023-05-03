@@ -23,8 +23,8 @@
                             <select class="form-select" aria-label="sucursal" (change)="cambiarSucursal($event)">
                                 
                                 <option [disabled]="true">Seleccionar Sucursal</option>
-                                <option *ngFor="let branch of branches" [ngValue]="branch">
-                                    {{branch.sucursal}}
+                                <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                                    {{branch.nombre_sucursal}}
                                 </option>
     
                             </select>

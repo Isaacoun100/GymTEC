@@ -9,6 +9,9 @@ import { AddProduct } from './product/add-product';
 import { AddInventory } from './inventory/add-inventory';
 import { AddService, Service } from 'src/app/models/services/add-service';
 import { Clase } from './class/clase';
+import { AssociateTreatment } from './treatment/associate-treatment';
+import { AssociateProduct } from './product/associate-product';
+import { AssociateInventory } from './inventory/associate-inventory';
 
 // Single
 
@@ -46,6 +49,23 @@ export interface AssignResponseTemplateI{
   status: string;
   result: AddService;
 }
+
+export interface AssignTreatmentResponseTemplateI{
+  status: string;
+  result: AssociateTreatment;
+}
+
+export interface AssignProductResponseTemplateI{
+  status: string;
+  result: AssociateProduct;
+}
+
+export interface AssignInventoryResponseTemplateI{
+  status: string;
+  result: AssociateInventory;
+}
+
+
 
 // Multiple
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddProduct } from 'src/app/models/product/add-product';
 import { Router } from '@angular/router';
+import { ProductoService } from 'src/app/service/producto/producto.service';
 
 @Component({
   selector: 'app-form-producto',
@@ -20,7 +21,8 @@ export class FormProductoComponent {
 
   constructor(
     private proxyProductoService: ProxyProductoService,
-    private router: Router) {}
+    private router: Router,
+    private api: ProductoService) {}
 
   ngOnInit(): void {
     this.proxyProductoService.currentProduct.subscribe(
@@ -32,10 +34,21 @@ export class FormProductoComponent {
   editarProducto(form: AddProduct) {
     
     //Este es el de crear
-    if(this.router.url === '/agregarProducto'){}
-
+    if(this.router.url === '/agregarProducto'){
+      console.log(form);
+      this.api.addProduct(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/productos']);
+      });
+    }
     //Este es el de editar
-    else{}
+    else{
+      this.api.updateProduct(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/productos']);
+      });
+
+    }
 
   }
 

@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 import { ProxySucursalService } from 'src/app/service/sucursal/proxy-sucursal.service';
 import { AddBranch } from './../../models/branch/add-branch';
 import { Router } from '@angular/router';
-import { InventarioService } from 'src/app/service/inventario/inventario.service';
+import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
 
 @Component({
   selector: 'app-form-sucursal',
@@ -39,7 +39,7 @@ export class FormSucursalComponent implements OnInit {
   constructor( 
     private data: ProxySucursalService,
     private router: Router,
-    private api: InventarioService
+    private api: SucursalService
      ){}
   
   ngOnInit(){
@@ -60,12 +60,21 @@ export class FormSucursalComponent implements OnInit {
 
     //Este es el de crear
     if(this.router.url === '/agregarSucursal'){
-     // this.
+     this.api.addBranch(form).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/sucursales']);
+    }
+    );
     }
 
     //Este es el de editar
     else{
-      
+      this.api.updateBranch(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/sucursales']);
+
+      }
+      );
     }
 
     console.log(form);

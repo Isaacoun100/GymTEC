@@ -1,4 +1,4 @@
 export interface AssociateTreatment {
   sucursal: string | null;
-  tratamiento: string | null;
+  tratamiento_id: string | null;
 }

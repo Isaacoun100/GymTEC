@@ -6,6 +6,7 @@ import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Branch} from 'src/app/models/branch/get-branch';
 import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
+import { EmpleadoService } from 'src/app/service/empleado/empleado.service';
 import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
@@ -39,7 +40,8 @@ export class FormEmpleadoComponent implements OnInit {
   constructor(
   private proxyEmpleadoService: ProxyEmpleadoService,
   private router: Router,
-  private api: SucursalService) {
+  private api: SucursalService,
+  private apiEmpleado: EmpleadoService) {
     this.updateBranches();
   }
   
@@ -62,12 +64,19 @@ export class FormEmpleadoComponent implements OnInit {
 
     //Este es el de crear
     if(this.router.url === '/agregarEmpleado'){
-      console.log('Estoy en agregar empleado');
+      console.log(form);
+      this.apiEmpleado.addEmployee(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/empleados']);
+      });
     }
 
     //Este es el de editar
     else{
-      console.log('Estoy en editar empleado');
+      this.apiEmpleado.updateEmployee(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/empleados']);
+      });
     }
 
     console.log(form);

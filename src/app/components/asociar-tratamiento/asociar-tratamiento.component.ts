@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Branch } from 'src/app/models/branch/get-branch';
 import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
-import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
+import { AssignTreatmentResponseTemplateI, ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
+import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.service';
 
 @Component({
   selector: 'app-asociar-tratamiento',
@@ -17,12 +18,13 @@ export class AsociarTratamientoComponent {
   
   asociarTratamientoForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
-    tratamiento: new FormControl('', Validators.required),
+    tratamiento_id: new FormControl('', Validators.required),
   });
 
   constructor(
     private route: ActivatedRoute,
-    private sucursalesService : SucursalService) {
+    private sucursalesService : SucursalService,
+    private tratamientoService: TratamientoService) {
       this.updateBranches();
     }
 
@@ -31,6 +33,20 @@ export class AsociarTratamientoComponent {
 
 
   asignarTratamiento(form: any) {
+    console.log('Formulario: ', form);
+
+    this.tratamientoService.associateTreatment(form).subscribe((data) => {
+      let dataResponse: AssignTreatmentResponseTemplateI = data;
+
+      if (dataResponse.status == 'ok') {
+        console.log('Tratamiento asociado correctamente');
+        alert('Tratamiento asociado correctamente');
+      } else {
+        console.log('Error al asociar el tratamiento');
+        alert('Error al asociar el tratamiento');
+      }
+
+    });
     
   }
 

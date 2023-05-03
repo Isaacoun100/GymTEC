@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { AssignTreatmentResponseTemplateI, ResponseTemplateI } from '../../models/responseTemplate.interface';
 import { AssociateTreatment } from 'src/app/models/treatment/associate-treatment';
 
 import * as myGlobals from '../../../../src/app/globals';
@@ -15,9 +15,9 @@ export class TratamientoService {
 
   constructor(private http: HttpClient) {}
 
-  associateTreatment(form: AssociateTreatment): Observable<ResponseTemplateI> {
+  associateTreatment(form: AssociateTreatment): Observable<AssignTreatmentResponseTemplateI> {
     let address = this.url + 'associate_treatment ';
 
-    return this.http.put<ResponseTemplateI>(address, form);
+    return this.http.post<AssignTreatmentResponseTemplateI>(address, form);
   }
 }

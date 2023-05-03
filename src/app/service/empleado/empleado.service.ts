@@ -35,7 +35,7 @@ export class EmpleadoService {
   updateEmployee(form: AddEmployee): Observable<ResponseTemplateI> {
     let address = this.url + 'update_employee';
 
-    return this.http.post<ResponseTemplateI>(address, form);
+    return this.http.put<ResponseTemplateI>(address, form);
   }
 
   deleteEmpleado(cedula_empleado: GetEmployee): Observable<ResponseTemplateI> {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI, ResponseTemplateListProductI, ProductResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListProductI, ProductResponseTemplateI, AssignProductResponseTemplateI } from '../../models/responseTemplate.interface';
 import { AddProduct } from 'src/app/models/product/add-product';
 import { AssociateProduct } from 'src/app/models/product/associate-product';
 import { GetProduct } from 'src/app/models/product/get-product';
@@ -41,10 +41,10 @@ export class ProductoService {
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
-  associateProduct(form: AssociateProduct): Observable<ResponseTemplateI> {
+  associateProduct(form: AssociateProduct): Observable<AssignProductResponseTemplateI> {
     let address = this.url + 'associate_product';
 
-    return this.http.put<ResponseTemplateI>(address, form);
+    return this.http.post<AssignProductResponseTemplateI>(address, form);
   }
 
   deleteBranch(codigo_barras: GetProduct): Observable<ResponseTemplateI> {

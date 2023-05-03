@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AddInventory } from 'src/app/models/inventory/add-inventory';
 import { Router } from '@angular/router';
+import { InventarioService } from 'src/app/service/inventario/inventario.service';
 
 @Component({
   selector: 'app-form-inventario',
@@ -32,7 +33,8 @@ export class FormInventarioComponent {
 
   constructor(
     private proxyInventarioService: ProxyInventarioService,
-    private router:Router) {}
+    private router:Router,
+    private api: InventarioService) {}
 
   ngOnInit(): void {
     this.proxyInventarioService.currentInventory.subscribe(
@@ -42,15 +44,24 @@ export class FormInventarioComponent {
 
   // TODO : Enviar el form a la base de datos
   editarInventario(form: AddInventory) {
+
+    form.is_used = false;
     
     //Este es el de crear
-    if(this.router.url === '/agregarProducto'){
-
+    if(this.router.url === '/agregarInventario'){
+      console.log(form);
+      this.api.addInventory(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/inventario']);
+      });
     }
 
     //Este es el de editar
     else{
-
+      this.api.updateInventory(form).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/inventario']);
+      });
     }
   }
 

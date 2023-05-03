@@ -23,17 +23,17 @@
                             <select class="form-select" aria-label="sucursal" (change)="cambiarSucursal($event)">
                                 
                                 <option [disabled]="true">Seleccionar Sucursal</option>
-                                <option *ngFor="let branch of branches" [ngValue]="branch">
-                                    {{branch.sucursal}}
+                                <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                                    {{branch.nombre_sucursal}}
                                 </option>
     
                             </select>
     
-                            <label for="tratamiento">Servicio</label>
+                            <label for="tratamiento">Producto</label>
 
                             <select class="form-select" aria-label="producto" (change)="cambiarProducto($event)">
                                 
-                                <option [disabled]="true">Seleccionar Servicio</option>
+                                <option [disabled]="true">Seleccionar Producto</option>
                                 <option *ngFor="let product of products" [ngValue]="product.nombre_producto">
                                     {{product.nombre_producto}}
                                 </option>

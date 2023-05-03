@@ -5,6 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AddService } from 'src/app/models/services/add-service';
 import { branches } from 'src/app/examples';
+import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
+import { Branch } from 'src/app/models/branch/get-branch';
+import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-asociar-inventario',
@@ -14,7 +17,7 @@ import { branches } from 'src/app/examples';
 export class AsociarInventarioComponent implements OnInit {
 
   // Agregar las sucursales de la base de datos
-  branches = branches;
+  branches = new Array<Branch>;
 
   // Agregar los inventarios de la base de datos
   inventories = get_all_inventories;
@@ -24,7 +27,11 @@ export class AsociarInventarioComponent implements OnInit {
     num_serie: new FormControl(0, Validators.required),
   });
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+    private sucursalesService: SucursalService
+    ) {
+      this.updateBranches()
+    }
 
   ngOnInit(): void {}
 
@@ -33,6 +40,15 @@ export class AsociarInventarioComponent implements OnInit {
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);
   }
+
+  updateBranches(){
+    this.sucursalesService.getAllBranches().subscribe((data) => {
+      let dataResponse: ResponseTemplateListBranchesI = data;
+      console.log('Lista sucurales: ', dataResponse);
+      this.branches = dataResponse.result;
+    });
+  }
+
 
   /**
    * This method is used to change the value of the branch name
