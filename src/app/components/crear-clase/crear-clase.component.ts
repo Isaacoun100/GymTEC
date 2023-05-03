@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ClaseService } from 'src/app/service/clase/clase.service';
 
 @Component({
   selector: 'app-crear-clase',
@@ -18,10 +19,23 @@ export class CrearClaseComponent{
     encargado: new FormControl('', Validators.required),
   });
 
+  constructor(private api: ClaseService) { }
+
+
 
   // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
   createForm(form:any){
     console.log(form);
+    this.api.createClass(form).subscribe((data) => {
+      console.log(data);
+      if(data.status == 'ok'){
+        console.log('Clase creada correctamente');
+        alert('Clase creada correctamente');
+      }else{
+        console.log('Error al crear la clase');
+        alert('Error al crear la clase');
+      }
+    });
   }
 
 }
