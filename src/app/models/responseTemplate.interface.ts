@@ -8,8 +8,9 @@ import { Product } from "./product/get-product";
 import { AddProduct } from './product/add-product';
 import { AddInventory } from './inventory/add-inventory';
 import { AddService, Service } from 'src/app/models/services/add-service';
+import { Clase } from './class/clase';
 
-// Singel
+// Single
 
 export interface ResponseTemplateI {
   status: string;
@@ -71,6 +72,11 @@ export interface ResponseTemplateListInventoryI{
 export interface ResponseTemplateListProductI{
   status: string;
   result: Array<Product>;
+}
+
+export interface ResponseTemplateListClassI{
+  status: string;
+  result: Array<Clase>;
 }
 
 

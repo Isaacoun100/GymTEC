@@ -4,60 +4,63 @@
 
     <div class="container">
 
-        <div class="row py-4">
+        <form [formGroup]="buscarForm" (ngSubmit)="solicitarCitas(buscarForm.getRawValue())">
 
-            <div class="col-4">
-
-                <!-- <label for="active_store">Tienda</label>
+            <div class="row py-4">
     
-                <select class="form-select" formControlName="active_store">
-                    <option *ngFor="let option of options" [ngValue]="option.value">
-                        {{option.name}}
-                    </option>
-                </select> -->
-
-            </div>
-
-            <div class="col-4">
-
-                <!-- <label for="active_store">Tienda</label>
+                <div class="col-6">
     
-                <select class="form-select" formControlName="active_store">
-                    <option *ngFor="let option of options" [ngValue]="option.value">
-                        {{option.name}}
-                    </option>
-                </select> -->
-                
-            </div>
-
-            <div class="col-4">
-                    <button class="btn btn-success" type="submit">Buscar</button>
-                
-            </div>
-
-        </div>
-
-        <div class="row py-4">
-
-            <!-- <div *ngFor="let product of branches; let i=index">
+                    <label for="sucursal">Sucursal</label>
         
-                <li class="list-group-item">
+                    <select class="form-select" formControlName="sucursal" >
+                        <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                            {{branch.nombre_sucursal}}
+                        </option>
+                    </select>
     
-                    <h4>
+                </div>
     
-                        <a [routerLink]="['/sucursales', branches[i].sucursal]">
-                            <div>{{ branches[i].sucursal }}</div>
-                        </a>
+                <div class="col-6">
     
-                    </h4>
+                    <label for="fecha">Fecha Apertura</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="fecha" 
+                    formControlName="fecha"
+                    >
                     
-                </li>
+                </div>
     
-            </div> -->
+            </div>
+
+            <div class="row py-2 px-2">
+                <button class="btn btn-success" type="submit">Buscar</button>
+            </div>
+
+        </form>
+
+        <div class="row py-4">
+
+            <ul class="list-group overflow-auto shadow" style="max-height:calc(100vh - 200px);">
+            
+                <div *ngFor="let class of classes; let i=index">
+            
+                    <li class="list-group-item">
+        
+                        <h4>
+                            <div> Clase {{ class.clase_id }} </div>
+                            <div> Servicio {{ class.servicio }} </div>
+                        </h4>
+                        
+                    </li>
+        
+                </div>
+
+            </ul>
 
         </div>
 
     </div>
-    
 
 </body>

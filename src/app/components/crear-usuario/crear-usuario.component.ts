@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { CreateClient } from 'src/app/models/signup/create-client';
 import { Router } from '@angular/router';
+import { ClienteService } from 'src/app/service/cliente/cliente.service';
+import { AddCliente } from 'src/app/models/client/createClient';
+import { ResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -14,7 +16,7 @@ export class CrearUsuarioComponent {
   
   // Formulario de crear cliente
   clientForm = new FormGroup({
-    cedula_cliente: new FormControl(0, Validators.required),
+    cedula_cliente: new FormControl('', Validators.required),
     nombre : new FormControl('', Validators.required),
     apellido_1 : new FormControl('', Validators.required),
     apellido_2: new FormControl('', Validators.required),
@@ -23,14 +25,28 @@ export class CrearUsuarioComponent {
     password : new FormControl('', Validators.required),
     Altura: new FormControl(0, Validators.required),
     Peso : new FormControl(0, Validators.required),
-    Fecha_nacimiento: new FormControl('', Validators.required)
+    fecha_nac: new FormControl('', Validators.required)
   });
   
-  constructor( private router : Router ) {}
+  constructor( 
+    private router : Router,
+    private api : ClienteService) {}
 
   // TODO :  Enviar el formulario a la API
-  agregarCliente(form : CreateClient){
-    this.router.navigate(['loginCliente']);
+  agregarCliente(form : AddCliente){
+    this.api.createClient(form).subscribe(data => {
+
+      let dataResponse: ResponseTemplateI = data;
+      
+      if(dataResponse.status == 'ok'){
+        this.router.navigate(['/loginCliente']);
+      }
+      else{
+        alert('No se pudo agregar el usuario');
+      }
+
+      console.log(data);
+    });
   }
   
 }

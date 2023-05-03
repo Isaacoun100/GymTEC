@@ -55,7 +55,7 @@ export class FormEmpleadoComponent implements OnInit {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm);
   }
 
-    
+     
 
   // TODO : Enviar el formulario a la base de datos
   editarEmpleado(form:AddEmployee ){
