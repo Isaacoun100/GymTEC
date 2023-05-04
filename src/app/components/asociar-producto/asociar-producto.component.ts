@@ -31,8 +31,8 @@ export class AsociarProductoComponent {
     private route: ActivatedRoute,
     private sucursalesService : SucursalService,
     private productosService: ProductoService ) {
-      this.updateBranches()
-      this.updateProducts()
+      this.updateBranches();
+      this.updateProducts();
     }
 
   ngonInit(): void {}
@@ -71,9 +71,6 @@ export class AsociarProductoComponent {
       this.products = dataResponse.result;
     });
   }
-
-
-
 
   /**
    * This method is used to change the value of the branch name

@@ -20,7 +20,7 @@
         
                             <label for="sucursal">Sucursal</label>
             
-                            <select class="form-select" aria-label="sucursal" (change)="cambiarSucursal($event)">
+                            <select class="form-select" aria-label="sucursal">
                                 
                                 <option [disabled]="true">Seleccionar Sucursal</option>
                                 <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">

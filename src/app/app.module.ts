@@ -40,6 +40,7 @@ import { AgregarInventarioComponent } from './components/agregar-inventario/agre
 import { AsignarServicioComponent } from './components/asignar-servicio/asignar-servicio.component';
 import { FormInventarioComponent } from './template/form-inventario/form-inventario.component';
 import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.component';
+import { CopySucursalComponent } from './components/copy-sucursal/copy-sucursal.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
     CrearClaseComponent, AsociarProductoComponent, SidebarComponent,
     FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent,
     AgregarInventarioComponent, AsignarServicioComponent, FormInventarioComponent,
-    PanelClienteComponent],
+    PanelClienteComponent,
+    CopySucursalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -88,7 +90,8 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
       {path:'agregarProducto', component:AgregarProductoComponent},
       {path:'registrarCita', component:RegistrarCitaComponent},
       {path:'crearUsuario', component:CrearUsuarioComponent},
-      {path:'panelCliente', component:PanelClienteComponent}
+      {path:'panelCliente', component:PanelClienteComponent},
+      {path:'copySucursal', component:CopySucursalComponent}
 
     ])
 ],
