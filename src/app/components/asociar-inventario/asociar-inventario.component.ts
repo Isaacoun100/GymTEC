@@ -7,7 +7,9 @@ import { AddService } from 'src/app/models/services/add-service';
 import { branches } from 'src/app/examples';
 import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
 import { Branch } from 'src/app/models/branch/get-branch';
-import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
+import { InventoryResponseTemplateI, ResponseTemplateListBranchesI, ResponseTemplateListInventoryI } from 'src/app/models/responseTemplate.interface';
+import { GetInventory, Inventory } from 'src/app/models/inventory/get-inventory';
+import { InventarioService } from 'src/app/service/inventario/inventario.service';
 
 @Component({
   selector: 'app-asociar-inventario',
@@ -20,7 +22,7 @@ export class AsociarInventarioComponent implements OnInit {
   branches = new Array<Branch>;
 
   // Agregar los inventarios de la base de datos
-  inventories = get_all_inventories;
+  inventories = new Array<Inventory>;
 
   asociarIntenvetarioForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
@@ -28,9 +30,10 @@ export class AsociarInventarioComponent implements OnInit {
   });
 
   constructor(private route: ActivatedRoute,
-    private sucursalesService: SucursalService
-    ) {
-      this.updateBranches()
+    private sucursalesService: SucursalService,
+    private inventarioService: InventarioService) {
+      this.updateBranches();
+      this.updateInventario();
     }
 
   ngOnInit(): void {}
@@ -46,6 +49,14 @@ export class AsociarInventarioComponent implements OnInit {
       let dataResponse: ResponseTemplateListBranchesI = data;
       console.log('Lista sucurales: ', dataResponse);
       this.branches = dataResponse.result;
+    });
+  }
+
+  updateInventario(){
+
+    this.inventarioService.getAllInventories().subscribe(data => {
+      let dataResponse : ResponseTemplateListInventoryI = data;
+      this.inventories = dataResponse.result;
     });
   }
 
