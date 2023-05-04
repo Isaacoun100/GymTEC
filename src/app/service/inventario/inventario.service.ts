@@ -41,7 +41,7 @@ export class InventarioService {
   associateInventory(form: AssociateInventory): Observable<AssignInventoryResponseTemplateI> {
     let address = this.url + 'associate_inventory';
 
-    return this.http.put<AssignInventoryResponseTemplateI>(address, form);
+    return this.http.post<AssignInventoryResponseTemplateI>(address, form);
   }
 
   deleteInventory(num_serie: GetInventory): Observable<ResponseTemplateI> {
