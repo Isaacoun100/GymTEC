@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponseTemplateI, ResponseTemplateListInventoryI, InventoryResponseTemplateI } from '../../models/responseTemplate.interface';
+import { ResponseTemplateI, ResponseTemplateListInventoryI, InventoryResponseTemplateI, AssignInventoryResponseTemplateI } from '../../models/responseTemplate.interface';
 import { AddInventory } from 'src/app/models/inventory/add-inventory';
 import { GetInventory } from 'src/app/models/inventory/get-inventory';
 import { AssociateInventory } from 'src/app/models/inventory/associate-inventory';
@@ -38,10 +38,10 @@ export class InventarioService {
     return this.http.put<ResponseTemplateI>(address, form);
   }
 
-  associateInventory(form: AssociateInventory): Observable<ResponseTemplateI> {
+  associateInventory(form: AssociateInventory): Observable<AssignInventoryResponseTemplateI> {
     let address = this.url + 'associate_inventory';
 
-    return this.http.put<ResponseTemplateI>(address, form);
+    return this.http.put<AssignInventoryResponseTemplateI>(address, form);
   }
 
   deleteInventory(num_serie: GetInventory): Observable<ResponseTemplateI> {
