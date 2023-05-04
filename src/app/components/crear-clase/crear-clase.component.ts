@@ -10,7 +10,8 @@ import { ClaseService } from 'src/app/service/clase/clase.service';
 export class CrearClaseComponent{
 
   createClaseForm = new FormGroup({
-    tipo: new FormControl('', Validators.required),
+    clase_id: new FormControl(0, Validators.required),
+    servicio: new FormControl( '', Validators.required),
     modo: new FormControl('', Validators.required),
     capacidad: new FormControl(0, [Validators.required, Validators.min(1)]),
     fecha: new FormControl('', Validators.required),
