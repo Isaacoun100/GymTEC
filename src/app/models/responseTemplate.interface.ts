@@ -99,4 +99,9 @@ export interface ResponseTemplateListClassI{
   result: Array<Clase>;
 }
 
+export interface ResponseTemplateListServiceI{
+  status: string;
+  result: Array<Service>;
+}
+
 

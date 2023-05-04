@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AssignResponseTemplateI, ResponseTemplateI } from '../../models/responseTemplate.interface';
+import { AssignResponseTemplateI, ResponseTemplateI, ResponseTemplateListServiceI } from '../../models/responseTemplate.interface';
 import { AddService, Service } from 'src/app/models/services/add-service';
 import { ServiceResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 
@@ -16,10 +16,10 @@ export class ServicioService {
 
   constructor(private http: HttpClient) {}
 
-  getAllServices(): Observable<ResponseTemplateI> {
+  getAllServices(): Observable<ResponseTemplateListServiceI> {
     let address = this.url + 'get_services';
 
-    return this.http.get<ResponseTemplateI>(address);
+    return this.http.get<ResponseTemplateListServiceI>(address);
   }
 
   addService(form: Service): Observable<ServiceResponseTemplateI> {

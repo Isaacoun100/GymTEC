@@ -1,10 +1,11 @@
-import { AssignResponseTemplateI, ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
+import { AssignResponseTemplateI, ResponseTemplateListBranchesI, ResponseTemplateListServiceI } from 'src/app/models/responseTemplate.interface';
 import { ServicioService } from 'src/app/service/servicio/servicio.service';
 import { SucursalService } from './../../service/sucursal/sucursal.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { services } from 'src/app/examples';
 import { Branch } from 'src/app/models/branch/get-branch';
+import { Service } from 'src/app/models/services/add-service';
 
 @Component({
   selector: 'app-asignar-servicio',
@@ -18,7 +19,7 @@ export class AsignarServicioComponent implements OnInit {
   branches = new Array<Branch>();
 
   // TODO : Get the services from the API
-  services = services;
+  services = new Array<Service>;
 
   asignarServicioForm = new FormGroup({
     sucursal: new FormControl(null, Validators.required),
@@ -29,6 +30,7 @@ export class AsignarServicioComponent implements OnInit {
     private sucursalService: SucursalService,
     private servicioService: ServicioService ){
     this.updateBranches();
+    this.updateService();
   }
 
   updateBranches(){
@@ -36,6 +38,13 @@ export class AsignarServicioComponent implements OnInit {
       let dataResponse: ResponseTemplateListBranchesI = data;
       console.log('Lista sucurales: ', dataResponse);
       this.branches = dataResponse.result;
+    });
+  }
+
+  updateService(){
+    this.servicioService.getAllServices().subscribe((data) => {
+      let dataResponse: ResponseTemplateListServiceI = data;
+      this.services = dataResponse.result;
     });
   }
 
