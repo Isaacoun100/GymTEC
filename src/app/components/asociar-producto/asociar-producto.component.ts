@@ -16,17 +16,32 @@ import { Product } from 'src/app/models/product/get-product';
 })
 export class AsociarProductoComponent {
 
-  // Agregar los productos de la base de datos
+  /**
+   * @description This is the list of the products to show the user in the dropdown
+   */
   products = new Array<Product>;
   
-  // Agregar las sucursales de la base de datos
+  /**
+   * @description This is the list of the branches to show the user in the dropdown
+   */
   branches = new Array<Branch>;
-
+  
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   asociarProductoForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
     product: new FormControl('', Validators.required),
   });
 
+  /**
+   * @description This is the constructor of the component where we update the branches and products
+   * @param route 
+   * @param sucursalesService 
+   * @param productosService 
+   * @version 1.0
+   */
   constructor(
     private route: ActivatedRoute,
     private sucursalesService : SucursalService,
@@ -35,9 +50,12 @@ export class AsociarProductoComponent {
       this.updateProducts();
     }
 
-  ngonInit(): void {}
-
-  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
+  
+  /**
+   * @description This method is used to associate a product to a branch
+   * @param form 
+   * @version 1.0
+   */
   asociarProducto(form: any) {
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log('Formulario: ', form);
@@ -56,6 +74,10 @@ export class AsociarProductoComponent {
     );
   }
 
+  /**
+   * @description This method is used to update the branches list
+   * @version 1.0
+   */
   updateBranches(){
     this.sucursalesService.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -64,6 +86,10 @@ export class AsociarProductoComponent {
     });
   }
 
+  /**
+   * @description This method is used to update the products list
+   * @version 1.0
+   */
   updateProducts(){
     this.productosService.getAllProducts().subscribe((data) => {
       let dataResponse: ResponseTemplateListProductI = data;

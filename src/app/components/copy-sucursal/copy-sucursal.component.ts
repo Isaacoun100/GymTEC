@@ -13,15 +13,27 @@ export class CopySucursalComponent {
 
   branches = new Array<Branch>
 
+  /**
+   * @description ICreates an instance of CopySucursalComponent
+   * @version 1.0
+   */
   constructor( private api : SucursalService) {
     this.updateBranches();
   }
 
+  /**
+   * @description This method is used to validate the form
+   * @version 1.0
+   */
   copyForm = new FormGroup({
     branch_to_copy: new FormControl('', Validators.required),
     new_branch: new FormControl('', Validators.required)
   });
 
+  /**
+   * @description This method is used to copy the branch
+   * @version 1.0
+   */
   newSucursal(form:any){
 
     console.log(form);
@@ -37,6 +49,10 @@ export class CopySucursalComponent {
   });
 }
 
+/**
+ * @description This method is used to update the branches
+ * @version 1.0
+ */
 updateBranches(){
   this.api.getAllBranches().subscribe((data) => {
     let dataResponse: ResponseTemplateListBranchesI = data;
@@ -47,8 +63,8 @@ updateBranches(){
 }
 
   /**
-   * This method is used to change the value of the branch name
-   * @param e 
+   * @description This method is used to change the value of the branch to copy
+   * @version 1.0
    */
   cambiarSucursal(e: any) {
     this.copyForm.controls['branch_to_copy']?.setValue(e.target.value, {

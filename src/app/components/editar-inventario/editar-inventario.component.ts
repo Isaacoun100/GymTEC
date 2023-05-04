@@ -20,6 +20,10 @@ export class EditarInventarioComponent {
   // TODO : Solicitar el inventario de la base de datos
   get_inventory = get_inventory;
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   inventarioForm = new FormGroup({
     num_serie: new FormControl(0, Validators.required),
     marca: new FormControl('', Validators.required),
@@ -28,6 +32,14 @@ export class EditarInventarioComponent {
     tipo_equipo: new FormControl('', Validators.required)
   });
 
+  /**
+   * @description Here we assign the value of the route to the variable inventarioIdFromRoute
+   * @param proxyInventarioService 
+   * @param route 
+   * @param router 
+   * @param api 
+   * @version 1.0
+   */
   constructor(
     private proxyInventarioService: ProxyInventarioService,
     private route:ActivatedRoute,
@@ -35,7 +47,11 @@ export class EditarInventarioComponent {
     private api: InventarioService ){
       this.inventarioIdFromRoute = this.route.snapshot.paramMap.get('inventarioCodigo');
     }
-
+    
+  /**
+   * @description This method is used to update the inventory
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyInventarioService.currentInventory.subscribe(
       (inventarioForm) => (this.inventarioForm = inventarioForm));
@@ -43,7 +59,10 @@ export class EditarInventarioComponent {
       this.updateInventario();
   }
 
-  // TODO : Eliminar el inventario de la base de datos
+  /**
+   * @description This method id used to delete the inventory from the database
+   * @version 1.0
+   */
   eliminarInventario(){
     let numberValue = Number(this.inventarioIdFromRoute);
     const d: GetInventory = {num_serie: numberValue};
@@ -53,10 +72,18 @@ export class EditarInventarioComponent {
     });
   }
 
+  /**
+   * @description This method is used reset the inventory form when destroyed
+   * @version 1.0
+   */
   ngOnDestroy(){
     this.inventarioForm.reset();
   }
 
+  /**
+   * @description This method is used to update the inventory
+   * @version 1.0
+   */
   updateInventario(){
 
     console.log(this.inventarioIdFromRoute);
