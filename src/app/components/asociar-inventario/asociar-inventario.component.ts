@@ -3,12 +3,9 @@ import { AssociateInventory } from 'src/app/models/inventory/associate-inventory
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AddService } from 'src/app/models/services/add-service';
-import { branches } from 'src/app/examples';
 import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
 import { Branch } from 'src/app/models/branch/get-branch';
-import { InventoryResponseTemplateI, ResponseTemplateListBranchesI, ResponseTemplateListInventoryI } from 'src/app/models/responseTemplate.interface';
-import { GetInventory, Inventory } from 'src/app/models/inventory/get-inventory';
+import { AssignInventoryResponseTemplateI, ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.interface';
 import { InventarioService } from 'src/app/service/inventario/inventario.service';
 
 @Component({
@@ -22,7 +19,7 @@ export class AsociarInventarioComponent implements OnInit {
   branches = new Array<Branch>;
 
   // Agregar los inventarios de la base de datos
-  inventories = new Array<Inventory>;
+  inventories = get_all_inventories;
 
   asociarIntenvetarioForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
@@ -31,9 +28,9 @@ export class AsociarInventarioComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private sucursalesService: SucursalService,
-    private inventarioService: InventarioService) {
-      this.updateBranches();
-      this.updateInventario();
+    private inventarioService: InventarioService
+    ) {
+      this.updateBranches()
     }
 
   ngOnInit(): void {}
@@ -42,6 +39,18 @@ export class AsociarInventarioComponent implements OnInit {
   asociarInventario(form: any) {
     // Recordar crear un mensaje de error si el form no pudo ser ingresados
     console.log(form);
+
+    this.inventarioService.associateInventory(form).subscribe((data) => {
+      let dataResponse: AssignInventoryResponseTemplateI = data;
+      if (dataResponse.status == 'ok') {
+        console.log('Inventario asociado correctamente');
+        alert('Inventario asociado correctamente');
+      } else {
+        console.log('Error al asociar el inventario');
+        alert('Error al asociar el inventario');
+      }
+    }
+    );
   }
 
   updateBranches(){
@@ -49,14 +58,6 @@ export class AsociarInventarioComponent implements OnInit {
       let dataResponse: ResponseTemplateListBranchesI = data;
       console.log('Lista sucurales: ', dataResponse);
       this.branches = dataResponse.result;
-    });
-  }
-
-  updateInventario(){
-
-    this.inventarioService.getAllInventories().subscribe(data => {
-      let dataResponse : ResponseTemplateListInventoryI = data;
-      this.inventories = dataResponse.result;
     });
   }
 
