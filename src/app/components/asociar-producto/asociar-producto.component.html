@@ -34,7 +34,7 @@
                             <select class="form-select" aria-label="producto" (change)="cambiarProducto($event)">
                                 
                                 <option [disabled]="true">Seleccionar Producto</option>
-                                <option *ngFor="let product of products" [ngValue]="product.nombre_producto">
+                                <option *ngFor="let product of products" [ngValue]="product.codigo_barras">
                                     {{product.nombre_producto}}
                                 </option>
 
