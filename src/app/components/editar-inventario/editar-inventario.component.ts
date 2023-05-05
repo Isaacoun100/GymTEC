@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { get_inventory } from 'src/app/examples';
 import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventario.service';
 import { GetInventory, Inventory } from 'src/app/models/inventory/get-inventory';
 import { InventarioService } from 'src/app/service/inventario/inventario.service';
-import { InventoryResponseTemplateI } from 'src/app/models/responseTemplate.interface';
+import { InventoryResponseTemplateI, ResponseTemplateListInventoryI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-editar-inventario',
@@ -16,9 +15,6 @@ import { InventoryResponseTemplateI } from 'src/app/models/responseTemplate.inte
 export class EditarInventarioComponent {
 
   inventarioIdFromRoute: string | null | undefined ;
-
-  // TODO : Solicitar el inventario de la base de datos
-  get_inventory = get_inventory;
 
   /**
    * @description This is the form used to capture the user input

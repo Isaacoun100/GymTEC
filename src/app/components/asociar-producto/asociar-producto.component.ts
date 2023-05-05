@@ -1,6 +1,4 @@
-import { branches } from 'src/app/examples';
-import { get_all_products } from './../../examples';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from 'src/app/service/producto/producto.service';

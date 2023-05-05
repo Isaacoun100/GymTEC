@@ -6,7 +6,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GetProduct } from 'src/app/models/product/get-product';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { get_producto } from './../../examples';
 import { Router } from '@angular/router';
 
 @Component({

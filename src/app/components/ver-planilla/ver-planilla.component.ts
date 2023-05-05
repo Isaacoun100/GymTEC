@@ -9,19 +9,32 @@ import { Payroll } from 'src/app/models/payroll/get-payroll';
   styleUrls: ['./ver-planilla.component.scss'],
 })
 export class VerPlanillaComponent{
-  
-  // TODO : Solicitar los payrolls de la base de datos
+
+  /**
+   * @description This is the array of payrolls
+   * @version 1.0
+   */
   planillas = new Array<Payroll>;
 
+  /**
+   * @description This method is used to initialize the component
+   * @param api 
+   * @version 1.0
+   */
   constructor(private api: PlanillaService) {}
 
+  /**
+   * @description This method is used to execute the GetAllPayrolls method when the component is created
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.getAllPayrolls();
   }
 
-  // Se ocupa que cuando se ejecuta el getAllPayrolls se haga un await o alguna manera que podamos
-  // asegurar que se le da tiempo al servidor para responder.
-
+  /**
+   * @description This method is used to get all of the payrolls
+   * @version 1.0
+   */
   getAllPayrolls(){
     
     this.api.getAllPayrolls().subscribe((data) => {
@@ -46,4 +59,3 @@ export class VerPlanillaComponent{
   }
 
 }
-// let myObject: Reservacion = new Reservacion(myIDMethod, this.procedureForm.value.procedimiento_nombre);

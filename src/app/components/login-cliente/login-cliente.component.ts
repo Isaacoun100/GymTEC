@@ -12,13 +12,26 @@ import { Router} from '@angular/router';
 })
 export class LoginClienteComponent {
 
-
+  /**
+   * @description Form used to capture the user input
+   * @version 1.0
+   */
   loginForm = new FormGroup({
     email: new FormControl('', {nonNullable: true}),
     password: new FormControl('', {nonNullable: true}),
   });
+
+  /**
+   * @description constructor for the login admin component
+   * @param router 
+   * @param api 
+   */
   constructor( private router : Router , private api: LoginService) { }
   
+  /**
+   * @description This method is used to login the client
+   * @param form 
+   */
   loginCliente(form: LoginClienteI){
     console.log(form.email);
     console.log(form.password);

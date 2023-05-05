@@ -1,6 +1,4 @@
- import { AddService as sendService } from 'src/app/service/servicio/servicio.service';
-import { branches, services } from 'src/app/examples';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Service} from 'src/app/models/services/add-service';

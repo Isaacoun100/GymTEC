@@ -1,10 +1,12 @@
 import { ProxyInventarioService } from 'src/app/service/inventario/proxy-inventario.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { AddInventory } from 'src/app/models/inventory/add-inventory';
 import { Router } from '@angular/router';
 import { InventarioService } from 'src/app/service/inventario/inventario.service';
+import { Inventory } from 'src/app/models/inventory/get-inventory';
+import { ResponseTemplateListInventoryI } from 'src/app/models/responseTemplate.interface';
 
 @Component({
   selector: 'app-form-inventario',

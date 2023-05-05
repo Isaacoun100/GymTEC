@@ -1,4 +1,3 @@
-import { get_all_products } from './../../examples';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponseTemplateListProductI } from 'src/app/models/responseTemplate.interface';
@@ -12,15 +11,33 @@ import { Product } from 'src/app/models/product/get-product';
 })
 export class ManejarProductoComponent {
   
-    // Agregar los productos de la base de datos
-    products = new Array<Product>();
+  /**
+   * @description This is the array of products
+   * @version 1.0
+   */
+  products = new Array<Product>();
 
+  /**
+   * @description This method is used to initialize the component
+   * @param api 
+   * @param router
+   * @version 1.0 
+   */
   constructor( private api: ProductoService, private router: Router ) {}
 
+
+  /**
+   * @description This method is used to initialize the component, here we get all the products from the database
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.getAllProducts();
   }
 
+  /**
+   * @description This method is used to get all the products from the database
+   * @version 1.0
+   */
   getAllProducts() {
     this.api.getAllProducts().subscribe((data) => {
       let dataResponse: ResponseTemplateListProductI = data;
@@ -35,6 +52,11 @@ export class ManejarProductoComponent {
       }
     });
   }
+
+  /**
+   * @description Routes the admin to the AgregarProducto component
+   * @version 1.0
+   */
   agregarProducto() {
     this.router.navigate(['agregarProducto']);
   }
