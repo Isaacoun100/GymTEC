@@ -1,6 +1,4 @@
-import { get_all_inventories } from './../../examples';
-import { AssociateInventory } from 'src/app/models/inventory/associate-inventory';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SucursalService } from 'src/app/service/sucursal/sucursal.service';
@@ -14,31 +12,49 @@ import { Inventory } from 'src/app/models/inventory/get-inventory';
   templateUrl: './asociar-inventario.component.html',
   styleUrls: ['./asociar-inventario.component.scss'],
 })
-export class AsociarInventarioComponent implements OnInit {
+export class AsociarInventarioComponent {
 
-  // Agregar las sucursales de la base de datos
+  /**
+   * @description This is the list of the branches to show the user in the dropdown
+   * @version 1.0
+   */
   branches = new Array<Branch>;
 
-  // Agregar los inventarios de la base de datos
+  /**
+   * @description This is the list of the inventories to show the user in the dropdown
+   * @version 1.0
+   */
   inventories = new Array<Inventory>;
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   asociarIntenvetarioForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
     num_serie: new FormControl(0, Validators.required),
   });
 
-  constructor(private route: ActivatedRoute,
+  /**
+   * @description This is the constructor of the component where we update the branches and inventories
+   * @param route 
+   * @param sucursalesService 
+   * @param inventarioService 
+   */
+  constructor(
     private sucursalesService: SucursalService,
     private inventarioService: InventarioService) {
       this.updateBranches();
       this.updateInventario();
     }
 
-  ngOnInit(): void {}
-
-  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
+  /**
+   * @description This method is used to associate an inventory to a branch
+   * @version 1.0
+   * @param form 
+   */
   asociarInventario(form: any) {
-    // Recordar crear un mensaje de error si el form no pudo ser ingresados
+
     console.log(form);
 
     this.inventarioService.associateInventory(form).subscribe((data) => {
@@ -54,6 +70,10 @@ export class AsociarInventarioComponent implements OnInit {
     );
   }
 
+  /**
+   * @description This method is used to update the branches list
+   * @version 1.0
+   */
   updateBranches(){
     this.sucursalesService.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -62,7 +82,10 @@ export class AsociarInventarioComponent implements OnInit {
     });
   }
 
-
+  /**
+   * @description This method is used to update the inventories list
+   * @version 1.0
+   */
   updateInventario(){
 
     this.inventarioService.getAllInventories().subscribe(data => {

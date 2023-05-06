@@ -12,7 +12,6 @@ import { NavbarComponent } from './template/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
 import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
-import { RegistrarCitaComponent } from './components/registrar-cita/registrar-cita.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
 import { ManejarSucursalComponent } from './components/manejar-sucursal/manejar-sucursal.component';
@@ -40,21 +39,20 @@ import { AgregarInventarioComponent } from './components/agregar-inventario/agre
 import { AsignarServicioComponent } from './components/asignar-servicio/asignar-servicio.component';
 import { FormInventarioComponent } from './template/form-inventario/form-inventario.component';
 import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.component';
+import { CopySucursalComponent } from './components/copy-sucursal/copy-sucursal.component';
 
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, NavbarComponent,
-    HomeComponent, LoginAdminComponent, LoginClienteComponent,
-    RegistrarCitaComponent, CrearUsuarioComponent, PanelAdminComponent,
-    ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent,
-    AgregarServicioComponent, VerPlanillaComponent, ManejarEmpleadoComponent,
-    EditarEmpleadoComponent, AgregarEmpleadoComponent, ManejarInventarioComponent,
-    EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent,
-    AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent,
-    CrearClaseComponent, AsociarProductoComponent, SidebarComponent,
-    FormSucursalComponent, FormEmpleadoComponent, FormProductoComponent,
-    AgregarInventarioComponent, AsignarServicioComponent, FormInventarioComponent,
-    PanelClienteComponent],
+  declarations: [AppComponent, FooterComponent, NavbarComponent,HomeComponent, 
+    LoginAdminComponent, LoginClienteComponent, CrearUsuarioComponent, PanelAdminComponent,
+    ManejarSucursalComponent, EditarSucursalComponent, AgregarSucursalComponent, AgregarServicioComponent, 
+    VerPlanillaComponent, ManejarEmpleadoComponent, EditarEmpleadoComponent, AgregarEmpleadoComponent, 
+    ManejarInventarioComponent, EditarInventarioComponent, ManejarProductoComponent, EditarProductoComponent, 
+    AgregarProductoComponent, AsociarTratamientoComponent, AsociarInventarioComponent, CrearClaseComponent, 
+    AsociarProductoComponent, SidebarComponent, FormSucursalComponent, FormEmpleadoComponent, 
+    FormProductoComponent, AgregarInventarioComponent,  AsignarServicioComponent, FormInventarioComponent, 
+    PanelClienteComponent, CopySucursalComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -63,32 +61,110 @@ import { PanelClienteComponent } from './components/panel-cliente/panel-cliente.
     ReactiveFormsModule,
     RouterModule.forRoot([
       
-      {path:'', component:HomeComponent},
-      {path:'loginAdmin', component:LoginAdminComponent},
-      {path:'loginCliente', component:LoginClienteComponent},
-      {path:'panelAdmin', component:PanelAdminComponent},
-      {path:'sucursales', component:ManejarSucursalComponent},
-      {path:'agregarServicio', component:AgregarServicioComponent},
-      {path:'plantilla', component:VerPlanillaComponent},
-      {path:'empleados', component:ManejarEmpleadoComponent},
-      {path:'inventario', component:ManejarInventarioComponent},
-      {path:'productos', component:ManejarProductoComponent},
-      {path:'asociarTratamiento', component:AsociarTratamientoComponent},
-      {path:'asociarInventario', component:AsociarInventarioComponent},
-      {path:'crearClase', component:CrearClaseComponent},
-      {path:'asociarProducto', component:AsociarProductoComponent},
-      {path:'sucursales/:sucursalNombre', component:EditarSucursalComponent},
-      {path:'agregarSucursal', component:AgregarSucursalComponent},
-      {path:'empleados/:empleadoCedula', component:EditarEmpleadoComponent},
-      {path:'agregarEmpleado', component:AgregarEmpleadoComponent},
-      {path:'asignarServicio', component: AsignarServicioComponent},
-      {path:'inventario/:inventarioCodigo', component:EditarInventarioComponent},
-      {path:'agregarInventario', component:AgregarInventarioComponent},
-      {path:'productos/:productoNombre', component:EditarProductoComponent},
-      {path:'agregarProducto', component:AgregarProductoComponent},
-      {path:'registrarCita', component:RegistrarCitaComponent},
-      {path:'crearUsuario', component:CrearUsuarioComponent},
-      {path:'panelCliente', component:PanelClienteComponent}
+      {
+        path:'', 
+        component:HomeComponent
+      },
+      {
+        path:'loginAdmin', 
+        component:LoginAdminComponent
+      },
+      {
+        path:'loginCliente',
+        component:LoginClienteComponent
+      },
+      {
+        path:'panelAdmin',
+        component:PanelAdminComponent
+      },
+      {
+        path:'sucursales', 
+        component:ManejarSucursalComponent
+      },
+      {
+        path:'agregarServicio', 
+        component:AgregarServicioComponent
+      },
+      {
+        path:'plantilla', 
+        component:VerPlanillaComponent
+      },
+      {
+        path:'empleados', 
+        component:ManejarEmpleadoComponent
+      },
+      {
+        path:'inventario', 
+        component:ManejarInventarioComponent
+      },
+      {
+        path:'productos', 
+        component:ManejarProductoComponent
+      },
+      {
+        path:'asociarTratamiento', 
+        component:AsociarTratamientoComponent
+      },
+      {
+        path:'asociarInventario', 
+        component:AsociarInventarioComponent
+      },
+      {
+        path:'crearClase', 
+        component:CrearClaseComponent
+      },
+      {
+        path:'asociarProducto', 
+        component:AsociarProductoComponent
+      },
+      {
+        path:'sucursales/:sucursalNombre', 
+        component:EditarSucursalComponent
+      },
+      {
+        path:'agregarSucursal', 
+        component:AgregarSucursalComponent
+      },
+      {
+        path:'empleados/:empleadoCedula', 
+        component:EditarEmpleadoComponent
+      },
+      {
+        path:'agregarEmpleado', 
+        component:AgregarEmpleadoComponent
+      },
+      {
+        path:'asignarServicio', 
+        component: AsignarServicioComponent
+      },
+      {
+        path:'inventario/:inventarioCodigo', 
+        component:EditarInventarioComponent
+      },
+      {
+        path:'agregarInventario', 
+        component:AgregarInventarioComponent
+      },
+      {
+        path:'productos/:productoNombre', 
+        component:EditarProductoComponent
+      },
+      {
+        path:'agregarProducto', 
+        component:AgregarProductoComponent
+      },
+      {
+        path:'crearUsuario', 
+        component:CrearUsuarioComponent
+      },
+      {
+        path:'panelCliente', 
+        component:PanelClienteComponent
+      },
+      {
+        path:'copySucursal', 
+        component:CopySucursalComponent
+      }
 
     ])
 ],

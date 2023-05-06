@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { ResponseTemplateI, ResponseTemplateListI } from '../../models/responseTemplate.interface';
 import { GetPayroll } from 'src/app/models/payroll/get-payroll';
-import { get_all_payrolls } from 'src/app/examples';
 
 import * as myGlobals from '../../../../src/app/globals';
 

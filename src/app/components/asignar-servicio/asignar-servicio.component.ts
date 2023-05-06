@@ -1,31 +1,45 @@
 import { AssignResponseTemplateI, ResponseTemplateListBranchesI, ResponseTemplateListServiceI } from 'src/app/models/responseTemplate.interface';
 import { ServicioService } from 'src/app/service/servicio/servicio.service';
 import { SucursalService } from './../../service/sucursal/sucursal.service';
-import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { services } from 'src/app/examples';
-import { Branch } from 'src/app/models/branch/get-branch';
 import { Service } from 'src/app/models/services/add-service';
+import { Branch } from 'src/app/models/branch/get-branch';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-asignar-servicio',
   templateUrl: './asignar-servicio.component.html',
   styleUrls: ['./asignar-servicio.component.scss']
 })
-export class AsignarServicioComponent implements OnInit {
+export class AsignarServicioComponent{
 
 
-  // TODO : Get the branches from the API
+  /**
+   * @description List of the branches to show the user in the dropdown
+   * @version 1.0
+   */
   branches = new Array<Branch>();
 
-  // TODO : Get the services from the API
+  /**
+   * @description List of the services to show the user in the dropdown
+   * @version 1.0
+   */
   services = new Array<Service>;
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   asignarServicioForm = new FormGroup({
     sucursal: new FormControl(null, Validators.required),
     servicio: new FormControl(null, Validators.required)
     });
 
+    /**
+     * @description This is the constructor of the component where we update the branches and services
+     * @param sucursalService 
+     * @param servicioService 
+     */
   constructor( 
     private sucursalService: SucursalService,
     private servicioService: ServicioService ){
@@ -33,6 +47,10 @@ export class AsignarServicioComponent implements OnInit {
     this.updateService();
   }
 
+  /**
+   * @description This method is used to update the branches
+   * @version 1.0
+   */
   updateBranches(){
     this.sucursalService.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -41,6 +59,10 @@ export class AsignarServicioComponent implements OnInit {
     });
   }
 
+  /**
+   * @description This method is used to update the services
+   * @version 1.0
+   */
   updateService(){
     this.servicioService.getAllServices().subscribe((data) => {
       let dataResponse: ResponseTemplateListServiceI = data;
@@ -48,9 +70,11 @@ export class AsignarServicioComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  // TODO : Enviar el formulario a la base de datos
+  /**
+   * @description This method is used to assign a service to a branch
+   * @param form 
+   * @version 1.0
+   */
   asignarServicio(form:any){
 
     console.log('Formulario: ', form);

@@ -48,4 +48,10 @@ export class SucursalService {
     };
     return this.http.delete<ResponseTemplateI>(address, Options);
   }
+
+  copySucursal(form:any): Observable<ResponseTemplateI> {
+    let address = this.url + 'copy_branch';
+    return this.http.post<ResponseTemplateI>(address, form);
+  }
+
 }

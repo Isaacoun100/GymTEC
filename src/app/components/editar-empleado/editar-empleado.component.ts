@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ProxyEmpleadoService } from 'src/app/service/empleado/proxy-empleado.service';
-import { get_employee } from 'src/app/examples';
 import { EmpleadoService } from 'src/app/service/empleado/empleado.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetEmployee } from 'src/app/models/employee/get-employee';
@@ -17,6 +16,10 @@ export class EditarEmpleadoComponent implements OnInit {
   
   empleadoIdFromRoute: string | null ;
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   empleadoForm = new FormGroup({
 
     cedula_empleado : new FormControl('', Validators.required),
@@ -35,6 +38,10 @@ export class EditarEmpleadoComponent implements OnInit {
 
   });
 
+  /**
+   * @description This method is used to update the employee
+   * @version 1.0
+   */
   updateEmployee(){
 
     console.log(this.empleadoIdFromRoute);
@@ -48,9 +55,15 @@ export class EditarEmpleadoComponent implements OnInit {
 
     });
     
-    
   }
 
+  /**
+   * @description This is the constructor of the component, here we access the URL route parameter
+   * @param proxyEmpleadoService 
+   * @param api 
+   * @param route 
+   * @param router 
+   */
   constructor(
     private proxyEmpleadoService: ProxyEmpleadoService,
     private api: EmpleadoService,
@@ -59,17 +72,28 @@ export class EditarEmpleadoComponent implements OnInit {
       this.empleadoIdFromRoute = this.route.snapshot.paramMap.get('empleadoCedula');
     }
 
+  /**
+   * @description This method is executed when the component is created, it subscribes to the form, resets the form and updates the employee
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe( empleadoForm => this.empleadoForm = empleadoForm);
     this.empleadoForm.reset();
     this.updateEmployee();
   }
 
+  /**
+   * @description This method is executed when the component is destroyed, it resets the form
+   * @version 1.0
+   */
   ngOnDestroy(){
     this.empleadoForm.reset();
   }
 
-  // TODO : Eliminar el empleado usando la ruta
+  /**
+   * @description This method is used to update the employee
+   * @version 1.0
+   */
   eliminarEmpleado(){
     const d: GetEmployee = {cedula_empleado: this.empleadoIdFromRoute};
     this.api.deleteEmpleado(d).subscribe(data => {

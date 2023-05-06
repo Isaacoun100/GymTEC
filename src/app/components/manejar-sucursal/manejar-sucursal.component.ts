@@ -11,15 +11,31 @@ import { Branch } from 'src/app/models/branch/get-branch';
 })
 export class ManejarSucursalComponent implements OnInit{
 
-  // TODO: Cambiar el arreglo de ejemplo por el arreglo de sucursales que se obtiene de la base de datos
+  /**
+   * @description This is the array of branches
+   * @version 1.0
+   */
   branches = new Array<Branch>();
 
+  /**
+   * @description This method is used to initialize the component
+   * @param api 
+   * @param router 
+   */
   constructor(private api: SucursalService, private router: Router){}
 
+  /**
+   * @description This method is used to initialize the component, here we get all the branches from the database
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.getAllBranches();
   }
 
+  /**
+   * @description This method is used to get all the branches from the database
+   * @version 1.0
+   */
   getAllBranches(){
     this.api.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -32,6 +48,11 @@ export class ManejarSucursalComponent implements OnInit{
 
     });
   }
+
+  /**
+   * @description Routes the admin to the AgregarSucursal component
+   * @version 1.0
+   */
   agregarSucursal(){
     this.router.navigate(['agregarSucursal']);
    }

@@ -11,12 +11,16 @@ import { BranchResponseTemplateI } from 'src/app/models/responseTemplate.interfa
   templateUrl: './editar-sucursal.component.html',
   styleUrls: ['./editar-sucursal.component.scss']
 })
-export class EditarSucursalComponent implements OnInit {
+export class EditarSucursalComponent {
 
   sucursalIdFromRoute: string | null ;
 
   sucursalRequest : GetBranch | undefined;
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   sucursalForm = new FormGroup({
       
     nombre_sucursal: new FormControl('', Validators.required),
@@ -34,6 +38,13 @@ export class EditarSucursalComponent implements OnInit {
     active_store: new FormControl(false, Validators.required),
   })
 
+  /**
+   * @description Here we assign the value of the route to the variable sucursalIdFromRoute
+   * @param data 
+   * @param route 
+   * @param router 
+   * @param api 
+   */
   constructor(
     private data: ProxySucursalService,
     private route:ActivatedRoute,
@@ -42,17 +53,27 @@ export class EditarSucursalComponent implements OnInit {
       this.sucursalIdFromRoute = this.route.snapshot.paramMap.get('sucursalNombre');
     }
   
+  /**
+   * @description This method is used to update the branch
+   * @version 1.0
+   */
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
     this.sucursalForm.reset();
     this.updateSucursal();
   }
 
+  /**
+   * @description This method is used to clear the phone number array and reset the form once the component is destroyed
+   */
   ngOnDestroy(){
     this.sucursalForm.controls['telefonos'].clear();
     this.sucursalForm.reset();
   }
 
+  /**
+   * @description This method is used to update the branch
+   */
   updateSucursal(){
 
     console.log(this.sucursalIdFromRoute);
@@ -92,6 +113,9 @@ export class EditarSucursalComponent implements OnInit {
     
   }
 
+  /**
+   * @description This method is used to delete the selected sucursal
+   */
   eliminarSucursal(){
     const d: GetBranch = {nombre_sucursal: this.sucursalIdFromRoute};
     this.api.deleteBranch(d).subscribe(data => {

@@ -14,7 +14,10 @@ import { ResponseTemplateI } from 'src/app/models/responseTemplate.interface';
 export class CrearUsuarioComponent {
 
   
-  // Formulario de crear cliente
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   clientForm = new FormGroup({
     cedula_cliente: new FormControl('', Validators.required),
     nombre : new FormControl('', Validators.required),
@@ -28,11 +31,20 @@ export class CrearUsuarioComponent {
     fecha_nac: new FormControl('', Validators.required)
   });
   
+  /**
+   * @description This is the constructor of the component
+   * @version 1.0
+   * @param router 
+   * @param api 
+   */
   constructor( 
     private router : Router,
     private api : ClienteService) {}
 
-  // TODO :  Enviar el formulario a la API
+  /**
+   * @description This method is used to create a new client
+   * @param form 
+   */
   agregarCliente(form : AddCliente){
     this.api.createClient(form).subscribe(data => {
 

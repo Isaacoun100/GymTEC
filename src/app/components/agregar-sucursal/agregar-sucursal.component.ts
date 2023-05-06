@@ -7,23 +7,36 @@ import { ProxySucursalService } from 'src/app/service/sucursal/proxy-sucursal.se
   templateUrl: './agregar-sucursal.component.html',
   styleUrls: ['./agregar-sucursal.component.scss']
 })
-export class AgregarSucursalComponent implements OnInit {
+export class AgregarSucursalComponent {
 
-  isEmpty= false;
+  /**
+   * @description It creates an instance of AgregarSucursalComponent.
+   * @version 1.0
+   */
+  constructor(private data: ProxySucursalService) { }
 
-  constructor(private data: ProxySucursalService,) { }
-
+  /**
+   * @description This method is executed when the view is initialized, it subscribes the form to the service. and resets the form.
+   * @version 1.0
+   */
   ngOnInit(): void {
-    this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm)
-    this.data.activeWindow.subscribe(isEmpty => this.isEmpty = isEmpty);
+    this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm);
     this.sucursalForm.reset();
   }
 
+  /**
+   * @description This method resets the form when the view is destroyed
+   * @version 1.0
+   */
   ngOnDestroy(){
     this.sucursalForm.controls['telefonos'].clear();
     this.sucursalForm.reset();
   }
 
+  /**
+   * @description Form used to capture the user input
+   * @version 1.0
+   */
   sucursalForm = new FormGroup({
       
     nombre_sucursal: new FormControl('', Validators.required),

@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { get_all_inventories } from './../../examples';
 import { Component } from '@angular/core';
 import {InventarioService} from '../../service/inventario/inventario.service';
 import { ResponseTemplateListInventoryI } from 'src/app/models/responseTemplate.interface';
@@ -12,15 +11,32 @@ import { Inventory } from 'src/app/models/inventory/get-inventory';
 })
 export class ManejarInventarioComponent {
 
-  // TODO : Solicitar los inventarios de la base de datos
+  /**
+   * @description This is the array of inventories
+   * @version 1.0
+   */
   inventories = new Array<Inventory> ;  
   
+  /**
+   * @description Constructor for the manejar inventario component
+   * @param api 
+   * @param router
+   * @version 1.0 
+   */
   constructor(private api: InventarioService, private router:Router){}
 
+  /**
+   * @description This method is used to initialize the component, here we get all the inventories from the database
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.getAllInventory();
   }
 
+  /**
+   * @description This method is used to get all the inventories from the database
+   * @version 1.0
+   */
   getAllInventory(){
     this.api.getAllInventories().subscribe((data) => {
       let dataResponse: ResponseTemplateListInventoryI = data;
@@ -35,6 +51,11 @@ export class ManejarInventarioComponent {
       }
     });
   }
+
+  /**
+   * @description Routes the admin to the AgregarInventario component
+   * @version 1.0
+   */
   agregarInventario(){
     this.router.navigate(['agregarInventario']);
    }

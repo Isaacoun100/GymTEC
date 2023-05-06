@@ -12,14 +12,26 @@ export class PanelAdminComponent implements OnInit {
   local = "{}";
   showProperty = false;
 
+  /**
+   * @description This method is used to initialize the component, here we get the user from the session storage
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.local = String(sessionStorage.getItem('user'));
   }
 
+  /**
+   * @description This method is used to get the user from the session storage
+   * @returns the user from the session storage
+   */
   getUser(){
     return JSON.parse(this.local);
   }
 
+  /**
+   * @description This method is used to hide the password from the user
+   * @version 1.0
+   */
   getContrasena(){
 
     this.value='';
@@ -38,6 +50,10 @@ export class PanelAdminComponent implements OnInit {
     }
   }
 
+  /**
+   * @description This method is used to hide the salary from the user
+   * @version 1.0
+   */
   getSalario(){
 
     this.value='';
@@ -67,6 +83,4 @@ export class PanelAdminComponent implements OnInit {
       return 'Hide';
     }
   }
-
-  constructor() {}
 }

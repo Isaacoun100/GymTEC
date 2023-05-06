@@ -9,6 +9,10 @@ import { ClaseService } from 'src/app/service/clase/clase.service';
 })
 export class CrearClaseComponent{
 
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   createClaseForm = new FormGroup({
     clase_id: new FormControl(0, Validators.required),
     servicio: new FormControl( '', Validators.required),
@@ -20,11 +24,17 @@ export class CrearClaseComponent{
     encargado: new FormControl('', Validators.required),
   });
 
+  /**
+   * @description This is the constructor of the component
+   * @param api 
+   */
   constructor(private api: ClaseService) { }
 
 
-
-  // Enviar form a la base de datos, cambiar el tipo del form que se envía en el argumento
+  /**
+   * @description This method is used to create a new class
+   * @param form 
+   */
   createForm(form:any){
     console.log(form);
     this.api.createClass(form).subscribe((data) => {

@@ -1,6 +1,6 @@
 import { ProxyEmpleadoService } from 'src/app/service/empleado/proxy-empleado.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-agregar-empleado',
@@ -9,6 +9,9 @@ import { Validators } from '@angular/forms';
 })
 export class AgregarEmpleadoComponent implements OnInit {
 
+  /**
+   * @description This is the form used to capture the user input
+   */
   empleadoForm = new FormGroup({
 
     cedula_empleado : new FormControl('', Validators.required),
@@ -27,13 +30,25 @@ export class AgregarEmpleadoComponent implements OnInit {
 
   });
 
+  /**
+   * @description Creates an instance of AgregarEmpleadoComponent
+   * @version 1.0
+   */
   constructor(private proxyEmpleadoService: ProxyEmpleadoService) { }
 
+  /**
+   * @description This method is executed when the view is initialized, it subscribes the form to the service.
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm);
     this.empleadoForm.reset();
   }
 
+  /**
+   * @description This method resets the form when the view is destroyed
+   * @version 1.0
+   */
   ngOnDestroy(){
     this.empleadoForm.reset();
   }

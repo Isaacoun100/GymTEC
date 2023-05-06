@@ -13,14 +13,27 @@ import { TratamientoService } from 'src/app/service/tratamiento/tratamiento.serv
 })
 export class AsociarTratamientoComponent {
 
-  // Agregar las sucursales de la base de datos
+  /**
+   * @description This is the list of the branches to show the user in the dropdown
+   * @version 1.0
+   */
   branches = new Array<Branch>;
   
+  /**
+   * @description This is the form used to capture the user input
+   * @version 1.0
+   */
   asociarTratamientoForm = new FormGroup({
     sucursal: new FormControl('', Validators.required),
     tratamiento_id: new FormControl('', Validators.required),
   });
 
+  /**
+   * @description This is the constructor of the component where we update the branches and inventories
+   * @param route 
+   * @param sucursalesService 
+   * @param tratamientoService 
+   */
   constructor(
     private route: ActivatedRoute,
     private sucursalesService : SucursalService,
@@ -28,10 +41,10 @@ export class AsociarTratamientoComponent {
       this.updateBranches();
     }
 
-
-  ngonInit(): void {}
-
-
+  /**
+   * @description This method is used to associate the treatment to a branch
+   * @param form 
+   */
   asignarTratamiento(form: any) {
     console.log('Formulario: ', form);
 
@@ -50,6 +63,10 @@ export class AsociarTratamientoComponent {
     
   }
 
+  /**
+   * @description This method is used to update the list of branches
+   * @version 1.0
+   */
   updateBranches(){
     this.sucursalesService.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -58,6 +75,11 @@ export class AsociarTratamientoComponent {
     });
   }
 
+  /**
+   * @description Changes the value of the list that is selected
+   * @version 1.0
+   * @param e 
+   */
   cambiarNombreSucursal(e: any) {
     this.asociarTratamientoForm.controls['sucursal']?.setValue(e.target.value, {
       onlySelf: true,

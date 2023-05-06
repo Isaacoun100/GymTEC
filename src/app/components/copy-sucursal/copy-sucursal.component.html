@@ -1,0 +1,51 @@
+<body>
+    
+    <app-sidebar></app-sidebar>
+
+    <form [formGroup]="copyForm" (ngSubmit)="newSucursal(copyForm.getRawValue())">
+
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-6">
+                    
+                    <label for="branch_to_copy">Seleccione sucursal a copiar</label>
+        
+                    <select class="form-select" formControlName="branch_to_copy">
+                        <option [disabled]="true">Seleccionar sucursal</option>
+
+                        <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                            {{branch.nombre_sucursal}}
+                        </option>
+
+                    </select>
+                    
+                </div>
+    
+                <div class="col-6">
+                    
+                    <label for="new_branch"> Nombre de la nueva sucursal </label>
+    
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="new_branch"
+                    name="new_branch"
+                    formControlName="new_branch">
+                    
+                </div>
+                
+            </div>
+
+            <div class="row py-2 px-2">
+                
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Copiar</button>
+                
+            </div>
+
+        </div>
+        
+
+    </form>    
+
+</body>
