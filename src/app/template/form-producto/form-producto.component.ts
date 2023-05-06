@@ -19,6 +19,13 @@ export class FormProductoComponent {
     descripcion: new FormControl('', Validators.required),
   });
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @param proxyProductoService
+   * @param router
+   * @param api
+   * @version 1.0
+   */
   constructor(
     private proxyProductoService: ProxyProductoService,
     private router: Router,
@@ -30,7 +37,11 @@ export class FormProductoComponent {
     );
   }
 
-  // Enviar form a la base de datos
+  /**
+   * @description This method is used to add a new product to the database.
+   * @param form 
+   * @version 1.0
+   */
   editarProducto(form: AddProduct) {
     
     //Este es el de crear

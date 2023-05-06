@@ -6,6 +6,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ProxyInventarioService {
+  /**
+   * @description This is a new form group created to store the data of the current inventory.
+   * @version 1.0
+   */
   private messageSource = new BehaviorSubject<FormGroup>(
     new FormGroup({
       num_serie: new FormControl('', Validators.required),

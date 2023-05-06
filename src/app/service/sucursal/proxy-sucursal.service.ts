@@ -7,7 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProxySucursalService {
 
-  // Aquí es donde se almacena el formulario de sucursal
+  /**
+   * @description This is the constructor of the class. It only needs the HttpClient module.
+   * @version 1.0
+   */
   private messageSource = new BehaviorSubject<FormGroup>(
 
     new FormGroup({

@@ -21,6 +21,10 @@ export class FormEmpleadoComponent implements OnInit {
   // TODO : Solicitar las sucursales de la base de datos
   branches = new Array<Branch>();
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   empleadoForm = new FormGroup({
     cedula_empleado: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
@@ -37,6 +41,10 @@ export class FormEmpleadoComponent implements OnInit {
     planilla_descripcion: new FormControl('', Validators.required),
   });
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   constructor(
   private proxyEmpleadoService: ProxyEmpleadoService,
   private router: Router,
@@ -45,6 +53,10 @@ export class FormEmpleadoComponent implements OnInit {
     this.updateBranches();
   }
   
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   updateBranches(){
     this.api.getAllBranches().subscribe((data) => {
       let dataResponse: ResponseTemplateListBranchesI = data;
@@ -53,13 +65,21 @@ export class FormEmpleadoComponent implements OnInit {
     });
   }
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyEmpleadoService.currentEmployee.subscribe(empleadoForm => this.empleadoForm = empleadoForm);
   }
 
      
 
-  // TODO : Enviar el formulario a la base de datos
+  /**
+   * @description This method is used to get the value of the form.
+   * @param form This is the form that is going to be sent.
+   * @version 1.0
+   */
   editarEmpleado(form:AddEmployee ){
 
     //Este es el de crear
@@ -82,6 +102,10 @@ export class FormEmpleadoComponent implements OnInit {
     console.log(form);
   }
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   togglePassword(){
     var x = (<HTMLInputElement>document.getElementById("passwordField"));
     if (x.type === "password") {

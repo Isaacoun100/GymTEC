@@ -33,18 +33,33 @@ export class FormInventarioComponent {
     tipo_equipo: new FormControl('', Validators.required)
   });
 
+  /** 
+   * @description Constructor of the class.
+   * @param proxyInventarioService
+   * @param router
+   * @param api
+   * @version 1.0
+  */
   constructor(
     private proxyInventarioService: ProxyInventarioService,
     private router:Router,
     private api: InventarioService) {}
 
+  /**
+   * @description This method is used to get the current inventory from the service.
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyInventarioService.currentInventory.subscribe(
       (inventarioForm) => (this.inventarioForm = inventarioForm)
     );
   }
 
-  // TODO : Enviar el form a la base de datos
+  /**
+   * @description This method is used to add a new inventory to the database.
+   * @param form This is the entire form of the inventory.
+   * @version 1.0
+   */
   editarInventario(form: AddInventory) {
 
     form.is_used = false;

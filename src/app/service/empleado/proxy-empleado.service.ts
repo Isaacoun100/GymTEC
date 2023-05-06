@@ -7,8 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProxyEmpleadoService {
   
+  /**
+   * @description This is a new form group created to store the data of the current employee.
+   * @version 1.0
+   */
   private messageSource = new BehaviorSubject<FormGroup>(
-
     new FormGroup({
 
         cedula_empleado : new FormControl('', Validators.required),
@@ -30,6 +33,5 @@ export class ProxyEmpleadoService {
 
     currentEmployee = this.messageSource.asObservable();
     
-
   constructor() { }
 }

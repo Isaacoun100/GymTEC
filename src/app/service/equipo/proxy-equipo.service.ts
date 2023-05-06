@@ -6,6 +6,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ProxyEquipoService {
+  /**
+   * @description This is a new form group created to store the data of the current equipment.
+   * @version 1.0
+   */
   private messageSource = new BehaviorSubject<FormGroup>(
     new FormGroup({
       num_serie: new FormControl(0, Validators.required),

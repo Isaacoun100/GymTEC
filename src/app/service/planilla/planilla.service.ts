@@ -13,14 +13,30 @@ import * as myGlobals from '../../../../src/app/globals';
 export class PlanillaService {
   url = myGlobals.URL;
 
+  /**
+   * @description This is the constructor of the class. It only needs the HttpClient module.
+   * @param http
+   * @version 1.0
+   */
   constructor(private http: HttpClient) {}
 
+  /**
+   * @description This method is used to get a specific payroll using HTTP method POST.
+   * @param form
+   * @version 1.0
+   * @returns Observable<ResponseTemplateI>
+   */
   getPayroll(form: GetPayroll): Observable<ResponseTemplateI> {
     let address = this.url + 'get_payroll';
 
     return this.http.post<ResponseTemplateI>(address, form);
   }
 
+  /**
+   * @description This method is used to get all the payrolls using HTTP method GET.
+   * @version 1.0
+   * @returns Observable<ResponseTemplateListI>
+   */
   getAllPayrolls(): Observable<ResponseTemplateListI> {
     let address = this.url + 'get_all_payrolls';
 

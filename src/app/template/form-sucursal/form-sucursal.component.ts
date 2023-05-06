@@ -19,6 +19,9 @@ export class FormSucursalComponent implements OnInit {
     {value: false, name: 'Desactivado'}
   ];
   
+  /**
+   * @description This method is used to get the value of the form.
+   */
   sucursalForm = new FormGroup({
     
     nombre_sucursal: new FormControl('', Validators.required),
@@ -36,26 +39,50 @@ export class FormSucursalComponent implements OnInit {
     active_store: new FormControl(this.options[0].value, Validators.required),
   })
 
+  /**
+   * @description The constructor of the class.
+   * @param data
+   * @param router
+   * @param api
+   * @version 1.0
+   */
   constructor( 
     private data: ProxySucursalService,
     private router: Router,
     private api: SucursalService
      ){}
   
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   ngOnInit(){
     this.data.currentMessage.subscribe(sucursalForm => this.sucursalForm = sucursalForm);
   }
   
+  /**
+   * @description This method is used to get the value of the form.
+   * @param index
+   * @param item
+   * @version 1.0
+   */
   trackByFn(index: number, item: any) {
     return index;
   }
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @version 1.0
+   */
   nuevoTelefono(){
     const control = <FormArray> this.sucursalForm.controls['telefonos'];
     control.push(new FormControl('', Validators.required))
   }
 
-  // TODO :  Enviar el formulario a la API
+  /**
+   * @description This method is used to get the value of the form.
+   * @param form 
+   */
   editarSucursal(form:AddBranch){
 
     //Este es el de crear
@@ -81,6 +108,11 @@ export class FormSucursalComponent implements OnInit {
 
   }
 
+  /**
+   * @description This method is used to get the value of the form.
+   * @param index
+   * @version 1.0
+   */
   eliminarTelefono(index:number){
     console.log(index);
     const control = <FormArray> this.sucursalForm.controls['telefonos'];

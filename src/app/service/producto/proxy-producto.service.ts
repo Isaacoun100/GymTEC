@@ -6,6 +6,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ProxyProductoService {
+  /**
+   * @description This is a new form group created to store the data of the current product.
+   * @version 1.0
+   * @returns FormGroup
+   */
   private messageSource = new BehaviorSubject<FormGroup>(
     new FormGroup({
       codigo_barras: new FormControl('', Validators.required),
