@@ -20,7 +20,8 @@ export class FormSucursalComponent implements OnInit {
   ];
   
   /**
-   * @description This method is used to get the value of the form.
+   * @description Creates the form group for Sucursal.
+   * @version 1.0
    */
   sucursalForm = new FormGroup({
     
@@ -53,7 +54,7 @@ export class FormSucursalComponent implements OnInit {
      ){}
   
   /**
-   * @description This method is used to get the value of the form.
+   * @description Calls the variable currentMessage from proxySucursalService and stores sucursalForm.
    * @version 1.0
    */
   ngOnInit(){
@@ -61,17 +62,18 @@ export class FormSucursalComponent implements OnInit {
   }
   
   /**
-   * @description This method is used to get the value of the form.
+   * @description Returns the index
    * @param index
    * @param item
    * @version 1.0
-   */
+   * @returns index
+  */
   trackByFn(index: number, item: any) {
     return index;
   }
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Adds a new phone by doing a push to the control array that contains the phone list.
    * @version 1.0
    */
   nuevoTelefono(){
@@ -80,7 +82,7 @@ export class FormSucursalComponent implements OnInit {
   }
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description This method is used to add a new branch or to update and existing one.
    * @param form 
    */
   editarSucursal(form:AddBranch){
@@ -109,7 +111,7 @@ export class FormSucursalComponent implements OnInit {
   }
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Deletes a phone from the phone list by removing the position by the index.
    * @param index
    * @version 1.0
    */

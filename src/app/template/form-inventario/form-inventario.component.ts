@@ -25,6 +25,10 @@ export class FormInventarioComponent {
   ];
 
 
+  /**
+   * @description Creates the form group for Inventory.
+   * @version 1.0
+   */
   inventarioForm = new FormGroup({
     num_serie: new FormControl(0, Validators.required),
     marca: new FormControl('', Validators.required),
@@ -46,7 +50,7 @@ export class FormInventarioComponent {
     private api: InventarioService) {}
 
   /**
-   * @description This method is used to get the current inventory from the service.
+   * @description Calls the variable currentInventory from proxyInventarioService and stores inventarioForm.
    * @version 1.0
    */
   ngOnInit(): void {
@@ -56,8 +60,8 @@ export class FormInventarioComponent {
   }
 
   /**
-   * @description This method is used to add a new inventory to the database.
-   * @param form This is the entire form of the inventory.
+   * @description This method is used to add new inventory or to update an existing one.
+   * @param form 
    * @version 1.0
    */
   editarInventario(form: AddInventory) {

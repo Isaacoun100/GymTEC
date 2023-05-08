@@ -20,7 +20,7 @@ export class FormProductoComponent {
   });
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Constructor of the class.
    * @param proxyProductoService
    * @param router
    * @param api
@@ -31,6 +31,10 @@ export class FormProductoComponent {
     private router: Router,
     private api: ProductoService) {}
 
+  /**
+   * @description Calls the variable currentProduct from proxyProductoService and stores productoForm.
+   * @version 1.0
+   */
   ngOnInit(): void {
     this.proxyProductoService.currentProduct.subscribe(
       (productoForm) => (this.productoForm = productoForm)
@@ -38,7 +42,7 @@ export class FormProductoComponent {
   }
 
   /**
-   * @description This method is used to add a new product to the database.
+   * @description This method is used to add a new product or update an existing one.
    * @param form 
    * @version 1.0
    */

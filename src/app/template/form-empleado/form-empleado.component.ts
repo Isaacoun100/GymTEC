@@ -18,11 +18,10 @@ import { ResponseTemplateListBranchesI } from 'src/app/models/responseTemplate.i
 
 export class FormEmpleadoComponent implements OnInit {
 
-  // TODO : Solicitar las sucursales de la base de datos
   branches = new Array<Branch>();
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Creates the form group for Employee.
    * @version 1.0
    */
   empleadoForm = new FormGroup({
@@ -42,7 +41,11 @@ export class FormEmpleadoComponent implements OnInit {
   });
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Constructor of the class.
+   * @param proxyEmpleadoService 
+   * @param router
+   * @param api
+   * @param apiEmpleado
    * @version 1.0
    */
   constructor(
@@ -54,7 +57,7 @@ export class FormEmpleadoComponent implements OnInit {
   }
   
   /**
-   * @description This method is used to get the value of the form.
+   * @description Using getAllBranches method from services, gets all the existing branches and stores them in the array branches.
    * @version 1.0
    */
   updateBranches(){
@@ -66,7 +69,7 @@ export class FormEmpleadoComponent implements OnInit {
   }
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Calls the variable currentEmployee from proxyEmpleadoService and stores empleadoForm.
    * @version 1.0
    */
   ngOnInit(): void {
@@ -76,8 +79,8 @@ export class FormEmpleadoComponent implements OnInit {
      
 
   /**
-   * @description This method is used to get the value of the form.
-   * @param form This is the form that is going to be sent.
+   * @description This method is used to add a new employee or to edit an existing one.
+   * @param form 
    * @version 1.0
    */
   editarEmpleado(form:AddEmployee ){
@@ -103,7 +106,7 @@ export class FormEmpleadoComponent implements OnInit {
   }
 
   /**
-   * @description This method is used to get the value of the form.
+   * @description Toggles the password by showing it or hiding it.
    * @version 1.0
    */
   togglePassword(){
