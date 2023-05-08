@@ -1,0 +1,199 @@
+<div class="container">
+
+    <form [formGroup]="empleadoForm" (ngSubmit)="editarEmpleado(empleadoForm.getRawValue())">
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="cedula_empleado">Cédula</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="cedula_empleado" 
+                formControlName="cedula_empleado"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="correo">Correo</label>
+                <input 
+                type="email" 
+                class="form-control" 
+                id="correo" 
+                formControlName="correo"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <div class="row">
+
+                    <label for="password">Contraseña</label>
+
+                    <div class="col-9">
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="passwordField" 
+                        formControlName="password"
+                        >
+                    </div>
+
+                    <div class="col-auto">
+                        <a class="btn btn-secondary" (click)="togglePassword()">Show</a>
+                    </div>
+    
+
+                </div>
+
+                
+            </div>
+            
+        </div>
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="nombre">Nombre</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="nombre" 
+                formControlName="nombre"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="apellido_1">Primer Apellido</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="apellido_1" 
+                formControlName="apellido_1"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="apellido_2">Segundo Apellido</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="apellido_2" 
+                formControlName="apellido_2"
+                >
+    
+            </div>
+
+        </div>
+
+        <div class="row py-2">
+
+            <div class="col-4">
+
+                <label for="provincia">Provincia</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="provincia" 
+                formControlName="provincia"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="canton">Cantón</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="canton" 
+                formControlName="canton"
+                >
+    
+            </div>
+    
+            <div class="col-4">
+
+                <label for="distrito">Distrito</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="distrito" 
+                formControlName="distrito"
+                >
+    
+            </div>
+
+        </div>
+
+        <div class="row py-2">
+
+            <div class="col-3">
+
+                <label for="nombre_sucursal">Nombre Sucursal</label>
+    
+                <select class="form-select" formControlName="nombre_sucursal">
+                    <option [disabled]="true">Seleccionar sucursal</option>
+                    <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                        {{branch.nombre_sucursal}}
+                    </option>
+                </select>
+    
+            </div>
+    
+            <div class="col-3">
+
+                <label for="puesto_descripcion">Puesto Descripción</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="puesto_descripcion" 
+                formControlName="puesto_descripcion"
+                >
+    
+            </div>
+    
+            <div class="col-3">
+
+                <label for="planilla_descripcion">Planilla Descripción</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="planilla_descripcion" 
+                formControlName="planilla_descripcion"
+                >
+    
+            </div>
+
+            <div class="col-3">
+
+                <label for="salario">Salario</label>
+                <input 
+                type="number" 
+                class="form-control" 
+                id="salario" 
+                formControlName="salario"
+                >
+    
+            </div>
+
+        </div>
+
+        <div class="col-2">
+            <div class="row py-2 mx-2">
+                <button class="btn btn-success" type="submit">Subir</button>
+            </div>
+        </div>
+
+    </form>    
+
+</div>

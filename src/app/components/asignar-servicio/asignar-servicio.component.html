@@ -1,0 +1,59 @@
+<body>
+    <!--Sidebar-->
+    <app-sidebar></app-sidebar>
+
+    <div class="container my-4">
+
+        <div class="card mb-3" style="max-width:fit-content;">
+
+            <div class="row g-0">
+    
+                <div class="col-md-4 centrado">
+                    <img src="assets\facebook_profile_image_2_400x400.png" class="img-fluid rounded-start" alt="facebook_profile_image">
+                  </div>
+
+                  <div class="col-md-8">
+    
+                    <form [formGroup]="asignarServicioForm" (ngSubmit)="asignarServicio(asignarServicioForm.getRawValue())">
+        
+                        <div class="row my-4 mx-4">
+        
+                            <label for="sucursal">Sucursal</label>
+            
+                            <select class="form-select my-2" aria-label="sucursal" (change)="cambiarNombreSucursal($event)">
+                                
+                                <option [disabled]="true">Seleccionar Sucursal</option>
+                                <option *ngFor="let branch of branches" [ngValue]="branch.nombre_sucursal">
+                                    {{branch.nombre_sucursal}}
+                                </option>
+    
+                            </select>
+    
+                            <label for="servicio">Servicio</label>
+    
+                            <select class="form-select my-2" aria-label="servicio" (change)="cambiarServicio($event)">
+
+                                <option [disabled]="true">Seleccionar Servicio</option>
+                                <option *ngFor="let service of services" [ngValue]="service">
+                                    {{service.servicio}}
+                                </option>
+    
+                            </select>
+    
+                            <div class="col-4 my-4">
+                                <button class="btn btn-success" type="submit">Asignar servicio</button>
+                            </div>
+                            
+                        </div>
+                        
+                </form>
+        
+                </div>
+    
+            </div>
+        
+        </div>
+
+    </div>
+    
+</body>

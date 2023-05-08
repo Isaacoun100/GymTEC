@@ -1,1 +1,25 @@
-<p>editar-sucursal works!</p>
+
+<body>
+
+    <!--Navigation Bar-->
+    <app-sidebar></app-sidebar>
+
+    <!--Template de la sucursal, buscar el código en ¨src/app/template/formSucursal¨-->
+    <app-form-sucursal></app-form-sucursal>
+
+    
+    <!--Botón para eliminar la sucursal-->
+    <div class="container">
+
+        <div class="row float-end">
+    
+            <div class="col">
+                <a class="btn btn-success" (click)="eliminarSucursal()">Eliminar Sucursal</a>
+            </div>
+    
+        </div>
+
+    </div>
+
+
+</body>

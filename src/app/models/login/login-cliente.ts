@@ -1,4 +1,4 @@
 export interface LoginClienteI {
-    correo:string | undefined,
-    password:string | undefined
-  }
+  email: string | null;
+  password: string | null;
+}

@@ -1,1 +1,161 @@
-<p>crear-usuario works!</p>
+<body>
+    
+    <app-navbar></app-navbar>
+
+    <div class="container">
+
+        <form [formGroup]="clientForm" (ngSubmit)="agregarCliente(clientForm.getRawValue())">
+        
+            <div class="row py-2">
+                                            
+                    <div class="col-4">
+            
+                        <label for="cedula_cliente">Cedula Cliente</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="cedula_cliente" 
+                        formControlName="cedula_cliente"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="nombre">Nombre</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="nombre" 
+                        formControlName="nombre"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="apellido_1">Apellido 1</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="apellido_1" 
+                        formControlName="apellido_1"
+                        >
+                
+                    </div>
+
+            </div>
+
+            <div class="row py-2">
+                                            
+                    <div class="col-4">
+            
+                        <label for="apellido_2">Apellido 2</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="apellido_2" 
+                        formControlName="apellido_2"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="direccion">Direccion</label>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        id="direccion" 
+                        formControlName="direccion"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="email">Email</label>
+                        <input 
+                        type="email" 
+                        class="form-control" 
+                        id="email" 
+                        formControlName="email"
+                        >
+                
+                    </div>
+
+                </div>
+
+                <div class="row py-2">
+                                            
+                    <div class="col-4">
+            
+                        <label for="password">Password</label>
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        id="password" 
+                        formControlName="password"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="Altura">Altura</label>
+                        <input 
+                        type="number" 
+                        class="form-control" 
+                        id="Altura" 
+                        formControlName="Altura"
+                        >
+                
+                    </div>
+            
+                    <div class="col-4">
+            
+                        <label for="Peso">Peso</label>
+                        <input 
+                        type="number" 
+                        class="form-control" 
+                        id="Peso" 
+                        formControlName="Peso"
+                        >
+                
+                    </div>
+
+                </div>
+
+                <div class="row py-2">
+                                            
+                    <div class="col-4">
+            
+                        <label for="fecha_nac">Fecha de Nacimiento</label>
+                        <input 
+                        type="date" 
+                        class="form-control" 
+                        id="fecha_nac" 
+                        formControlName="fecha_nac"
+                        >
+                
+                    </div>
+
+                </div>
+
+                <div class="row py-4">
+
+                    <div class="col-4">
+
+                        <button type="submit" class="btn btn-success">Submit</button>
+
+                    </div>
+
+                </div>
+
+    
+        </form>
+
+    </div>
+
+
+</body>

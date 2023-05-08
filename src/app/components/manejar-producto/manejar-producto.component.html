@@ -1,1 +1,38 @@
 <app-sidebar></app-sidebar>
+
+<body>
+    
+    <div class="container py-4">
+        
+        <h1>Productos</h1>
+
+        <div class="row py-4">
+
+            <ul class="list-group overflow-auto shadow" style="max-height: 272px;">
+        
+                <div *ngFor="let product of products; let i=index">
+        
+                    <li class="list-group-item">
+        
+                        <h4>
+        
+                            <a [routerLink]="['/productos', product.codigo_barras]">
+                                <div>Nombre del producto: {{ product.nombre_producto }}</div>
+                                <div>Costo: {{ product.costo }}</div>
+                            </a>
+        
+                        </h4>
+                        
+                    </li>
+        
+                </div>
+        
+              </ul>
+
+        </div>
+        
+        <button type="button" class="btn btn-primary" (click)="agregarProducto()">Agregar producto</button>
+        
+    </div>
+
+</body>

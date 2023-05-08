@@ -1,1 +1,126 @@
-<app-sidebar></app-sidebar>
+<body>
+
+  <app-sidebar></app-sidebar>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <div class="container">
+
+    <div class="row py-2">
+
+      <h2>
+        Información general
+      </h2>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">
+              Nombre: 
+              {{getUser()['nombre'] + ' ' +
+              getUser()['apellido_1'] + ' ' +
+              getUser()['apellido_2']}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> Cédula: {{getUser()['cedula']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> Correo: {{getUser()['correo']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <h2>
+        Domicilio
+      </h2>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text">  
+              Provincia:{{getUser()['provincia']}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> 
+              Cantón: {{getUser()['canton']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> Distrito:{{getUser()['distrito']}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <h2>
+        Personal
+      </h2>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> 
+              Contraseña:{{getContrasena()}} </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col py-2">
+
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"> Salario:{{getSalario()}} </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary my-2" (click)="hidePassword()" >{{buttonContent()}}</button>
+
+  </div>
+
+</body>

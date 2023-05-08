@@ -17,13 +17,14 @@
                         Inicio de sesión Cliente
                     </div>
 
-                    <form [formGroup]="loginForm" (ngSubmit)="loginCliente()">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginCliente(loginForm.getRawValue())">
                 
                         <div class="mb-4 mx-4">
                             <label for="correoLabel" class="form-label">Correo</label>
+
                             <input 
                                 type="email" 
-                                formControlName="correoInput"
+                                formControlName="email"
                                 class="form-control" 
                                 placeholder="example@domain.com" 
                                 autofocus />
@@ -34,13 +35,17 @@
                             <label for="contrasenaLabel" class="form-label">Constraseña</label>
                             <input 
                                 type="password" 
-                                formControlName="contrasenaInput"
+                                formControlName="password"
                                 class="form-control" 
                                 placeholder="Constraseña" />
                         </div>
-            
+
                         <div class="mb-4 mx-4 centrado">
                             <button class="btn btn-success" [disabled]="!loginForm.valid" type="submit">Iniciar sesión</button>
+                        </div>
+                        
+                        <div class="mb-4 mx-4 centrado">
+                            <a class="btn btn-success" type="submit" href="crearUsuario">Registrar usuario</a>
                         </div>
             
                     </form>

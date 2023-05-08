@@ -1,10 +1,126 @@
 <body>
+
+    <!-- Sidebar -->
     <app-sidebar></app-sidebar>
 
-    <div class="containet my-3">
+    <div class="container">
 
+        <form [formGroup]="createClaseForm" (ngSubmit)="createForm(createClaseForm.getRawValue())">
+
+            <div class="row py-2">
+
+                <div class="col-4">
+
+                    <label for="clase_id">Clase ID</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    id="clase_id" 
+                    formControlName="clase_id"
+                    >
         
+                </div>
+
+                <div class="col-4">
+
+                    <label for="servicio">Servicio</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="servicio" 
+                    formControlName="servicio"
+                    >
         
+                </div>
+
+                <div class="col-4">
+
+                    <label for="modo">Modo</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="modo" 
+                    formControlName="modo"
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+
+                <div class="col-6">
+
+                    <label for="capacidad">Capacidad</label>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    id="capacidad" 
+                    formControlName="capacidad"
+                    >
+        
+                </div>
+
+                <div class="col-6">
+
+                    <label for="fecha">Fecha</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="fecha" 
+                    formControlName="fecha"
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="row py-2">
+
+                <div class="col-4">
+
+                    <label for="hora_ingreso">Hora de ingreso</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hora_ingreso" 
+                    formControlName="hora_ingreso"
+                    >
+        
+                </div>
+
+                <div class="col-4">
+
+                    <label for="hora_salida">Hora de salida</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="hora_salida" 
+                    formControlName="hora_salida"
+                    >
+        
+                </div>
+
+                <div class="col-4">
+
+                    <label for="encargado">Encargado</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="encargado" 
+                    formControlName="encargado"
+                    >
+        
+                </div>
+
+            </div>
+
+            <div class="col-4 my-4">
+                <button class="btn btn-success" type="submit">Crear clase</button>
+            </div>
+
+        </form>
+
     </div>
 
 </body>

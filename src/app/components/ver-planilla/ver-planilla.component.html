@@ -1,1 +1,36 @@
-<app-sidebar></app-sidebar>
+<body>
+
+    <app-sidebar></app-sidebar>
+
+    <div class="container py-4">
+        
+        <h1>Planilla</h1>
+
+        <div class="row py-4">
+
+            <ul class="list-group overflow-auto shadow" style="max-height:calc(100vh - 300px);">
+        
+                <div *ngFor="let planilla of planillas; let i=index">
+        
+                    <li class="list-group-item">
+
+                        <h2>Cédula</h2>
+                        <p>{{planilla.empleado_cedula}}</p>
+
+                        <h2>Tipo de pago</h2>
+                        <p>{{planilla.nombre_planilla}}</p>
+
+                        <h2>Salario</h2>
+                        <p>{{planilla.salario}}</p>
+
+                    </li>
+        
+                </div>
+        
+            </ul>
+
+        </div>
+
+    </div>
+        
+</body>
