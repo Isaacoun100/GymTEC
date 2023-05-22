@@ -22,7 +22,7 @@ export class EquipoService {
   constructor(private http: HttpClient) {}
 
   /**
-   * @description This method is used to get all the equipment using HTTT method GET.
+   * @description This method is used to get all the equipment using HTTP method GET.
    * @version 1.0
    * @returns Observable<ResponseTemplateI>
    */
